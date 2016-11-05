@@ -1,0 +1,32 @@
+# Path to your oh-my-zsh installation.
+export ZSH=/home/rubemlrm/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="steeef"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+ZSH_CUSTOM=~/.configs/zsh
+
+plugins=(git composer common-aliases docker rails tmux vagrant docker history perl rvm)
+
+# User configuration
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+source $ZSH/oh-my-zsh.sh
+
+export TERM=xterm-256color
+stty -ixon
+setxkbmap pt
+
+
+export PATH="$PATH:$HOME/bin/rvm/bin" # Add RVM to PATH for scripting
+export rvm_path="/home/rubemlrm"
+source /home/rubemlrm/bin/rvm/scripts/rvm
+source ~/bin/perl/etc/bashrc
+source /home/rubemlrm/bin/nvm/nvm.sh

@@ -1,0 +1,21 @@
+syntax on
+filetype off
+filetype plugin indent on
+call plug#begin('~/.vim/plugged')
+
+set t_Co=256
+set term=screen-256color
+colorscheme seti
+au BufWritePost .vimrc so $MYVIMRC
+
+""settings
+source ~/.vim/config/settings.vim
+"keybinds
+source ~/.vim/config/keybindings.vim
+"" Plugin-specific configuration
+source ~/.vim/config/plugin.vim
+" Small custom functions.
+source ~/.vim/config/functions.vim
+" " Auto command
+source ~/.vim/config/autocomands.vim
+
