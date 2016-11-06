@@ -19,13 +19,13 @@ ln -f -s $CWD/zsh/zshrc ~/.zshrc
 
 if [ ! -e ~/.config/zsh/ ]; then
     ln -s $CWD/zsh/configs ~/.config/zsh
-    touch ~/.config/zsh/development
+    touch ~/.config/zsh/development.zsh
 fi
 
 echo "setup rvm"
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-\curl -sSL https://get.rvm.io | bash -s -- --path ~/bin/rvm 
-cat >> ~/.config/zsh/development << EOM
+\curl -sSL https://get.rvm.io | bash -s stable --path ~/bin/rvm
+cat >> ~/.config/zsh/development.zsh << EOM
 #rvm
 export rvm_path="$HOME"
 if [ -e "$HOME/bin/rvm/scripts/rvm" ]; then
@@ -36,7 +36,7 @@ EOM
 
 echo "setup perl"
 \curl -L https://install.perlbrew.pl | bash
-cat >> ~/.config/zsh/development << EOM
+cat >> ~/.config/zsh/development.zsh << EOM
 #perlbrew
 if [ -e "$HOME/bin/perl/etc/bashrc" ]; then
   source $HOME/bin/perl/etc/bashrc
