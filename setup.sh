@@ -18,16 +18,35 @@ ln -f -s $CWD/zsh/zshrc ~/.zshrc
 echo "setup rvm"
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 \curl -sSL https://get.rvm.io | bash -s -- --path ~/bin/rvm 
-echo "export rvm_path=\"$HOME\"" >> ~/.zshrc
-echo "source $HOME/bin/rvm/scripts/rvm" >> ~/.zshrc
+cat >> ~/.zshrc << EOM
+#rvm
+export rvm_path="$HOME"
+if [ -e "$HOME/bin/rvm/scripts/rvm" ]; then
+    source $HOME/bin/rvm/scripts/rvm
+fi
+
+EOM
 
 echo "setup perl"
 \curl -L https://install.perlbrew.pl | bash
-echo "source ~/bin/perl/etc/bashrc" >> ~/.zshrc
+cat >> ~/.zshrc << EOM
+#perlbrew
+if [ -e "$HOME/bin/perl/etc/bashrc" ]; then
+  source ~/bin/perl/etc/bashrc" >> ~/.zshrc
+fi
+
+EOM
 
 echo "setup nvm"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-echo "source $NVM_DIR/nvm.sh" >> ~/.zshrc
+cat >> ~/.zshrc << EOM
+#nvm
+export NVM_DIR="$HOME/bin/nvm"
+if [ -e "$NVM_DIR/nvm.sh" ]; then
+    source $NVM_DIR/nvm.sh
+fi
+EOM
+
 
 echo "creating symlinks"
 ln -f -s $CWD/vim/vimrc ~/.vimrc

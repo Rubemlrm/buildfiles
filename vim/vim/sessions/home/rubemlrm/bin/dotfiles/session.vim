@@ -590,21 +590,29 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
+badd +35 bin/dotfiles/setup.sh
 badd +1 .zshrc
 argglobal
 silent! argdel *
 edit .zshrc
 set splitbelow splitright
 wincmd _ | wincmd |
+split
+1wincmd k
+wincmd _ | wincmd |
 vsplit
 1wincmd h
+wincmd w
 wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 44 + 45) / 90)
-exe 'vert 2resize ' . ((&columns * 45 + 45) / 90)
+exe '1resize ' . ((&lines * 51 + 28) / 56)
+exe 'vert 1resize ' . ((&columns * 59 + 59) / 119)
+exe '2resize ' . ((&lines * 51 + 28) / 56)
+exe 'vert 2resize ' . ((&columns * 59 + 59) / 119)
+exe '3resize ' . ((&lines * 1 + 28) / 56)
 argglobal
 setlocal keymap=
 setlocal noarabic
@@ -718,16 +726,16 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 32 - ((21 * winheight(0) + 13) / 27)
+let s:l = 7 - ((5 * winheight(0) + 25) / 51)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-32
+7
 normal! 0
 lcd ~/
 wincmd w
 argglobal
-enew
+edit ~/bin/dotfiles/setup.sh
 setlocal keymap=
 setlocal noarabic
 setlocal autoindent
@@ -762,8 +770,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != ''
-setlocal filetype=
+if &filetype != 'sh'
+setlocal filetype=sh
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -826,8 +834,8 @@ setlocal statusline=%!airline#statusline(2)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != ''
-setlocal syntax=
+if &syntax != 'sh'
+setlocal syntax=sh
 endif
 setlocal tabstop=4
 setlocal tagcase=
@@ -840,10 +848,136 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
+let s:l = 30 - ((28 * winheight(0) + 25) / 51)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+30
+normal! 0
+lcd ~/bin/dotfiles
+wincmd w
+argglobal
+enew
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=wipe
+setlocal buflisted
+setlocal buftype=quickfix
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=120
+setlocal colorcolumn=120
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'qf'
+setlocal filetype=qf
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=10
+setlocal foldmarker={{{,}}}
+set foldmethod=indent
+setlocal foldmethod=manual
+setlocal foldminlines=1
+set foldnestmax=10
+setlocal foldnestmax=10
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=qrn1
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal nomodifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%!airline#statusline(3)
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'qf'
+setlocal syntax=qf
+endif
+setlocal tabstop=4
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal winfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
 lcd ~/
 wincmd w
-exe 'vert 1resize ' . ((&columns * 44 + 45) / 90)
-exe 'vert 2resize ' . ((&columns * 45 + 45) / 90)
+2wincmd w
+exe '1resize ' . ((&lines * 51 + 28) / 56)
+exe 'vert 1resize ' . ((&columns * 59 + 59) / 119)
+exe '2resize ' . ((&lines * 51 + 28) / 56)
+exe 'vert 2resize ' . ((&columns * 59 + 59) / 119)
+exe '3resize ' . ((&lines * 1 + 28) / 56)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
