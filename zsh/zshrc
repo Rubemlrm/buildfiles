@@ -10,7 +10,7 @@ ZSH_THEME="steeef"
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
-ZSH_CUSTOM=~/.configs/zsh
+ZSH_CUSTOM=~/.config/zsh
 
 plugins=(git composer common-aliases docker rails tmux vagrant docker history perl rvm)
 

@@ -14,11 +14,12 @@ git clone git@github.com:michaeltraxler/urxvt-perls.git ~/.urxvt/ext
 echo "cloning oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ln -f -s $CWD/zsh/zshrc ~/.zshrc
+ln -f -s $CWD/zsh/configs ~/.config/zsh
 
 echo "setup rvm"
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 \curl -sSL https://get.rvm.io | bash -s -- --path ~/bin/rvm 
-cat >> ~/.zshrc << EOM
+cat >> ~/.configs/zsh/development << EOM
 #rvm
 export rvm_path="$HOME"
 if [ -e "$HOME/bin/rvm/scripts/rvm" ]; then
@@ -29,7 +30,7 @@ EOM
 
 echo "setup perl"
 \curl -L https://install.perlbrew.pl | bash
-cat >> ~/.zshrc << EOM
+cat >> ~/.configs/zsh/development << EOM
 #perlbrew
 if [ -e "$HOME/bin/perl/etc/bashrc" ]; then
   source ~/bin/perl/etc/bashrc" >> ~/.zshrc
@@ -39,7 +40,7 @@ EOM
 
 echo "setup nvm"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-cat >> ~/.zshrc << EOM
+cat >> ~/.configs/zsh/development << EOM
 #nvm
 export NVM_DIR="$HOME/bin/nvm"
 if [ -e "$NVM_DIR/nvm.sh" ]; then
