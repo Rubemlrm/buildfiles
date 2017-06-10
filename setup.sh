@@ -4,7 +4,7 @@ export PERLBREW_ROOT=~/bin/perl
 export NVM_DIR=~/bin/nvm
 
 mkdir -p ~/bin
-
+mkdir -p ~/.config/{zsh,tmux}/configs
 echo "cloning needed packages"
 
 echo "Cloning urxvt perl extensions"
