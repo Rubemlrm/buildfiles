@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/rubemlrm/Dropbox/configs/vimStuff/vim'
-let g:netrw_dirhist_2='/home/rubemlrm/Dropbox/configs/vimStuff'
-let g:netrw_dirhist_3='/home/rubemlrm/Works/docker'
-let g:netrw_dirhist_4='/home/rubemlrm/Works/WebDev/restaurantes'
-let g:netrw_dirhist_5='/home/rubemlrm/Dropbox/configs'

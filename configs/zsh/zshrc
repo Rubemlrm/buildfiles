@@ -19,13 +19,3 @@ plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm)
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 source $ZSH/oh-my-zsh.sh
-
-export TERM=xterm-256color
-stty -ixon
-
-
-export NVM_DIR="/home/rubemlrm/bin/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/bin/rvm/bin"
