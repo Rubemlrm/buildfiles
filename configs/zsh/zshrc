@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/rubemlrm/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -12,7 +12,7 @@ ENABLE_CORRECTION="true"
 
 ZSH_CUSTOM=~/.config/zsh
 
-plugins=(git composer common-aliases docker rails tmux vagrant docker history perl rvm dnf)
+plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm)
 
 # User configuration
 
@@ -28,5 +28,3 @@ setxkbmap pt
 export NVM_DIR="/home/rubemlrm/bin/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/bin/rvm/bin"
