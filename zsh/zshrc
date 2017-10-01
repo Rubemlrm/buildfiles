@@ -5,14 +5,14 @@ export ZSH=/home/rubemlrm/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="steeef"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
 ZSH_CUSTOM=~/.config/zsh
 
-plugins=(git composer common-aliases docker rails tmux vagrant docker history perl rvm)
+plugins=(git composer common-aliases docker rails tmux vagrant docker history perl rvm dnf)
 
 # User configuration
 
@@ -20,10 +20,13 @@ export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 source $ZSH/oh-my-zsh.sh
 
-export TERM=xterm-256color
+#export TERM=xterm-255color
 stty -ixon
 setxkbmap pt
 
 
 export NVM_DIR="/home/rubemlrm/bin/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/bin/rvm/bin"
