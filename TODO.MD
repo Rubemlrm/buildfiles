@@ -7,4 +7,4 @@
 - [ ] add new utils apps
 - [ ] create custom alias for zsh
 - [ ] create custom functions for zsh
-- [ ] add package management detection for base packages
+- [x] add package management detection for base packages
