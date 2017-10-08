@@ -12,11 +12,11 @@ ENABLE_CORRECTION="true"
 
 ZSH_CUSTOM=~/.config/zsh
 
-plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm)
+plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm python)
 
 # User configuration
 
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/.composer/vendor/bin"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -28,3 +28,5 @@ setxkbmap pt
 export NVM_DIR="/home/rubemlrm/bin/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+source /home/rubemlrm/bin/rvm/scripts/rvm
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
