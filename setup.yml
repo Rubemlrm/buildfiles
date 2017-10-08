@@ -1,54 +1,11 @@
 ---
 - hosts: localhost
-  become: yes
-  become_method: sudo
   vars:
+      - username: rubemlrm
       - home_dir: /home/rubemlrm
-      - configs_dir: /home/rubemlrm/bin/dotfiles/configs  
-  tasks:
-
-    - import_tasks: setup/debian.yml
-      when: ansible_os_family == 'Debian'
-
-    - import_tasks: setup/red_hat.yml
-      when: ansible_os_family == 'RedHat'
-
-    - name: Change user shell to znc
-      raw: chsh {{ ansible_user_id  }} -s /usr/bin/zsh
-    
-    - name: Clone Extra repos
-      command: "{{ item }}"
-      with_items:
-          - 'git clone https://github.com/exebetche/vlsub.git ~/.local/share/vlc/lua/extensions/'
-          - 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
-    
-    - name: SSD improvements
-      command: "{{ item }}"
-      with_items:
-        - 'echo "tmpfs /tmp tmpfs rw,nosuid,nodev,noatime" >> /etc/fstab'
-        - 'echo "vm.swappiness = 10" >> /etc/sysctl.conf'
-    
-    - name: Created base folders for configs
-      file: path={{ home_dir }}/{{item}} state=directory
-      with_items:
-          - '.config'
-          - '.config/zsh'
-          - '.config/zsh/configs'
-          - '.config/tmux/configs'
-          - '.urxvt'
-          - '.urxvt/ext'
-
-    - name: Restore Configs
-      file:
-        src={{ configs_dir }}/{{ item.origin }}
-        dest={{ home_dir }}/{{ item.dest }}
-        state=link
-      with_items:
-        - { origin: 'zsh/zshrc', dest: '.zshrc' }
-        - { origin: 'zsh/configs', dest: '.config/zsh'}
-        - { origin: 'vim/vimrc', dest: '.vimrc'}
-        - { origin: 'vim/vim', dest: '.vim' }
-        - { origin: 'Xstuff/Xdefaults', dest: '.Xdefaults'}
-        - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
-        - { origin: 'tmux/configs', dest: '.config/tmux' }
+      - configs_dir: /home/rubemlrm/bin/dotfiles/roles/user-configs/files  
+  roles:
+    - { role: base-packages}
+    - { role: user-configs}
+ 
 

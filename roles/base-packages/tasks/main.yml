@@ -1,0 +1,51 @@
+---
+- name: Install utils for Red Hat Based
+  become: true
+  become_user: root
+  become_method: sudo
+  package:
+    name={{ item }} 
+    state=installed
+  with_items:
+    -  'tmux' 
+    -  'git'  
+    -  'zsh'  
+    -  'acpi' 
+    -  'htop' 
+    -  'vim'  
+    -  'rxvt-unicode-256color' 
+    -  'adobe-source-code-pro-fonts' 
+    -  'powerline' 
+    -  'powerline-fonts' 
+    -  'tmux-powerline' 
+    -  'vim-powerline' 
+    -  'nodejs' 
+    -  'ctags' 
+    -  'python-devel' 
+    -  'python3-devel' 
+    -  'automake' 
+    -  'gcc' 
+    -  'gcc-c++' 
+    -  'cmake' 
+  when: ansible_os_family == "RedHat"
+
+- name: Install utils for Debian Based
+  become: true
+  become_user: root
+  become_method: sudo
+  package:
+    name={{ item }} 
+    state=installed
+  with_items:
+    -  'tmux' 
+    -  'git'  
+    -  'zsh'  
+    -  'acpid' 
+    -  'htop' 
+    -  'vim'  
+    -  'rxvt-unicode-256color' 
+    -  'nodejs' 
+    -  'ctags'
+  when: ansible_os_family == "Debian"
+     
+
