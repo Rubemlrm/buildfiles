@@ -27,10 +27,10 @@
     group={{username}}
   with_items:
     - { origin: 'zsh/zshrc', dest: '.zshrc' }
-    - { origin: 'zsh/configs',dest: '.config/zsh/'}
+    - { origin: 'zsh/configs',dest: '.config/zsh'}
     - { origin: 'vim/vimrc', dest: '.vimrc'}
-    - { origin: 'vim/vim', dest: '.vim/' }
+    - { origin: 'vim/vim', dest: '.vim' }
     - { origin: 'Xstuff/Xdefaults', dest: '.Xdefaults'}
     - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
-    - { origin: 'tmux/configs', dest: '.config/tmux/' }
+    - { origin: 'tmux/configs', dest: '.config/tmux' }
 
