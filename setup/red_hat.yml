@@ -1,0 +1,36 @@
+    - name: Install utils
+      package:
+          name={{ item }} 
+          state=installed
+      with_items:
+        -  'tmux' 
+        -  'git'  
+        -  'zsh'  
+        -  'acpi' 
+        -  'htop' 
+        -  'vim'  
+        -  'rxvt-unicode-256color' 
+        -  'adobe-source-code-pro-fonts' 
+        -  'powerline' 
+        -  'powerline-fonts' 
+        -  'tmux-powerline' 
+        -  'vim-powerline' 
+        -  'nodejs' 
+        -  'ctags' 
+        -  'python-devel' 
+        -  'python3-devel' 
+        -  'automake' 
+        -  'gcc' 
+        -  'gcc-c++' 
+        -  'cmake' 
+    - name: Install common
+      package:
+          name={{ item }} 
+          state=installed
+      with_items:
+        -  'vlc' 
+        -  'corebird' 
+        -  'deluge' 
+        -  'filezilla' 
+        -  'firefox' 
+     

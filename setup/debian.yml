@@ -1,0 +1,22 @@
+
+    - name: Install utils
+      package:
+          name={{ item }} 
+          state=installed
+      with_items:
+        -  'tmux' 
+        -  'git'  
+        -  'zsh'  
+        -  'acpid' 
+        -  'htop' 
+        -  'vim'  
+        -  'rxvt-unicode-256color' 
+        -  'nodejs' 
+        -  'ctags' 
+        -  'python-devel' 
+        -  'python3-devel' 
+        -  'automake' 
+        -  'gcc' 
+        -  'gcc-c++' 
+        -  'cmake'  
+     
