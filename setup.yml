@@ -17,21 +17,27 @@
       raw: chsh {{ ansible_user_id  }} -s /usr/bin/zsh
     
     - name: Clone Extra repos
-      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-      shell: git clone https://github.com/exebetche/vlsub.git ~/.local/share/vlc/lua/extensions/
+      command: "{{ item }}"
+      with_items:
+          - 'git clone https://github.com/exebetche/vlsub.git ~/.local/share/vlc/lua/extensions/'
+          - 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
     
-
     - name: SSD improvements
-      shell: echo "tmpfs /tmp tmpfs rw,nosuid,nodev,noatime" >> /etc/fstab
-      shell: echo "vm.swappiness = 10" >> /etc/sysctl.conf
+      command: "{{ item }}"
+      with_items:
+        - 'echo "tmpfs /tmp tmpfs rw,nosuid,nodev,noatime" >> /etc/fstab'
+        - 'echo "vm.swappiness = 10" >> /etc/sysctl.conf'
     
     - name: Created base folders for configs
-      file: path={{ home_dir }}/.config state=directory
-      file: path={{ home_dir}}/.config/zsh/configs state=directory
-      file: path={{ home_dir}}/.config/tmux/configs state=directory
-      file: path={{ home_dir}}/.urxvt state=directory
-      file: path={{ home_dir}}/.urxvt/ext state=directory
-    
+      file: path={{ home_dir }}/{{item}} state=directory
+      with_items:
+          - '.config'
+          - '.config/zsh'
+          - '.config/zsh/configs'
+          - '.config/tmux/configs'
+          - '.urxvt'
+          - '.urxvt/ext'
+
     - name: Restore Configs
       file:
         src={{ configs_dir }}/{{ item.origin }}
