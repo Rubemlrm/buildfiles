@@ -1,0 +1,77 @@
+---
+- hosts: localhost
+  become: yes
+  become_method: sudo
+  vars:
+      - home_dir: /home/rubemlrm
+      - configs_dir: /home/rubemlrm/bin/dotfiles/configs  
+  tasks:
+    - name: Install utils
+      package:
+          name={{ item }} 
+          state=installed
+      with_items:
+        -  'tmux' 
+        -  'git'  
+        -  'zsh'  
+        -  'acpi' 
+        -  'htop' 
+        -  'vim'  
+        -  'rxvt-unicode-256color' 
+        -  'adobe-source-code-pro-fonts' 
+        -  'powerline' 
+        -  'powerline-fonts' 
+        -  'tmux-powerline' 
+        -  'vim-powerline' 
+        -  'nodejs' 
+        -  'ctags' 
+        -  'python-devel' 
+        -  'python3-devel' 
+        -  'automake' 
+        -  'gcc' 
+        -  'gcc-c++' 
+        -  'cmake' 
+    - name: Install common
+      package:
+          name={{ item }} 
+          state=installed
+      with_items:
+        -  'vlc' 
+        -  'corebird' 
+        -  'deluge' 
+        -  'filezilla' 
+        -  'firefox' 
+     
+    - name: Change user shell to znc
+      raw: chsh {{ ansible_user_id  }} -s /usr/bin/zsh
+    
+    - name: Clone Extra repos
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+      shell: git clone https://github.com/exebetche/vlsub.git ~/.local/share/vlc/lua/extensions/
+    
+
+    - name: SSD improvements
+      shell: echo "tmpfs /tmp tmpfs rw,nosuid,nodev,noatime" >> /etc/fstab
+      shell: echo "vm.swappiness = 10" >> /etc/sysctl.conf
+    
+    - name: Created base folders for configs
+      file: path={{ home_dir }}/.config state=directory
+      file: path={{ home_dir}}/.config/zsh/configs state=directory
+      file: path={{ home_dir}}/.config/tmux/configs state=directory
+      file: path={{ home_dir}}/.urxvt state=directory
+      file: path={{ home_dir}}/.urxvt/ext state=directory
+    
+    - name: Restore Configs
+      file:
+        src={{ configs_dir }}/{{ item.origin }}
+        dest={{ home_dir }}/{{ item.dest }}
+        state=link
+      with_items:
+        - { origin: 'zsh/zshrc', dest: '.zshrc' }
+        - { origin: 'zsh/configs', dest: '.config/zsh'}
+        - { origin: 'vim/vimrc', dest: '.vimrc'}
+        - { origin: 'vim/vim', dest: '.vim' }
+        - { origin: 'Xstuff/Xdefaults', dest: '.Xdefaults'}
+        - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
+        - { origin: 'tmux/configs', dest: '.config/tmux' }
+
