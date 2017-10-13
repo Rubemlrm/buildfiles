@@ -6,6 +6,7 @@
       - configs_dir: /home/rubemlrm/bin/dotfiles/roles/user-configs/files  
   roles:
     - { role: base-packages}
+    - { role: custom-repos}
     - { role: user-configs}
  
 
