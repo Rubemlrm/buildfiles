@@ -40,8 +40,8 @@
   block:
     - name: Add gpg keys
       apt_key:
-        url: {{ item.url }}
-        state: {{ item.state }}
+        url: "{{ item.url }}"
+        state: "{{ item.state }}"
       with_items:
         - url: https://packages.microsoft.com/keys/microsoft.asc
           state: present
@@ -49,8 +49,8 @@
           state: present
     - name: Add repos
       apt_repository:
-        repo: {{ item.repo }}
-        state: {{ item.state }}
+        repo: "{{ item.repo }}"
+        state: "{{ item.state }}"
       with_items:
         - repo:  deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
           state: present
