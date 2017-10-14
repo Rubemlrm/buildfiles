@@ -33,17 +33,27 @@
   when: ansible_os_family == "RedHat"
 
 
-
 - name: Add Custom repos for Debian Based
   become: true
   become_user: root
   become_method: sudo
-  apt_repository:
-    repo: item.repo
-    state: item.state
-  with_items:
-    - repo:  deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-      state: present
-    - repo: deb-src [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable
-      state: present
+  block:
+    - name: Add gpg keys
+      apt_key:
+        url: {{ item.url }}
+        state: {{ item.state }}
+      with_items:
+        - url: https://packages.microsoft.com/keys/microsoft.asc
+          state: present
+        - url: https://download.docker.com/linux/debian/gpg
+          state: present
+    - name: Add repos
+      apt_repository:
+        repo: {{ item.repo }}
+        state: {{ item.state }}
+      with_items:
+        - repo:  deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+          state: present
+        - repo: deb-src [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable
+          state: present
   when: ansible_os_family == "Debian"

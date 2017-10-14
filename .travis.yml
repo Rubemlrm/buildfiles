@@ -8,10 +8,10 @@ services:
   - docker
 
 env:
-  - distribution: fedora
-    version: 26
-  - distribution: Debian
-    version: jessie
+  - distribution: centos
+    version: 6
+  - distribution: centos
+    version: 7
 
 before_install:
   - 'sudo docker run -it --name=test_dummy --privileged --detach --volume="${PWD}":/etc/ansible/setup.yml:rw cyverse/ansible-test:latest-${distribution}-${version} bash'
