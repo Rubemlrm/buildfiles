@@ -56,4 +56,8 @@
           state: present
         - repo: deb-src [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable
           state: present
+    - name: update repos
+      apt:
+        upgrade: yes
+        update_cache: yes
   when: ansible_os_family == "Debian"
