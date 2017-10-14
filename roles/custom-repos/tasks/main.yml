@@ -1,18 +1,49 @@
----
 - name: Add Custom repos for Red Hat Based
   become: true
   become_user: root
   become_method: sudo
   yum_repository:
-    name:  item.name
+    name: item.name
     description: item.description
     file: item.file
     baseurl: item.baseurl
   with_items:
-    - { 
-        name: "docker", 
-        description: "docker oficial repo", 
-        file: "docker-ce.repo", 
-        baseurl: "https://download.docker.com/linux/fedora/docker-ce.repo"
-        }
+    - name: docker
+      description: docker oficial repo
+      file: docker-ce.repo
+      baseurl: 'https://download.docker.com/linux/fedora/docker-ce.repo'
+    - name: rpm Fusion free
+      description: rpm fusion free repo
+      file: 'rpmfusion-free-release-{{ fedora_current}}.noarch.repo'
+      baseurl: >-
+        http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{
+        fedora_current }}.noarch.rpm
+    - name: rpm fusion non-free
+      description: rpm fusion non-free repo
+      file: 'rpmfusion-nonfree-release-{{ fedora_current }}.noarch.repo'
+      baseurl: >-
+        http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{
+        fedora_current }}.noarch.rpm
+    - name: Visual Studio Code
+      description: Visual Studio Code repo
+      file: vscode.repo
+      baseurl: 'https://packages.microsoft.com/yumrepos/vscode'
+      gpgkey: 'https://packages.microsoft.com/keys/microsoft.asc'
+      gpgcheck: yes
   when: ansible_os_family == "RedHat"
+
+
+
+- name: Add Custom repos for Debian Based
+  become: true
+  become_user: root
+  become_method: sudo
+  apt_repository:
+    repo: item.repo
+    state: item.state
+  with_items:
+    - repo:  deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+      state: present
+    - repo: deb-src [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable
+      state: present
+  when: ansible_os_family == "Debian"

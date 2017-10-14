@@ -1,32 +1,25 @@
-sudo: required
-dist: trusty
-
+---
 language: python
 python: "2.7"
 
-# Doc: https://docs.travis-ci.com/user/customizing-the-build#Build-Matrix
-env:
-  - ANSIBLE_VERSION=latest
-  - ANSIBLE_VERSION=2.2.2.0
-  - ANSIBLE_VERSION=2.2.1.0
-  - ANSIBLE_VERSION=2.2.0.0
+sudo: required
+dist: trusty
+services:
+  - docker
 
-branches:
-  only:
-    - master
+env:
+  - distribution: fedora
+    version: 26
+  - distribution: Debian
+    version: jessie
 
 before_install:
-  - sudo apt-get update -qq
-
-install:
-  # Install Ansible.
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
+  - 'sudo docker run -it --name=test_dummy --privileged --detach --volume="${PWD}":/etc/ansible/setup.yml:rw cyverse/ansible-test:latest-${distribution}-${version} bash'
 
 script:
-# Check the role/playbook's syntax.
-  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
-# Run the role/playbook with ansible-playbook.
-  - ansible-playbook -i tests/inventory tests/test.yml
+  # 1. Syntax check
+  - "sudo docker exec test_dummy ansible-playbook /etc/ansible/setup.yml -i tests/inventory --syntax-check"
 
+  # 2. Run playbook to execute role
+  - "sudo docker exec test_dummy ansible-playbook /etc/ansible/setup.yml -i tests/inventory --connection=local"
 

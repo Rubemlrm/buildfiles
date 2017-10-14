@@ -4,29 +4,29 @@
   become_user: root
   become_method: sudo
   package:
-    name={{ item }} 
+    name={{ item }}
     state=installed
   with_items:
-    -  'tmux' 
-    -  'git'  
-    -  'zsh'  
-    -  'acpi' 
-    -  'htop' 
-    -  'vim'  
-    -  'rxvt-unicode-256color' 
-    -  'adobe-source-code-pro-fonts' 
-    -  'powerline' 
-    -  'powerline-fonts' 
-    -  'tmux-powerline' 
-    -  'vim-powerline' 
-    -  'nodejs' 
-    -  'ctags' 
-    -  'python-devel' 
-    -  'python3-devel' 
-    -  'automake' 
-    -  'gcc' 
-    -  'gcc-c++' 
-    -  'cmake' 
+    -  'tmux'
+    -  'git'
+    -  'zsh'
+    -  'acpi'
+    -  'htop'
+    -  'vim'
+    -  'rxvt-unicode-256color'
+    -  'adobe-source-code-pro-fonts'
+    -  'powerline'
+    -  'powerline-fonts'
+    -  'tmux-powerline'
+    -  'vim-powerline'
+    -  'ctags'
+    -  'python-devel'
+    -  'python3-devel'
+    -  'automake'
+    -  'gcc'
+    -  'gcc-c++'
+    -  'cmake'
+    -  'dnf-plugins-core'
   when: ansible_os_family == "RedHat"
 
 - name: Install utils for Debian Based
@@ -34,18 +34,24 @@
   become_user: root
   become_method: sudo
   package:
-    name={{ item }} 
+    name={{ item }}
     state=installed
   with_items:
-    -  'tmux' 
-    -  'git'  
-    -  'zsh'  
-    -  'acpid' 
-    -  'htop' 
-    -  'vim'  
-    -  'rxvt-unicode-256color' 
-    -  'nodejs' 
+    -  'tmux'
+    -  'git'
+    -  'zsh'
+    -  'acpid'
+    -  'htop'
+    -  'vim'
+    -  'rxvt-unicode-256color'
     -  'ctags'
+    -  'apt-transport-https'
+    -  'ca-certificates'
+    -  'curl'
+    -  'gnupg2'
+    -  'software-properties-common'
+    -  'keyboard-configuration'
+    -  'console-setup'
   when: ansible_os_family == "Debian"
-     
+
 

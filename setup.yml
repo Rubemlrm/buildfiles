@@ -1,12 +1,11 @@
 ---
 - hosts: localhost
-  vars:
-      - username: rubemlrm
-      - home_dir: /home/rubemlrm
-      - configs_dir: /home/rubemlrm/bin/dotfiles/roles/user-configs/files  
+  vars_files:
+      - variables/base.yml
   roles:
     - { role: base-packages}
     - { role: custom-repos}
+    - { role: development-tools }
     - { role: user-configs}
- 
+
 

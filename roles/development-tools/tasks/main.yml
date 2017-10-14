@@ -1,0 +1,5 @@
+---
+  - include_tasks: common.yml
+  - include_tasks: javascript.yml
+  - include_tasks: php.yml
+  - include_tasks: python.yml
