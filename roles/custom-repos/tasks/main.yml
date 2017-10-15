@@ -5,10 +5,10 @@
   block:
     - name: 'set repos'
       yum_repository:
-        name: item.name
-        description: item.description
-        file: item.file
-        baseurl: item.baseurl
+        name: "{{item.name}}"
+        description: "{{item.description}}"
+        file: "{{item.file}}"
+        baseurl: "{{item.baseurl}}"
       with_items:
         - name: docker
           description: docker oficial repo
@@ -33,9 +33,7 @@
           gpgkey: 'https://packages.microsoft.com/keys/microsoft.asc'
           gpgcheck: yes
     - name: upgrade all packages
-      dnf:
-        name: '*'
-        state: latest
+      raw: dnf list updates
   when: ansible_os_family == "RedHat"
 
 

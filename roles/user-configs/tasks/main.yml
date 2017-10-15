@@ -2,6 +2,7 @@
 
 - name: Change user shell to znc
   raw: chsh {{ username  }} -s /usr/bin/zsh
+  ignore_errors: yes
 
 - name: Clone Needed Repos
   git: repo={{item.repo}} dest={{item.dest}}
