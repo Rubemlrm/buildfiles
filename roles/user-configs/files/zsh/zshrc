@@ -16,7 +16,7 @@ plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm py
 
 # User configuration
 
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/.composer/vendor/bin"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin"
 
 source $ZSH/oh-my-zsh.sh
 
