@@ -24,7 +24,5 @@
   with_items:
     -  'docker-ce'
     -  'docker-compose'
-    -  'code-insiders'
-    -  'filezilla'
   when: ansible_os_family == "Debian"
 

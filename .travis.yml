@@ -11,7 +11,7 @@ matrix:
   include:
     - language: python
       before_install:
-        - 'sudo docker run -it --name=fedora26 --privileged --detach --volume="${PWD}":/etc/ansible/setup.yml:rw ansible/ansible:fedora26py3 bash'
+        - 'sudo docker run -it --name=fedora26 --privileged --detach --volume="${PWD}":/etc/ansible/setup.yml:rw fubarhouse/docker-fedora26-ansible bash'
 
       script:
         # 1. Syntax check
