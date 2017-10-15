@@ -22,7 +22,6 @@
     name={{ item }}
     state=installed
   with_items:
-    -  'docker-ce'
-    -  'docker-compose'
+    -  'filezilla'
   when: ansible_os_family == "Debian"
 
