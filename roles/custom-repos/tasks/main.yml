@@ -33,7 +33,7 @@
           gpgkey: 'https://packages.microsoft.com/keys/microsoft.asc'
           gpgcheck: yes
     - name: upgrade all packages
-      yum:
+      dnf:
         name: '*'
         state: latest
   when: ansible_os_family == "RedHat"
