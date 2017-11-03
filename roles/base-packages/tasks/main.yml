@@ -53,6 +53,8 @@
     -  'software-properties-common'
     -  'keyboard-configuration'
     -  'console-setup'
+    -  'zip'
+    -  'unzip'
   when: ansible_os_family == "Debian"
 - name: Add system user
   user:

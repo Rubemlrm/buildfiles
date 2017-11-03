@@ -14,7 +14,6 @@
 - name: Install php development tools for Debian Based
   become: true
   become_user: root
-  become_method: sudo
   package:
     name={{ item }}
     state=installed
@@ -24,18 +23,16 @@
     -  'php7.0-gd'
     -  'php7.0-opcache'
     -  'php7.0-fpm'
+    -  'php7.0-zip'
+    -  'php-mbstring'
+    -  'php-xml'
     -  'composer'
   when: ansible_os_family == "Debian"
-
-
-
 
 - name: setup php composer and needed tools
   block:
     - name: Installing composer
-      become: true
-      become_user: root
-      become_method: sudo
+      become_user: "{{ username }}"
       raw: curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
     - name: Installing needed composer packages
       raw: composer global require {{ item }}
@@ -47,5 +44,3 @@
         - 'phploc/phploc'
         - 'phpmd/phpmd'
         - 'squizlabs/php_codesniffer'
-      ignore_errors: yes
-

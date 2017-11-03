@@ -22,6 +22,6 @@ source $ZSH/oh-my-zsh.sh
 
 #export TERM=xterm-255color
 stty -ixon
-setxkbmap pt
+#setxkbmap pt
 
 
