@@ -21,7 +21,8 @@ export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
 source $ZSH/oh-my-zsh.sh
 
 #export TERM=xterm-255color
-stty -ixon
+#stty -ixon
 #setxkbmap pt
 
 
+export DOCKER_HOST='tcp://0.0.0.0:2375'
