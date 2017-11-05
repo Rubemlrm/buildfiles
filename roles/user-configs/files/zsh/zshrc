@@ -16,13 +16,13 @@ plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm py
 
 # User configuration
 
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin"
 
 source $ZSH/oh-my-zsh.sh
 
 #export TERM=xterm-255color
 #stty -ixon
 #setxkbmap pt
-
+eval "$(rbenv init -)"
 
 export DOCKER_HOST='tcp://0.0.0.0:2375'
