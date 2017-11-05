@@ -1,0 +1,33 @@
+---
+- name: Install ruby development tools for debian Based
+  become: true
+  become_user: root
+  become_method: sudo
+  package:
+    name={{ item }}
+    state=installed
+  with_items:
+    -  'virtualenvwrapper'
+  when: ansible_os_family == "Debian"
+
+- name: Setup rbenv with rails
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: Clone rbenv
+      git: repo="https://github.com/rbenv/rbenv.git" dest="/home/{{username}}/.rbenv"
+    - name: update shell variables
+      raw:  su - {{username}} -c 'exec $SHELL'
+    - name: Clone ruby build
+      git: repo="https://github.com/rbenv/ruby-build.git" dest="/home/{{username}}/.rbenv/plugins/ruby-build"
+    - name: install ruby and rails
+      raw: "{{ item }}"
+      with_items:
+      - "chown -R {{username}}:{{username}} /home/{{username}}/.rbenv"
+      - su - {{username}} -c 'exec $SHELL'
+      - su - {{username}} -c "source /home/{{username}}/.zshrc && rbenv install 2.4.2"
+      - su - {{username}} -c 'source /home/{{username}}/.zshrc && rbenv global 2.4.2'
+      - su - {{username}} -c 'source /home/{{username}}/.zshrc && gem install bundler'
+      - su - {{username}} -c 'source /home/{{username}}/.zshrc && rbenv rehash'
+      - su - {{username}} -c 'source /home/{{username}}/.zshrc && gem install rails -v 5.1.4 && rbenv rehash'

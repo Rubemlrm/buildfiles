@@ -20,3 +20,12 @@
   with_items:
     -  'nodejs'
   when: ansible_os_family == "Debian"
+
+- name: Install nodejs modules
+  npm:
+   name: "{{ item }}"
+   global: yes
+  with_items:
+   - standard
+   - jshint
+   - webpack

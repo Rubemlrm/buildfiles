@@ -60,4 +60,8 @@
           state: present
     - name: update repos
       raw: apt-get update
+    - name: add repos with curl
+      raw: "{{ item }}"
+      with_items:
+        - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
   when: ansible_os_family == "Debian"
