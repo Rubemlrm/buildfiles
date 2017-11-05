@@ -56,8 +56,9 @@
         repo: "{{ item.repo }}"
         state: "{{ item.state }}"
       with_items:
-        - repo: deb [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable
+        - repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable"
           state: present
+          update_cache: true
     - name: update repos
       raw: apt-get update
     - name: add repos with curl
