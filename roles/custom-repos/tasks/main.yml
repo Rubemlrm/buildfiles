@@ -10,10 +10,6 @@
         file: "{{item.file}}"
         baseurl: "{{item.baseurl}}"
       with_items:
-        - name: docker
-          description: docker oficial repo
-          file: docker-ce.repo
-          baseurl: 'https://download.docker.com/linux/fedora/docker-ce.repo'
         - name: rpm Fusion free
           description: rpm fusion free repo
           file: 'rpmfusion-free-release-{{ fedora_current}}.noarch.repo'
@@ -31,7 +27,12 @@
           file: vscode.repo
           baseurl: 'https://packages.microsoft.com/yumrepos/vscode'
           gpgkey: 'https://packages.microsoft.com/keys/microsoft.asc'
+          enabled: yes
           gpgcheck: yes
+    - name: add docker repo
+      raw: "dnf config-manager \
+    --add-repo \
+    https://download.docker.com/linux/fedora/docker-ce.repo"
     - name: upgrade all packages
       raw: dnf list updates
   when: ansible_os_family == "RedHat"
@@ -47,8 +48,7 @@
         url: "{{ item.url }}"
         state: "{{ item.state }}"
       with_items:
-        - url: https://packages.microsoft.com/keys/microsoft.asc
-          state: present
+
         - url: https://download.docker.com/linux/debian/gpg
           state: present
     - name: Add repos
