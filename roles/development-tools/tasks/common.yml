@@ -9,7 +9,6 @@
   with_items:
     -  'docker-ce'
     -  'docker-compose'
-    -  'code'
     -  'filezilla'
     -  'firefox'
   when: ansible_os_family == "RedHat"
@@ -22,7 +21,6 @@
     name={{ item }}
     state=installed
   with_items:
-    -  'filezilla'
     -  'docker-ce'
     -  'docker-compose'
   when: ansible_os_family == "Debian"
