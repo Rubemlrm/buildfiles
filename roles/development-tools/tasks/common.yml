@@ -16,14 +16,20 @@
     - name: "start snap"
       command: service snapd start
     - name: "install with snap"
-      command: snap install {{item}} --classic
+      command: snap install {{item.name}} {{item.classic}}
       with_items:
-        - 'vscode'
-        - 'skype'
-        - 'discord'
-        - 'slack'
-        - 'vlc'
-        - 'spotify'
+        - name: 'vscode'
+          classic: '--classic'
+        - name: 'skype'
+          classic: '--classic'
+        - name: 'discord'
+          classic: ''
+        - name: 'slack'
+          classic: '--classic'
+        - name: 'vlc'
+          classic: ''
+        - name: 'spotify'
+          classic: ''
   when: ansible_os_family == "RedHat"
 
 - name: Install development tools for Debian Based
