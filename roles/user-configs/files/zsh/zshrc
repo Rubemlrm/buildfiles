@@ -16,7 +16,7 @@ plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm py
 
 # User configuration
 
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:$HOME/.rbenv/bin:$HOME/.rbenv/plugins/ruby-build/bin"
+export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -24,5 +24,7 @@ source $ZSH/oh-my-zsh.sh
 #stty -ixon
 #setxkbmap pt
 eval "$(rbenv init -)"
-
+stty -ixon
 export DOCKER_HOST='tcp://0.0.0.0:2375'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

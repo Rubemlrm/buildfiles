@@ -1,8 +1,8 @@
 ### Operating systems
 ## Fedora - http://fedoraproject.org
-fedora_previous: 25
-fedora_current: 26
-fedora_next: 27
+fedora_previous: 28
+fedora_current: 29
+fedora_next: 30
 
 ## Debian - https://www.debian.org
 debian_previous: jessie

@@ -3,14 +3,27 @@
   become: true
   become_user: root
   become_method: sudo
-  package:
-    name={{ item }}
-    state=installed
-  with_items:
-    -  'docker-ce'
-    -  'docker-compose'
-    -  'filezilla'
-    -  'firefox'
+  block:
+    - name: "install with dnf"
+      package:
+        name={{ item }}
+        state=installed
+      with_items:
+        -  'docker'
+        -  'docker-compose'
+        -  'filezilla'
+        -  'firefox'
+    - name: "start snap"
+      command: service snapd start
+    - name: "install with snap"
+      command: snap install {{item}} --classic
+      with_items:
+        - 'vscode'
+        - 'skype'
+        - 'discord'
+        - 'slack'
+        - 'vlc'
+        - 'spotify'
   when: ansible_os_family == "RedHat"
 
 - name: Install development tools for Debian Based
