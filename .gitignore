@@ -1,4 +1,4 @@
-/configs/vim/vim/plugged/*
+configs/vim/vim/plugged/*
 !/configs/vim/vim/plugged/.gitkeep
 /configs/zsh/configs/development.zsh
 /configs/vim/vim/sessions
