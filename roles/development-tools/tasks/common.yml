@@ -4,43 +4,23 @@
   become_user: root
   become_method: sudo
   block:
-    - name: "install with dnf"
-      package:
-        name={{ item }}
+    - name: 'install with dnf'
+      package: name={{ item }}
         state=installed
       with_items:
-        -  'docker'
-        -  'docker-compose'
-        -  'filezilla'
-        -  'firefox'
-    - name: "start snap"
-      command: service snapd start
-    - name: "install with snap"
-      command: snap install {{item.name}} {{item.classic}}
-      with_items:
-        - name: 'vscode'
-          classic: '--classic'
-        - name: 'skype'
-          classic: '--classic'
-        - name: 'discord'
-          classic: ''
-        - name: 'slack'
-          classic: '--classic'
-        - name: 'vlc'
-          classic: ''
-        - name: 'spotify'
-          classic: ''
+        - 'docker'
+        - 'docker-compose'
+        - 'filezilla'
+        - 'firefox'
   when: ansible_os_family == "RedHat"
 
 - name: Install development tools for Debian Based
   become: true
   become_user: root
   become_method: sudo
-  package:
-    name={{ item }}
+  package: name={{ item }}
     state=installed
   with_items:
-    -  'docker-ce'
-    -  'docker-compose'
+    - 'docker-ce'
+    - 'docker-compose'
   when: ansible_os_family == "Debian"
-

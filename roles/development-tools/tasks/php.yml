@@ -18,12 +18,12 @@
     name={{ item }}
     state=installed
   with_items:
-    -  'php7.0'
-    -  'php7.0-mysql'
-    -  'php7.0-gd'
-    -  'php7.0-opcache'
-    -  'php7.0-fpm'
-    -  'php7.0-zip'
+    -  'php'
+    -  'php-mysql'
+    -  'php-gd'
+    -  'php-opcache'
+    -  'php-fpm'
+    -  'php-zip'
     -  'php-mbstring'
     -  'php-xml'
     -  'composer'

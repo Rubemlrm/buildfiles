@@ -4,34 +4,14 @@
   become_method: sudo
   block:
     - name: 'set repos'
-      yum_repository:
-        name: "{{item.name}}"
-        description: "{{item.description}}"
-        file: "{{item.file}}"
-        baseurl: "{{item.baseurl}}"
-        enabled: yes
-        gpgcheck: no
-      with_items:
-        - name: rpm Fusion free
-          description: rpm fusion free repo
-          file: 'rpmfusion-free-release-{{ fedora_current}}.noarch.repo'
-          baseurl: >-
-            http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{
-            fedora_current }}.noarch.rpm
-        - name: rpm fusion non-free
-          description: rpm fusion non-free repo
-          file: 'rpmfusion-nonfree-release-{{ fedora_current }}.noarch.repo'
-          baseurl: >-
-            http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{
-            fedora_current }}.noarch.rpm
-    - name: enable snaps
-      raw: "dnf install -y snapd"
-    - name: "enable classic mode for snap"
-      raw: "ln -sf /var/lib/snapd/snap /snap"
-    - name: update repos
-      raw: "dnf check-update"
+      dnf:
+        name:
+          [
+            'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{fedora_current }}.noarch.rpm',
+            'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{fedora_current }}.noarch.rpm',
+          ]
+        state: present
   when: ansible_os_family == "RedHat"
-
 
 - name: Add Custom repos for Debian Based
   become: true
@@ -40,24 +20,23 @@
   block:
     - name: Add gpg keys
       apt_key:
-        url: "{{ item.url }}"
-        state: "{{ item.state }}"
+        url: '{{ item.url }}'
+        state: '{{ item.state }}'
       with_items:
-
         - url: https://download.docker.com/linux/debian/gpg
           state: present
     - name: Add repos
       apt_repository:
-        repo: "{{ item.repo }}"
-        state: "{{ item.state }}"
+        repo: '{{ item.repo }}'
+        state: '{{ item.state }}'
       with_items:
-        - repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable"
+        - repo: 'deb [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable'
           state: present
           update_cache: true
     - name: update repos
       raw: apt-get update
     - name: add repos with curl
-      raw: "{{ item }}"
+      raw: '{{ item }}'
       with_items:
         - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
   when: ansible_os_family == "Debian"
