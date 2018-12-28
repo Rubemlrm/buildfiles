@@ -3,29 +3,28 @@
   become: true
   become_user: root
   become_method: sudo
-  package:
-    name={{ item }}
+  package: name={{ item }}
     state=installed
   with_items:
-    -  'nodejs'
+    - 'nodejs'
   when: ansible_os_family == "RedHat"
 
 - name: Install javascript development tools for Debian Based
   become: true
   become_user: root
   become_method: sudo
-  package:
-    name={{ item }}
+  package: name={{ item }}
     state=installed
   with_items:
-    -  'nodejs'
+    - 'nodejs'
   when: ansible_os_family == "Debian"
 
 - name: Install nodejs modules
   npm:
-   name: "{{ item }}"
-   global: yes
+    name: '{{ item }}'
+    global: yes
   with_items:
-   - standard
-   - jshint
-   - webpack
+    - standard
+    - jshint
+    - webpack
+    - eslint
