@@ -41,11 +41,6 @@
         - 'lutris'
     - name: 'enable classic mode for snap'
       raw: 'ln -sf /var/lib/snapd/snap /snap'
-    - name: 'start snap'
-      service:
-        name: snapd
-        state: started
-        enabled: yes
   when: ansible_os_family == "RedHat"
 
 - name: Install utils for Debian Based
@@ -74,6 +69,7 @@
     - 'unzip'
     - 'git-core'
     - 'curl'
+    - 'snapd'
     - 'zlib1g-dev'
     - 'build-essential'
     - 'libssl-dev'
@@ -94,6 +90,11 @@
     generate_ssh_key: yes
     ssh_key_bits: 2048
     ssh_key_file: .ssh/id_rsa
+- name: 'start snap'
+  service:
+    name: snapd
+    state: started
+    enabled: yes
 - name: 'install with snap'
   command: snap install {{item.name}} {{item.classic}}
   with_items:

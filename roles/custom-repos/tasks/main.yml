@@ -31,21 +31,6 @@
   become_user: root
   become_method: sudo
   block:
-    - name: Add gpg keys
-      apt_key:
-        url: '{{ item.url }}'
-        state: '{{ item.state }}'
-      with_items:
-        - url: https://download.docker.com/linux/debian/gpg
-          state: present
-    - name: Add repos
-      apt_repository:
-        repo: '{{ item.repo }}'
-        state: '{{ item.state }}'
-      with_items:
-        - repo: 'deb [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable'
-          state: present
-          update_cache: true
     - name: update repos
       raw: apt-get update
     - name: add repos with curl
