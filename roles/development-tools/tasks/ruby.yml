@@ -1,0 +1,22 @@
+---
+- name: 'install tools for bulding gems'
+  become: true
+  become_user: root
+  become_method: sudo
+  dnf:
+    name: ['ruby-devel', 'zlib-devel']
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Install ruby gems
+  become: true
+  become_user: root
+  become_method: sudo
+  gem:
+    name: '{{ item }}'
+    user_install: no
+  with_items:
+    - rails
+    - bundler
+    - rubocop
+    - sinatra

@@ -1,0 +1,46 @@
+---
+- name: Install development tools for Red Hat Based
+  become: true
+  become_user: root
+  become_method: sudo
+  package:
+    name={{ item }}
+    state=installed
+  with_items:
+    -  'php'
+    -  'composer'
+  when: ansible_os_family == "RedHat"
+
+- name: Install php development tools for Debian Based
+  become: true
+  become_user: root
+  package:
+    name={{ item }}
+    state=installed
+  with_items:
+    -  'php'
+    -  'php-mysql'
+    -  'php-gd'
+    -  'php-opcache'
+    -  'php-fpm'
+    -  'php-zip'
+    -  'php-mbstring'
+    -  'php-xml'
+    -  'composer'
+  when: ansible_os_family == "Debian"
+
+- name: setup php composer and needed tools
+  block:
+    - name: Installing composer
+      become_user: "{{ username }}"
+      raw: curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+    - name: Installing needed composer packages
+      raw: composer global require {{ item }}
+      with_items:
+        - 'phpunit/phpunit'
+        - 'phpunit/dbunit'
+        - 'phing/phing'
+        - 'sebastian/phpcpd'
+        - 'phploc/phploc'
+        - 'phpmd/phpmd'
+        - 'squizlabs/php_codesniffer'
