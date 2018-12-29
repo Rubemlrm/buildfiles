@@ -13,14 +13,3 @@
         - 'filezilla'
         - 'firefox'
   when: ansible_os_family == "RedHat"
-
-- name: Install development tools for Debian Based
-  become: true
-  become_user: root
-  become_method: sudo
-  package: name={{ item }}
-    state=installed
-  with_items:
-    - 'docker-ce'
-    - 'docker-compose'
-  when: ansible_os_family == "Debian"
