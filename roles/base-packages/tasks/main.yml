@@ -90,11 +90,16 @@
     generate_ssh_key: yes
     ssh_key_bits: 2048
     ssh_key_file: .ssh/id_rsa
+- name: just force systemd to reread configs
+  systemd:
+    daemon_reload: yes
+  when: use_snap == "yes"
 - name: 'start snap'
-  service:
+  systemd:
     name: snapd
     state: started
     enabled: yes
+  when: use_snap == "yes"
 - name: 'install with snap'
   command: snap install {{item.name}} {{item.classic}}
   with_items:
@@ -118,3 +123,4 @@
       classic: '--classic'
     - name: 'pycharm-professional'
       classic: '--classic'
+  when: use_snap == "yes"
