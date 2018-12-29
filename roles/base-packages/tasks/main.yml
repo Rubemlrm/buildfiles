@@ -81,7 +81,7 @@
     - 'libxslt1-dev'
     - 'libcurl4-openssl-dev'
     - 'libffi-dev'
-    - 'ruby'
+    - 'ruby-full'
   when: ansible_os_family == "Debian"
 
 - name: Add system user
