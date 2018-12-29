@@ -1,0 +1,18 @@
+### Operating systems
+## Fedora - http://fedoraproject.org
+fedora_previous: 28
+fedora_current: 29
+fedora_next: 30
+
+## Debian - https://www.debian.org
+debian_previous: jessie
+debian_current: stretch
+debian_next: buster
+
+#user info
+username: 'testuser'
+home_dir: /home/testuser
+configs_dir: '{{playbook_dir}}/roles/user-configs/files'
+
+#other:
+use_snap: no
