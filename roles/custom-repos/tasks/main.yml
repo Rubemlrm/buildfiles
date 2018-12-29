@@ -3,6 +3,15 @@
   become_user: root
   become_method: sudo
   block:
+    - name: 'install copr tools'
+      dnf:
+        name: 'dnf-plugins-core'
+        state: present
+    - name: 'set copr repos'
+      command: 'dnf copr enable {{item}} -y'
+      with_items:
+        - 'evana/fira-code-fonts'
+        - 'daniruiz/flat-remix'
     - name: 'set repos'
       dnf:
         name:
