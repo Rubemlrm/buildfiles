@@ -1,38 +1,38 @@
 ---
-- name: Install development tools for Red Hat Based
+- name: Install development tools for Fedora Based
   become: true
   become_user: root
   become_method: sudo
   package:
-    name={{ item }}
-    state=installed
+    name: '{{ item }}'
+    state: present
   with_items:
-    -  'php'
-    -  'composer'
-  when: ansible_os_family == "RedHat"
+    - 'php'
+    - 'composer'
+  when: ansible_distribution == "Fedora"
 
 - name: Install php development tools for Debian Based
   become: true
   become_user: root
   package:
-    name={{ item }}
-    state=installed
+    name: '{{ item }}'
+    state: present
   with_items:
-    -  'php'
-    -  'php-mysql'
-    -  'php-gd'
-    -  'php-opcache'
-    -  'php-fpm'
-    -  'php-zip'
-    -  'php-mbstring'
-    -  'php-xml'
-    -  'composer'
-  when: ansible_os_family == "Debian"
+    - 'php'
+    - 'php-mysql'
+    - 'php-gd'
+    - 'php-opcache'
+    - 'php-fpm'
+    - 'php-zip'
+    - 'php-mbstring'
+    - 'php-xml'
+    - 'composer'
+  when: ansible_distribution == "Debian"
 
 - name: setup php composer and needed tools
   block:
     - name: Installing composer
-      become_user: "{{ username }}"
+      become_user: '{{ username }}'
       raw: curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
     - name: Installing needed composer packages
       raw: composer global require {{ item }}

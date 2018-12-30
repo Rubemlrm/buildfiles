@@ -1,15 +1,10 @@
 ---
-- name: Install development tools for Red Hat Based
+- name: Install development tools for Fedora Based
   become: true
   become_user: root
   become_method: sudo
   block:
     - name: 'install with dnf'
       package: name={{ item }}
-        state=installed
-      with_items:
-        - 'docker'
-        - 'docker-compose'
-        - 'filezilla'
-        - 'firefox'
-  when: ansible_os_family == "RedHat"
+        state=present
+      with_items: '{{development_common_packages}}'
