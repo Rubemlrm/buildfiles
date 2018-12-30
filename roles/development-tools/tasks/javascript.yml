@@ -9,6 +9,17 @@
   with_items:
     - 'nodejs'
 
+- name: Install nodejs
+  become: true
+  become_user: root
+  become_method: sudo
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - 'npm'
+  when: ansible_distribution == "Ubuntu"
+
 - name: Install nodejs modules
   npm:
     name: '{{ item }}'

@@ -7,12 +7,25 @@
       shell: dpkg --print-architecture
       register: get_arch
     - set_fact: arch="{{get_arch.stdout}}"
+    - name: Install gpg agent for ubuntu
+      package:
+        name: 'gpg-agent'
+        state: 'present'
+      when: ansible_distribution == "Ubuntu"
     - name: Add gpg keys
       apt_key:
         url: '{{ item }}'
         state: 'present'
       with_items:
+        - 'https://download.docker.com/linux/{{ansible_distribution | lower}}/gpg'
+      when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
+    - name: Add gpg keys for raspberry
+      apt_key:
+        url: '{{ item }}'
+        state: 'present'
+      with_items:
         - 'https://download.docker.com/linux/debian/gpg'
+      when: ansible_distribution == "ClearLinux" or ansible_distribution == "Raspbian"
     - name: Add repos
       apt_repository:
         repo: '{{ item }}'
@@ -25,7 +38,7 @@
         repo: '{{ item }}'
         state: 'present'
       with_items:
-        - 'deb [arch={{arch}}] https://download.docker.com/linux/{{ansible_distribution | lower}} {{ansible_distribution_release}} stable'
+        - 'deb [arch={{arch}}] https://download.docker.com/linux/debian {{ansible_distribution_release}} stable'
       when: ansible_distribution == "ClearLinux" or ansible_distribution == "Raspbian"
     - name: update repos
       apt:
