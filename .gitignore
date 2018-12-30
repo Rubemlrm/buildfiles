@@ -2,4 +2,4 @@
 !/roles/user-configs/files/vim/vim/plugged/.gitkeep
 /configs/zsh/configs/development.zsh
 /configs/vim/vim/sessions
-setup.retry
+*.retry

@@ -1,5 +1,5 @@
 ---
-- name: Install javascript development tools for Red Hat Based
+- name: Install nodejs
   become: true
   become_user: root
   become_method: sudo
@@ -7,17 +7,6 @@
     state=installed
   with_items:
     - 'nodejs'
-  when: ansible_os_family == "RedHat"
-
-- name: Install javascript development tools for Debian Based
-  become: true
-  become_user: root
-  become_method: sudo
-  package: name={{ item }}
-    state=installed
-  with_items:
-    - 'nodejs'
-  when: ansible_os_family == "Debian"
 
 - name: Install nodejs modules
   npm:

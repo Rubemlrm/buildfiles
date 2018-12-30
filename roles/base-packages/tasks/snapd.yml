@@ -1,0 +1,49 @@
+---
+- name: Install snap service and packages
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: Install snapd service
+      become: true
+      become_user: root
+      become_method: sudo
+      package: name=snapd
+        state=installed
+    - name: 'enable classic mode for snap'
+      raw: 'ln -sf /var/lib/snapd/snap /snap'
+      when: use_snap == "yes" and ansible_os_family == "RedHat"
+    - name: just force systemd to reread configs
+      systemd:
+        daemon_reload: yes
+      when: use_snap == "yes"
+    - name: 'start snap'
+      systemd:
+        name: snapd
+        state: started
+        enabled: yes
+      when: use_snap == "yes"
+    - name: 'install with snap'
+      command: snap install {{item.name}} {{item.classic}}
+      with_items:
+        - name: 'vscode'
+          classic: '--classic'
+        - name: 'skype'
+          classic: '--classic'
+        - name: 'discord'
+          classic: ''
+        - name: 'slack'
+          classic: '--classic'
+        - name: 'vlc'
+          classic: ''
+        - name: 'spotify'
+          classic: ''
+        - name: 'whatsdesk'
+          classic: ''
+        - name: 'rubymine'
+          classic: '--classic'
+        - name: 'phpstorm'
+          classic: '--classic'
+        - name: 'pycharm-professional'
+          classic: '--classic'
+      when: use_snap == "yes"
