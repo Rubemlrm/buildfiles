@@ -1,10 +1,9 @@
 ---
-- name: Install development tools for Fedora Based
+- name: Install development tools
   become: true
   become_user: root
   become_method: sudo
-  block:
-    - name: 'install with dnf'
-      package: name={{ item }}
-        state=present
-      with_items: '{{development_common_packages}}'
+  package:
+    name: '{{ item }}'
+    state: 'present'
+  with_items: '{{development_common_packages}}'

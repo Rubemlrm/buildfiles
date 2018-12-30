@@ -2,7 +2,13 @@
 - name: Include OS-specific variables.
   include_vars: '{{ item }}'
   with_fileglob:
-    - '{{ playbook_dir }}/variables/{{ ansible_distribution }}.yml'
+    - '{{ playbook_dir }}/variables/Fedora.yml'
+  when: ansible_distribution == "Fedora"
+- name: Include OS-specific variables.
+  include_vars: '{{ item }}'
+  with_fileglob:
+    - '{{ playbook_dir }}/variables/Debian.yml'
+  when: ansible_os_family == "Debian"
 - name: Install base packages
   become: true
   become_user: root
