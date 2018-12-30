@@ -7,3 +7,16 @@
     name: '{{ item }}'
     state: 'present'
   with_items: '{{development_common_packages}}'
+
+- name: Install docker-compose on debian
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: download docker-compose
+      raw: sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      ignore_errors: yes
+    - name: apply executable permissions
+      raw: chmod +x /usr/local/bin/docker-compose
+      ignore_errors: yes
+  when: ansible_os_family == "Debian"
