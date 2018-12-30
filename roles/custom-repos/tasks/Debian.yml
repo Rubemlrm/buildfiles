@@ -3,6 +3,10 @@
   become_user: root
   become_method: sudo
   block:
+    - name: get arch
+      shell: dpkg --print-architecture
+      register: get_arch
+    - set_fact: arch="{{get_arch.stdout}}"
     - name: Add gpg keys
       apt_key:
         url: '{{ item }}'
@@ -14,7 +18,7 @@
         repo: '{{ item }}'
         state: 'present'
       with_items:
-        - 'deb [arch=amd64] https://download.docker.com/linux/debian {{debian_current}} stable'
+        - 'deb [arch={{arch}}] https://download.docker.com/linux/debian {{ansible_distribution_release}} stable'
     - name: update repos
       apt:
         name: '*'
