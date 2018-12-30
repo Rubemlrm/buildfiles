@@ -1,0 +1,27 @@
+---
+- name: Add Custom repos for Red Hat Based
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: 'install copr tools'
+      dnf:
+        name: ['fedora-workstation-repositories', 'dnf-plugins-core']
+        state: present
+    - name: 'set copr repos'
+      command: 'dnf copr enable {{item}} -y'
+      with_items:
+        - 'evana/fira-code-fonts'
+        - 'daniruiz/flat-remix'
+    - name: 'set workstation repos'
+      command: 'dnf config-manager --set-enabled  {{item}} -y'
+      with_items:
+        - 'google-chrome'
+    - name: 'set repos'
+      dnf:
+        name:
+          [
+            'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{fedora_current }}.noarch.rpm',
+            'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{fedora_current }}.noarch.rpm',
+          ]
+        state: present

@@ -23,7 +23,6 @@ source $ZSH/oh-my-zsh.sh
 #export TERM=xterm-255color
 #stty -ixon
 #setxkbmap pt
-eval "$(rbenv init -)"
 stty -ixon
 export DOCKER_HOST='tcp://0.0.0.0:2375'
 

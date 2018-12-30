@@ -1,6 +1,11 @@
 ---
 - include_tasks: common.yml
+  name: Base development utils
 - include_tasks: javascript.yml
+  name: javascript tools and libs
 - include_tasks: php.yml
+  name: php tools and libs
 - include_tasks: python.yml
+  name: python tools and libs
 - include_tasks: ruby.yml
+  name: ruby tools ans libs

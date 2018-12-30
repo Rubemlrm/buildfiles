@@ -1,0 +1,11 @@
+- name: Add Custom repos for Debian Based
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: update repos
+      raw: apt-get update
+    - name: add repos with curl
+      raw: '{{ item }}'
+      with_items:
+        - curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
