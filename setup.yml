@@ -3,7 +3,7 @@
   vars_files:
     - variables/base.yml
   roles:
-    - { role: custom-repos }
+    - { role: 'custom-repo/{{ ansible_distribution }}.yml' }
     - { role: base-packages }
     - { role: user-configs }
     - { role: development-tools }

@@ -31,3 +31,9 @@ desktop_packages:
   - 'flat-remix-gtk'
   - 'google-chrome-stable'
   - 'lutris'
+
+development_common_packages:
+  - 'docker'
+  - 'docker-compose'
+  - 'filezilla'
+  - 'firefox'

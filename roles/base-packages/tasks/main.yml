@@ -2,20 +2,22 @@
 - name: Include OS-specific variables.
   include_vars: '{{ item }}'
   with_fileglob:
-    - '{{ playbook_dir }}/variables/{{ ansible_os_family }}.yml'
+    - '{{ playbook_dir }}/variables/{{ ansible_distribution }}.yml'
 - name: Install base packages
   become: true
   become_user: root
   become_method: sudo
-  package: name={{ item }}
-    state=installed
+  package:
+    name: '{{ item }}'
+    state: present
   with_items: '{{base_packages}}'
 - name: Install desktop packages
   become: true
   become_user: root
   become_method: sudo
-  package: name={{ item }}
-    state=installed
+  package:
+    name: '{{ item }}'
+    state: present
   with_items: '{{desktop_packages}}'
   when: desktop_packages is defined
 - include_tasks: snapd.yml

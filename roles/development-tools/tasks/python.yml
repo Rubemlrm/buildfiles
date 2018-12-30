@@ -1,22 +1,22 @@
 ---
-- name: Install development tools for Red Hat Based
+- name: Install development tools for Fedora Based
   become: true
   become_user: root
   become_method: sudo
   package:
-    name={{ item }}
-    state=installed
+    name: '{{ item }}'
+    state: present
   with_items:
-    -  'python-virtualenvwrapper'
-  when: ansible_os_family == "RedHat"
+    - 'python-virtualenvwrapper'
+  when: ansible_distribution == "Fedora"
 
 - name: Install development tools for debian Based
   become: true
   become_user: root
   become_method: sudo
   package:
-    name={{ item }}
-    state=installed
+    name: '{{ item }}'
+    state: present
   with_items:
-    -  'virtualenvwrapper'
-  when: ansible_os_family == "Debian"
+    - 'virtualenvwrapper'
+  when: ansible_distribution == "Debian"
