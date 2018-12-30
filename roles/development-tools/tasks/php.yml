@@ -27,7 +27,7 @@
     - 'php-mbstring'
     - 'php-xml'
     - 'composer'
-  when: ansible_distribution == "Debian"
+  when: ansible_os_family == "Debian"
 
 - name: setup php composer and needed tools
   block:
