@@ -33,5 +33,4 @@ base_packages:
 
 development_common_packages:
   - 'docker-ce'
-  - 'docker-compose'
   - 'filezilla'

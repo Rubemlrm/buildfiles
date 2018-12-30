@@ -1,2 +1,6 @@
-- include_tasks: '{{ ansible_distribution }}.yml'
+- include_tasks: 'Fedora.yml'
   name: 'enable custom repos'
+  when: ansible_distribution == "Fedora"
+- include_tasks: 'Debian.yml'
+  name: 'enable custom repos'
+  when: ansible_os_family == "Debian"
