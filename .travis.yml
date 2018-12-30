@@ -9,6 +9,7 @@ services:
 
 matrix:
   include:
+    # Fedora
     - language: python
       before_install:
         - 'sudo docker run -it --name=fedora28 --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:fedora-29 bash'
@@ -22,30 +23,51 @@ matrix:
     - language: python
       before_install:
         - 'sudo docker run -it --name=fedora29 --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:fedora-29 bash'
-
       script:
         # 1. Syntax check
         - 'sudo docker exec fedora29 ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
 
         # 2. Run playbook to execute role
         - 'sudo docker exec fedora29 ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
-    - language: python
-      before_install:
-        - 'sudo docker run -it --name=debian8 --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:jessie bash'
-
-      script:
-        # 1. Syntax check
-        - 'sudo docker exec debian8 ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
-
-        # 2. Run playbook to execute role
-        - 'sudo docker exec debian8 ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
+    # Debian
     - language: python
       before_install:
         - 'sudo docker run -it --name=debian9 --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:stretch bash'
-
       script:
         # 1. Syntax check
         - 'sudo docker exec debian9 ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
 
         # 2. Run playbook to execute role
         - 'sudo docker exec debian9 ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
+    # Ubuntu
+    - language: python
+      before_install:
+        - 'sudo docker run -it --name=xenial --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:xenial bash'
+        - 'sudo docker exec xenial apt-get update && sudo docker exec xenial apt-get install  apt-transport-https ca-certificates -y'
+      script:
+        # 1. Syntax check
+        - 'sudo docker exec xenial ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
+
+        # 2. Run playbook to execute role
+        - 'sudo docker exec xenial ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
+    - language: python
+      before_install:
+        - 'sudo docker run -it --name=bionic --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:bionic bash'
+        - 'sudo docker exec xenial apt-get update && sudo docker exec xenial apt-get install  apt-transport-https ca-certificates -y'
+      script:
+        # 1. Syntax check
+        - 'sudo docker exec bionic ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
+
+        # 2. Run playbook to execute role
+        - 'sudo docker exec bionic ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
+  allow_failures:
+    - language: python
+      before_install:
+        - 'sudo docker run -it --name=debian8 --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:jessie bash'
+        - 'sudo docker exec debian8 apt-get update && sudo docker exec debian8 apt-get install  apt-transport-https ca-certificates -y'
+      script:
+        # 1. Syntax check
+        - 'sudo docker exec debian8 ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
+
+        # 2. Run playbook to execute role
+        - 'sudo docker exec debian8 ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
