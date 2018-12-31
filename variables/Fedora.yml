@@ -40,6 +40,7 @@ development_common_packages:
 
 php_packages:
   - 'php'
+  - 'php-json'
   - 'php-mysqlnd'
   - 'php-gd'
   - 'php-fpm'
