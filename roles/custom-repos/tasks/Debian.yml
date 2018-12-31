@@ -13,12 +13,14 @@
         state: 'present'
       with_items:
         - 'https://download.docker.com/linux/debian/gpg'
+        - 'https://packages.sury.org/php/apt.gpg'
     - name: Add repos
       apt_repository:
         repo: '{{ item }}'
         state: 'present'
       with_items:
         - 'deb [arch={{arch}}] https://download.docker.com/linux/debian {{ansible_distribution_release}} stable'
+        - 'deb https://packages.sury.org/php/ {{ansible_distribution_release}} main'
     - name: update repos
       apt:
         name: '*'

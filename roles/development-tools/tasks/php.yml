@@ -21,7 +21,6 @@
     - 'php'
     - 'php-mysql'
     - 'php-gd'
-    - 'php-opcache'
     - 'php-fpm'
     - 'php-zip'
     - 'php-mbstring'
