@@ -37,3 +37,12 @@ development_common_packages:
   - 'docker-compose'
   - 'filezilla'
   - 'firefox'
+
+php_packages:
+  - 'php'
+  - 'php-mysqlnd'
+  - 'php-gd'
+  - 'php-fpm'
+  - 'php-zip'
+  - 'php-mbstring'
+  - 'php-xml'

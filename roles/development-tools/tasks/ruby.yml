@@ -20,3 +20,4 @@
     - bundler
     - rubocop
     - sinatra
+  when: ansible_distribution_release != "jessie"
