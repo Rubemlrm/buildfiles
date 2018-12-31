@@ -1,17 +1,5 @@
 ---
-- name: Install development tools for Fedora Based
-  become: true
-  become_user: root
-  become_method: sudo
-  package:
-    name: '{{ item }}'
-    state: present
-  with_items:
-    - 'php'
-    - 'composer'
-  when: ansible_distribution == "Fedora"
-
-- name: Install php development tools for Debian Based
+- name: Install php development tools
   become: true
   become_user: root
   package:
@@ -25,8 +13,6 @@
     - 'php-zip'
     - 'php-mbstring'
     - 'php-xml'
-    - 'composer'
-  when: ansible_os_family == "Debian"
 
 - name: setup php composer and needed tools
   block:
