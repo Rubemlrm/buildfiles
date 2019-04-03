@@ -16,7 +16,6 @@
       raw: composer global require {{ item }}
       with_items:
         - 'phpunit/phpunit'
-        - 'phpunit/dbunit'
         - 'phing/phing'
         - 'sebastian/phpcpd'
         - 'phploc/phploc'
