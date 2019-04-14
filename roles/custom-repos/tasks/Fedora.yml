@@ -13,6 +13,7 @@
       with_items:
         - 'evana/fira-code-fonts'
         - 'daniruiz/flat-remix'
+        - 'dirkdavidis/papirus-icon-theme'
     - name: 'set workstation repos'
       command: 'dnf config-manager --set-enabled  {{item}} -y'
       with_items:
