@@ -25,6 +25,7 @@ base_packages:
   - 'tmux'
   - 'unzip'
   - 'vim'
+  - 'wget' 
   - 'zip'
   - 'zlib1g-dev'
   - 'zsh'
