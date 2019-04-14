@@ -21,6 +21,8 @@ base_packages:
   - 'vim-powerline'
   - 'vim'
   - 'zsh'
+  - 'numlockx'
+  - 'wget'
 
 desktop_packages:
   - 'gnome-tweak-tool'
@@ -31,6 +33,10 @@ desktop_packages:
   - 'flat-remix-gtk'
   - 'google-chrome-stable'
   - 'lutris'
+  - 'telegram-desktop'
+  - 'keepassxc'
+  - 'numix-gtk-theme'
+  - 'papirus-icon-theme'
 
 development_common_packages:
   - 'docker'

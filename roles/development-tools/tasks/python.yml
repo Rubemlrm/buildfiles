@@ -8,8 +8,8 @@
     state: present
   with_items:
     - 'python-virtualenvwrapper'
+    - 'python-pip'
   when: ansible_distribution == "Fedora"
-
 - name: Install development tools for debian Based
   become: true
   become_user: root
@@ -19,4 +19,8 @@
     state: present
   with_items:
     - 'virtualenvwrapper'
+    - 'python-pip'
+    - 'python3-pip'
   when: ansible_os_family == "Debian"
+- name: Install cookicutter python
+  raw: pip install --user cookiecutter
