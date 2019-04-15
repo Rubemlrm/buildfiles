@@ -2,6 +2,8 @@ base_packages:
   - '@C Development Tools and Libraries'
   - 'acpi'
   - 'adobe-source-code-pro-fonts'
+  - 'aspell'
+  - 'aspell-pt'
   - 'automake'
   - 'cmake'
   - 'ctags'

@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Rubem Mota
+  description: Custom Playbook to setup a dev env
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+  - name: Fedora
+    versions:
+      - 28
+      - 29
+  - name: Debian
+    versions:
+      - 9
+  galaxy_tags:
+    - workstation
+
+dependencies: []

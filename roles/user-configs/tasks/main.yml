@@ -56,3 +56,9 @@
         - 750 # openweather
         - 358 # activities configurator
         - 8 #place status indicator
+  when: use_desktop is defined
+- name: Start and enable docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
