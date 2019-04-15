@@ -9,6 +9,11 @@
   with_fileglob:
     - '{{ playbook_dir }}/variables/Debian.yml'
   when: ansible_os_family == "Debian"
+- name: Upgrade Fedora
+  dnf: 
+    name: "*"
+    state: latest
+  when: ansible_distribution == "Fedora"
 - name: Install base packages
   become: true
   become_user: root

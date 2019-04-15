@@ -16,6 +16,11 @@
     - name: just force systemd to reread configs
       systemd:
         daemon_reload: yes
+    - name: 'enable snap'
+      systemd:
+        name: snapd
+        state: enabled
+        enabled: yes
     - name: 'start snap'
       systemd:
         name: snapd
@@ -24,19 +29,11 @@
     - name: 'install with snap'
       command: snap install {{item.name}} {{item.classic}}
       with_items:
-        - name: 'vscode'
-          classic: '--classic'
-        - name: 'skype'
-          classic: '--classic'
         - name: 'discord'
           classic: ''
         - name: 'slack'
           classic: '--classic'
-        - name: 'vlc'
-          classic: ''
         - name: 'spotify'
-          classic: ''
-        - name: 'whatsdesk'
           classic: ''
         - name: 'rubymine'
           classic: '--classic'
