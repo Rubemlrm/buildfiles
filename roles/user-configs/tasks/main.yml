@@ -50,10 +50,14 @@
       raw: mv gnome-shell-extension-installer /usr/bin/
     - name: install gnome extensions
       raw: gnome-shell-extension-installer {{item}}
+      become: true
+      become_user: '{{username}}'
+      become_method: sudo
       with_items:
-        - 1160 #dash to dock
-        - 1530 # tray-cions
+        - 1228 #arc menu
+        - 1160 #dash to panel
+        - 1590 # drop down terminal
         - 750 # openweather
-        - 358 # activities configurator
-        - 8 #place status indicator
+        - 973 # switcher
+        - 19 # user themes
   when: use_desktop is defined
