@@ -39,6 +39,7 @@ desktop_packages:
   - 'keepassxc'
   - 'numix-gtk-theme'
   - 'papirus-icon-theme'
+  - 'terminator'
 
 development_common_packages:
   - 'docker'

@@ -33,4 +33,4 @@
   when: desktop_packages is defined
 - include_tasks: snapd.yml
   name: Include snap tasks
-  when: use_snap == "yes"
+  when: use_snap is defined
