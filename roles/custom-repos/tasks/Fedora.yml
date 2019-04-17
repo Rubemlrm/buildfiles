@@ -26,3 +26,11 @@
             'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_version }}.noarch.rpm',
           ]
         state: present
+- name: Upgrade Fedora
+  become: true
+  become_user: root
+  become_method: sudo
+  dnf: 
+    name: "*"
+    state: latest
+  when: ansible_distribution == "Fedora"

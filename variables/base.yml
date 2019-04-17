@@ -3,6 +3,77 @@ username: 'rubemlrm'
 home_dir: /home/rubemlrm
 configs_dir: '{{playbook_dir}}/roles/user-configs/files'
 
+#gnome shell settings
+gnome_settings:
+  - "com.gexperts.Tilix.Settings theme-variant 'dark'"
+  - "org.gnome.desktop.interface gtk-theme 'Numix'"
+  - "org.gnome.desktop.interface icon-theme 'Papirus-Light'"
+  - "org.gnome.shell.extensions.user-theme name 'Flat-Remix'"
+  # set Extensios for gnome
+  - "org.gnome.shell enabled-extensions \"['user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-panel@jderose9.github.com', 'openweather-extension@jenslody.de', 'arc-menu@linxgem33.com', 'drop-down-terminal-x@bigbn.pro', 'switcher@landau.fi', 'tray-icons@zhangkaizhao.com']\""
+  #Better font Rendering
+  - "org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'"
+  #Usability Improvements
+  - "org.gnome.desktop.peripherals.mouse accel-profile 'adaptive'"
+  - "org.gnome.desktop.sound allow-volume-above-100-percent true"
+  - "org.gnome.desktop.calendar show-weekdate true"
+  - "org.gnome.desktop.wm.preferences resize-with-right-button true"
+  - "org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'"
+  - "org.gnome.shell.overrides workspaces-only-on-primary false"
+  #Nautilus (File Manager) Usability
+  - "org.gnome.nautilus.icon-view default-zoom-level 'standard'"
+  - "org.gnome.nautilus.preferences executable-text-activation 'ask'"
+  - "org.gtk.Settings.FileChooser sort-directories-first true"
+  - "org.gnome.nautilus.list-view use-tree-view true"
+  #window switcher
+  - "org.gnome.shell.window-switcher current-workspace-only true"
+  - "org.gnome.shell.window-switcher app-icon-mode 'both'"
+  # dash to panel
+  - "org.gnome.shell.extensions.dash-to-panel group-apps true"
+  - "org.gnome.shell.extensions.dash-to-panel trans-use-custom-opacity true"
+  - "org.gnome.shell.extensions.dash-to-panel panel-size 32"
+  - "org.gnome.shell.extensions.dash-to-panel click-action 'RAISE'"
+  - "org.gnome.shell.extensions.dash-to-panel show-show-apps-button false"
+  - "org.gnome.shell.extensions.dash-to-panel trans-use-dynamic-opacity true"
+  - "org.gnome.shell.extensions.dash-to-panel show-showdesktop-button true"
+  - "org.gnome.shell.extensions.dash-to-panel hot-keys true"
+  - "org.gnome.shell.extensions.dash-to-panel hotkeys-overlay-combo 'TEMPORARILY'"
+  - "org.gnome.shell.extensions.dash-to-panel trans-use-custom-bg true"
+  - "org.gnome.shell.extensions.dash-to-panel show-favorites true"
+  - "org.gnome.shell.extensions.dash-to-panel trans-panel-opacity 0.80000000000000004"
+  - "org.gnome.shell.extensions.dash-to-panel show-appmenu false"
+  - "org.gnome.shell.extensions.dash-to-panel isolate-workspaces true"
+  #openweather
+  - "org.gnome.shell.extensions.openweather weather-provider 'openweathermap'"
+  - "org.gnome.shell.extensions.openweather days-forecast 2"
+  - "org.gnome.shell.extensions.openweather unit 'celsius'"
+  - "org.gnome.shell.extensions.openweather geolocation-provider 'openstreetmaps'"
+  - "org.gnome.shell.extensions.openweather use-default-owm-key true"
+  - "org.gnome.shell.extensions.openweather show-text-in-panel true"
+  - "org.gnome.shell.extensions.openweather wind-speed-unit 'kph'"
+  - "org.gnome.shell.extensions.openweather use-symbolic-icons true"
+  - "org.gnome.shell.extensions.openweather position-in-panel 'center'"
+  - "org.gnome.shell.extensions.openweather translate-condition true"
+  - "org.gnome.shell.extensions.openweather city '39.7137006,-8.710292>Leiria, Autoestrada do Norte, Santa Catarina da Serra, Santa Catarina da Serra e Chainça, Leiria, Pinhal Litoral, Centro, 2495-186, Portugal >0'"
+  - "org.gnome.shell.extensions.openweather wind-direction true"
+  - "org.gnome.shell.extensions.openweather pressure-unit 'bar'"
+  - "org.gnome.shell.extensions.openweather show-comment-in-forecast true"
+  - "org.gnome.shell.extensions.openweather decimal-places 1"
+
+#snap packages:
+snap_packages:
+  - name: 'discord'
+    classic: ''
+  - name: 'slack'
+    classic: '--classic'
+  - name: 'spotify'
+    classic: ''
+  - name: 'rubymine'
+    classic: '--classic'
+  - name: 'phpstorm'
+    classic: '--classic'
+  - name: 'pycharm-professional'
+    classic: '--classic'
 #other:
 use_snap: yes
 use_desktop: yes

@@ -1,4 +1,5 @@
 ---
+# load specific variables
 - name: Include OS-specific variables.
   include_vars: '{{ item }}'
   with_fileglob:
@@ -9,11 +10,7 @@
   with_fileglob:
     - '{{ playbook_dir }}/variables/Debian.yml'
   when: ansible_os_family == "Debian"
-- name: Upgrade Fedora
-  dnf: 
-    name: "*"
-    state: latest
-  when: ansible_distribution == "Fedora"
+
 - name: Install base packages
   become: true
   become_user: root
@@ -22,6 +19,7 @@
     name: '{{ item }}'
     state: present
   with_items: '{{base_packages}}'
+
 - name: Install desktop packages
   become: true
   become_user: root
@@ -31,6 +29,32 @@
     state: present
   with_items: '{{desktop_packages}}'
   when: desktop_packages is defined
-- include_tasks: snapd.yml
-  name: Include snap tasks
-  when: use_snap is defined
+
+- name: setup snap packages
+  block:
+    - name: Install snap service and packages
+      become: true
+      become_user: root
+      become_method: sudo
+      package: name=snapd
+        state=present
+    - name: 'enable classic mode for snap'
+      raw: 'ln -sf /var/lib/snapd/snap /snap'
+      when: ansible_distribution == "Fedora"
+    - name: just force systemd to reread configs
+      systemd:
+        daemon_reload: yes
+    - name: 'enable snap'
+      systemd:
+        name: snapd
+        state: enabled
+        enabled: yes
+    - name: 'start snap'
+      systemd:
+        name: snapd
+        state: started
+        enabled: yes
+    - name: 'install with snap'
+      command: snap install {{item.name}} {{item.classic}}
+      with_items: '{{snap_packages}}'
+  when: use_snap ==  "yes"

@@ -22,12 +22,22 @@ base_packages:
   - 'util-linux-user'
   - 'vim-powerline'
   - 'vim'
+  - 'nano'
   - 'zsh'
   - 'numlockx'
   - 'wget'
+  - 'exfat-utils'
+  - 'lm_sensors'
+  - 'mozilla-fira-*'
+  - 'screenfetch'
 
 desktop_packages:
   - 'gnome-tweak-tool'
+  - 'gnome-shell-extension-openweather'
+  -  'gnome-shell-extension-topicons-plus'
+  - 'gnome-shell-extension-user-theme'
+  - 
+
   - 'thunderbird'
   - 'fira-code-fonts'
   - 'flat-remix'
@@ -40,6 +50,11 @@ desktop_packages:
   - 'numix-gtk-theme'
   - 'papirus-icon-theme'
   - 'terminator'
+  - 'libreoffice'
+  - 'libreoffice-langpack-pt-PT'
+  - 'calibre'
+  - 'tilix'
+  - 'tilix-nautilus'
 
 development_common_packages:
   - 'docker'
