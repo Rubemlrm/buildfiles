@@ -57,7 +57,9 @@
         - 1228 #arc menu
         - 1160 #dash to panel
         - 1590 # drop down terminal
+        - 750 # openweather
         - 973 # switcher
+        - 19 # user themes
     - name: fix extensions missing schemas
       raw: '{{item}}'
       with_items:
