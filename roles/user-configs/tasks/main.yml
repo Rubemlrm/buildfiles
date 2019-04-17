@@ -57,7 +57,18 @@
         - 1228 #arc menu
         - 1160 #dash to panel
         - 1590 # drop down terminal
-        - 750 # openweather
         - 973 # switcher
-        - 19 # user themes
+    - name: fix extensions missing schemas
+      raw: '{{item}}'
+      with_items:
+        - "cp /usr/share/gnome-shell/extensions/dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.xml /usr/share/glib-2.0/schemas/ &&
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas/"
+        - "cp /usr/share/gnome-shell/extensions/openweather-extension@jenslody.de/schemas/org.gnome.shell.extensions.openweather.gschema.xml /usr/share/glib-2.0/schemas/ && 
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas/"
+    - name: restore extensions configs
+      raw: gsettings set {{item}}
+      become: true
+      become_user: '{{username}}'
+      become_method: sudo
+      with_items: '{{gnome_settings}}'
   when: use_desktop is defined

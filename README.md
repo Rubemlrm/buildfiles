@@ -22,4 +22,3 @@
 - **openbox**
 
 
-**WIP: need to add support for laptop tools too**

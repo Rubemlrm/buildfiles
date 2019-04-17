@@ -32,7 +32,6 @@ base_packages:
 
 development_common_packages:
   - 'docker-ce'
-  - 'filezilla'
 
 php_packages:
   - 'php'

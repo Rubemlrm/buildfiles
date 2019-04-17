@@ -12,7 +12,7 @@ ENABLE_CORRECTION="true"
 
 ZSH_CUSTOM=~/.config/zsh
 
-plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm python)
+plugins=(git common-aliases docker rails tmux vagrant docker history perl rvm python dnf)
 
 # User configuration
 
