@@ -33,11 +33,6 @@ base_packages:
 
 desktop_packages:
   - 'gnome-tweak-tool'
-  - 'gnome-shell-extension-openweather'
-  -  'gnome-shell-extension-topicons-plus'
-  - 'gnome-shell-extension-user-theme'
-  - 
-
   - 'thunderbird'
   - 'fira-code-fonts'
   - 'flat-remix'
