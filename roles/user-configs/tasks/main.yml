@@ -69,8 +69,8 @@ sudo glib-compile-schemas /usr/share/glib-2.0/schemas/"
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/"
     - name: restore extensions configs
       dconf: 
-        key: {{item.key}}
-        value: {{item.value}}
+        key: '{{item.key}}'
+        value: '{{item.value}}'
         state: present
       become: true
       become_user: '{{username}}'
