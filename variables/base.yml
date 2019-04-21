@@ -104,8 +104,7 @@ gnome_key:
     value: "bar"
   - key: "org/gnome/shell/extensions/openweather/show-comment-in-forecast"
     value: true
-  - key: "org/gnome/shell/extensions/openweather"
-    key: decimal-places"
+  - key: "org/gnome/shell/extensions/openweather/decimal-places"
     value: 1
 #snap packages:
 snap_packages:
