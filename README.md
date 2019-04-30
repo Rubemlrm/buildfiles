@@ -6,12 +6,13 @@
 
 #### Works on
 
-| Distro | Versions |
-| ------ | :------: |
-| Fedora |    28    |
-| Fedora |    29    |
-| Fedora |    30    |
-| Debian | stretch  |
+| Distro |  Versions   |
+| ------ | :---------: |
+| Fedora |     28      |
+| Fedora |     29      |
+| Fedora |  30 (WIP)   |
+| Debian |   stretch   |
+| Debian | Buster(WIP) |
 
 #### Support for:
 
