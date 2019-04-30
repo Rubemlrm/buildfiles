@@ -9,8 +9,6 @@ snap_packages:
     classic: '--classic'
   - name: 'spotify'
     classic: ''
-  - name: 'rubymine'
-    classic: '--classic'
   - name: 'phpstorm'
     classic: '--classic'
   - name: 'pycharm-professional'
