@@ -7,5 +7,3 @@
   name: php tools and libs
 - include_tasks: python.yml
   name: python tools and libs
-- include_tasks: ruby.yml
-  name: ruby tools ans libs

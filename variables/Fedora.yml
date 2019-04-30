@@ -57,6 +57,7 @@ desktop_packages:
   - 'tilix'
   - 'tilix-nautilus'
   - 'steam'
+  - 'VirtualBox'
 
 development_common_packages:
   - 'docker'

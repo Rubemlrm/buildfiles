@@ -10,3 +10,8 @@ function tSession
     tmux attach-session -t dev
 
 }
+
+# create directory and enter on it
+function mkdcd () {
+    mkdir -p "$1" && cd "$1"
+ }

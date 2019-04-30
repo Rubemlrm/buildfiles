@@ -10,9 +10,12 @@
 - name: setup php composer and needed tools
   block:
     - name: Installing composer
-      become_user: '{{ username }}'
-      raw: curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+      become: true
+      become_user: root
+      become_method: sudo
+      raw: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
     - name: Installing needed composer packages
+      become_user: '{{ username }}'
       raw: composer global require {{ item }}
       with_items:
         - 'phpunit/phpunit'
