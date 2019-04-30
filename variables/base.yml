@@ -3,114 +3,9 @@ username: 'rubemlrm'
 home_dir: /home/rubemlrm
 configs_dir: '{{playbook_dir}}/roles/user-configs/files'
 
-#gnome shell settings
-gnome_key:
-  - key: "com/gexperts/Tilix/Settings/theme-variant"
-    value: "dark"
-  - key: "org/gnome/desktop/interface/gtk-theme"
-    value: "Numix"
-  - key: "org/gnome/desktop/interface/icon-theme"
-    value: "Papirus-Light"
-  - key: "org/gnome/shell/extensions/user-theme/name"
-    value: "Flat-Remix"
-  # set Extensios for gnome
-  - key: "org/gnome/shell/enabled-extensions"
-    value: "['user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-panel@jderose9.github.com', 'openweather-extension@jenslody.de', 'arc-menu@linxgem33.com', 'drop-down-terminal-x@bigbn.pro', 'switcher@landau.fi', 'tray-icons@zhangkaizhao.com']"
-  #Better font Rendering
-  - key: "org/gnome/settings-daemon/plugins/xsettings/antialiasing"
-    value: "rgba"
-  #Usability Improvements
-  - key: "org/gnome/desktop/peripherals/mouse/accel-profile"
-    value: "adaptive"
-  - key: "org/gnome/desktop/sound/allow-volume-above-100-percent"
-    value: true
-  - key: "org/gnome/desktop/calendar/show-weekdate"
-    value: true
-  - key: "org/gnome/desktop/wm/preferences/resize-with-right-button"
-    value: true
-  - key: "org/gnome/desktop/wm/preferences/button-layout"
-    value: "appmenu:minimize,maximize,close"
-  - key: "org/gnome/shell/overrides/workspaces-only-on-primary"
-    value: false
-  #Nautilus (File Manager) Usability
-  - key: "org/gnome/nautilus/icon-view/default-zoom-level"
-    value: "standard"
-  - key: "org/gnome/nautilus/preferences/executable-text-activation"
-    value: "ask"
-  - key: "org/gtk/Settings/FileChooser/sort-directories-first"
-    value: true
-  - key: "org/gnome/nautilus/list-view/use-tree-view"
-    value: true
-  #window switcher
-  - key: "org/gnome/shell/window-switcher/current-workspace-only"
-    value: true
-  - key: "org/gnome/shell/window-switcher/app-icon-mode"
-    value: "both"
-  # dash to panel
-  - key: "org/gnome/shell/extensions/dash-to-panel/group-apps"
-    value: true
-  - key: "org/gnome/shell/extensions/dash-to-panel/trans-use-custom-opacity"
-    value: true
-  - key: "org/gnome/shell/extensions/dash-to-panel/panel-size"
-    value: "32"
-  - key: "org/gnome/shell/extensions/dash-to-panel/click-action"
-    value: "RAISE"
-  - key: "org/gnome/shell/extensions/dash-to-panel/show-show-apps-button"
-    value: false
-  - key: "org/gnome/shell/extensions/dash-to-panel/trans-use-dynamic-opacity"
-    value: true
-  - key: "org/gnome/shell/extensions/dash-to-panel/show-showdesktop-button"
-    value: true
-  - key: "org/gnome/shell/extensions/dash-to-panel/hot-keys"
-    value: true
-  - key: "org/gnome/shell/extensions/dash-to-panel/hotkeys-overlay-combo"
-    value: "TEMPORARILY"
-  - key: "org/gnome/shell/extensions/dash-to-panel/trans-use-custom-bg"
-    value: true
-  - key: "org/gnome/shell/extensions/dash-to-panel/show-favorites"
-    value: true
-  - key: "org/gnome/shell/extensions/dash-to-panel/trans-panel-opacity"
-    value: 0.80000000000000004
-  - key: "org/gnome/shell/extensions/dash-to-panel/show-appmenu"
-    value: false
-  - key: "org/gnome/shell/extensions/dash-to-panel/isolate-workspaces"
-    value: true
-  #openweather
-  - key: "org/gnome/shell/extensions/openweather/weather-provider"
-    value: "openweathermap"
-  - key: "org/gnome/shell/extensions/openweather/days-forecast"
-    value: 2
-  - key: "org/gnome/shell/extensions/openweather/unit"
-    value: "celsius"
-  - key: "org/gnome/shell/extensions/openweather/geolocation-provider"
-    value: "openstreetmaps"
-  - key: "org/gnome/shell/extensions/openweather/use-default-owm-key"
-    value: true
-  - key: "org/gnome/shell/extensions/openweather/show-text-in-panel"
-    value: true
-  - key: "org/gnome/shell/extensions/openweather/wind-speed-unit"
-    value: "kph"
-  - key: "org/gnome/shell/extensions/openweather/use-symbolic-icons"
-    value: true
-  - key: "org/gnome/shell/extensions/openweather/position-in-panel"
-    value: "center"
-  - key: "org/gnome/shell/extensions/openweather/translate-condition"
-    value: true
-  - key: "org/gnome/shell/extensions/openweather/city"
-    value: "39.7137006,-8.710292>Leiria, Autoestrada do Norte, Santa Catarina da Serra, Santa Catarina da Serra e Chainça, Leiria, Pinhal Litoral, Centro, 2495-186, Portugal >0"
-  - key: "org/gnome/shell/extensions/openweather/wind-direction"
-    value: true
-  - key: "org/gnome/shell/extensions/openweather/pressure-unit"
-    value: "bar"
-  - key: "org/gnome/shell/extensions/openweather/show-comment-in-forecast"
-    value: true
-  - key: "org/gnome/shell/extensions/openweather/decimal-places"
-    value: 1
 #snap packages:
 snap_packages:
-  - name: 'discord'
-    classic: ''
-  - name: 'slack'
+  - name: 'code'
     classic: '--classic'
   - name: 'spotify'
     classic: ''
@@ -120,6 +15,7 @@ snap_packages:
     classic: '--classic'
   - name: 'pycharm-professional'
     classic: '--classic'
+  - name: 'intellij-idea-ultimate'
+    classic: '--classic'
 #other:
 use_snap: yes
-use_desktop: yes
