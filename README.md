@@ -8,9 +8,9 @@
 
 | Distro |  Versions   |
 | ------ | :---------: |
-| Fedora |     28      |
+| Fedora | 28 (legacy) |
 | Fedora |     29      |
-| Fedora |  30 (WIP)   |
+| Fedora |     30      |
 | Debian |   stretch   |
 | Debian | Buster(WIP) |
 

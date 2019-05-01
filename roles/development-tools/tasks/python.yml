@@ -7,8 +7,8 @@
     name: '{{ item }}'
     state: present
   with_items:
-    - 'python-virtualenvwrapper'
-    - 'python-pip'
+    - 'python3-virtualenvwrapper'
+    - 'python3-pip'
   when: ansible_distribution == "Fedora"
 - name: Install development tools for debian Based
   become: true
