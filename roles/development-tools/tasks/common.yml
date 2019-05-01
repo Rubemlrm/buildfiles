@@ -7,6 +7,27 @@
     name: '{{ item }}'
     state: 'present'
   with_items: '{{development_common_packages}}'
+- name: Enable Docker service
+  block:
+    - name: just force systemd to reread configs
+      systemd:
+        daemon_reload: yes
+    - name: 'enable docker'
+      systemd:
+        name: docker
+        state: enabled
+        enabled: yes
+    - name: 'start docker'
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+  when: enable_docker ==  "yes"
+
+- name:
+  become: true
+  become_user: root
+  become_method: sudo
 
 - name: Install docker-compose on debian
   become: true

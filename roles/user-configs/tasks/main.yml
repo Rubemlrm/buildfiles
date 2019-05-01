@@ -24,6 +24,7 @@
     - '.config'
     - '.urxvt'
     - '.urxvt/ext'
+    - '.dconfBackup'
 
 - name: Restore Configs
   file: src={{ configs_dir }}/{{ item.origin }}
@@ -40,3 +41,4 @@
     - { origin: 'Xstuff/Xdefaults', dest: '.Xdefaults' }
     - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
     - { origin: 'tmux/configs', dest: '.config/tmux' }
+    - { origin: 'dconf', dest: '.dconfBackup' }
