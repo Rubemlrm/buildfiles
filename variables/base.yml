@@ -17,3 +17,4 @@ snap_packages:
     classic: '--classic'
 #other:
 use_snap: yes
+enable_docker: yes
