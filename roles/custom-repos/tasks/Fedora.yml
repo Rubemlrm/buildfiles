@@ -12,7 +12,6 @@
       command: 'dnf copr enable {{item}} -y'
       with_items:
         - 'evana/fira-code-fonts'
-        - 'daniruiz/flat-remix'
         - 'dirkdavidis/papirus-icon-theme'
     - name: 'set workstation repos'
       command: 'dnf config-manager --set-enabled  {{item}} -y'
@@ -24,13 +23,14 @@
           [
             'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_version }}.noarch.rpm',
             'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_version }}.noarch.rpm',
+            'https://download.opensuse.org/repositories/home:manuelschneid3r/Fedora_30/home:manuelschneid3r.repo',
           ]
         state: present
 - name: Upgrade Fedora
   become: true
   become_user: root
   become_method: sudo
-  dnf: 
-    name: "*"
+  dnf:
+    name: '*'
     state: latest
   when: ansible_distribution == "Fedora"
