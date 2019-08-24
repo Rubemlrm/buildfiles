@@ -42,12 +42,9 @@ base_packages:
   - 'mesa-libGLU-devel'
 
 desktop_packages:
-  - 'gnome-tweak-tool'
+  - 'albert'
   - 'thunderbird'
   - 'fira-code-fonts'
-  - 'flat-remix'
-  - 'flat-remix-gnome'
-  - 'flat-remix-gtk'
   - 'google-chrome-stable'
   - 'lutris'
   - 'telegram-desktop'
