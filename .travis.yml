@@ -10,26 +10,6 @@ services:
 matrix:
   include:
     # Fedora
-    - name: 'Fedora 28'
-      language: python
-      before_install:
-        - 'sudo docker run -it --name=fedora28 --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:fedora-28 bash'
-      script:
-        # 1. Syntax check
-        - 'sudo docker exec fedora28 ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
-
-        # 2. Run playbook to execute role
-        - 'sudo docker exec fedora28 ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
-    - name: 'Fedora 29'
-      language: python
-      before_install:
-        - 'sudo docker run -it --name=fedora29 --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:fedora-29 bash'
-      script:
-        # 1. Syntax check
-        - 'sudo docker exec fedora29 ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
-
-        # 2. Run playbook to execute role
-        - 'sudo docker exec fedora29 ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
     - name: 'Fedora 30'
       language: python
       before_install:
@@ -40,14 +20,3 @@ matrix:
 
         # 2. Run playbook to execute role
         - 'sudo docker exec fedora30 ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'
-    # Debian
-    - name: 'Debian Stretch'
-      language: python
-      before_install:
-        - 'sudo docker run -it --name=debian9 --privileged --detach --volume="${PWD}":/data:rw fubarhouse/docker-ansible:stretch bash'
-      script:
-        # 1. Syntax check
-        - 'sudo docker exec debian9 ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
-
-        # 2. Run playbook to execute role
-        - 'sudo docker exec debian9 ansible-playbook /data/setup-test.yml -i tests/inventory --connection=local'

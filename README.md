@@ -2,29 +2,23 @@
 
 # dotfiles
 
-## Personal setup and configs for my fedora(28/29) and debian(stretch) based machines, setup ready to be used with ansible.
+## Personal setup and configs for my fedora based machines, setup ready to be used with ansible.
 
 #### Works on
 
-| Distro |  Versions   |
-| ------ | :---------: |
-| Fedora | 28 (legacy) |
-| Fedora |     29      |
-| Fedora |     30      |
-| Debian |   stretch   |
-| Debian | Buster(WIP) |
+| Distro | Versions |
+| ------ | :------: |
+| Fedora |    30    |
 
 #### Support for:
 
 - **docker**
 - **snapd**
-- **Copr based repos (fedora only)**
-- **Fedora workstation (fedora only)**
+- **Copr based repos**
 
 #### Tools for development:
 
 - **php**
-- **ruby**
 - **python**
 - **javascript**
 
@@ -39,7 +33,6 @@
 
 - **papirus**
 - **paper**
-- **DarkRemix**
 
 #### General Utils
 

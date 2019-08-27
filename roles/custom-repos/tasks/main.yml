@@ -1,6 +1,34 @@
-- include_tasks: 'Fedora.yml'
-  name: 'enable custom repos'
-  when: ansible_distribution == "Fedora"
-- include_tasks: 'Debian.yml'
-  name: 'enable custom repos'
-  when: ansible_os_family == "Debian"
+---
+- name: Add Custom repos for Fedora Based
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: 'install copr tools'
+      dnf:
+        name: ['fedora-workstation-repositories', 'dnf-plugins-core']
+        state: present
+    - name: 'set copr repos'
+      command: 'dnf copr enable {{item}} -y'
+      with_items:
+        - 'evana/fira-code-fonts'
+        - 'dirkdavidis/papirus-icon-theme'
+    - name: 'set workstation repos'
+      command: 'dnf config-manager --set-enabled  {{item}} -y'
+      with_items:
+        - 'google-chrome'
+    - name: 'set repos'
+      dnf:
+        name:
+          [
+            'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_version }}.noarch.rpm',
+            'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_version }}.noarch.rpm',
+          ]
+        state: present
+- name: Upgrade Fedora
+  become: true
+  become_user: root
+  become_method: sudo
+  dnf:
+    name: '*'
+    state: latest
