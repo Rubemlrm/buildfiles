@@ -37,12 +37,10 @@ base_packages:
   - 'python3-gobject'
   - 'python3-oauth2client'
   - 'libcurl-devel'
-  - 'R'
   - 'mesa-libGL-devel'
   - 'mesa-libGLU-devel'
 
 desktop_packages:
-  - 'albert'
   - 'thunderbird'
   - 'fira-code-fonts'
   - 'google-chrome-stable'

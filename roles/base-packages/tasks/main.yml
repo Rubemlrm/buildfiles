@@ -3,13 +3,7 @@
 - name: Include OS-specific variables.
   include_vars: '{{ item }}'
   with_fileglob:
-    - '{{ playbook_dir }}/variables/Fedora.yml'
-  when: ansible_distribution == "Fedora"
-- name: Include OS-specific variables.
-  include_vars: '{{ item }}'
-  with_fileglob:
-    - '{{ playbook_dir }}/variables/Debian.yml'
-  when: ansible_os_family == "Debian"
+    - '{{ playbook_dir }}/variables/packages.yml'
 
 - name: Install base packages
   become: true
@@ -40,7 +34,6 @@
         state=present
     - name: 'enable classic mode for snap'
       raw: 'ln -sf /var/lib/snapd/snap /snap'
-      when: ansible_distribution == "Fedora"
     - name: just force systemd to reread configs
       systemd:
         daemon_reload: yes
