@@ -19,4 +19,4 @@ matrix:
         - 'sudo docker exec fedora30 ansible-playbook /data/setup-test.yml -i tests/inventory --syntax-check'
 
         # 2. Run playbook to execute role
-        - 'sudo docker exec fedora30 ansible-playbook -e "password='teste123'" /data/setup-test.yml -i tests/inventory --connection=local'
+        - 'sudo docker exec fedora30 ansible-playbook -e "password=teste123" /data/setup-test.yml -i tests/inventory --connection=local'
