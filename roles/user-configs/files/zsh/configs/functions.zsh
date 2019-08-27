@@ -15,3 +15,13 @@ function tSession
 function mkdcd () {
     mkdir -p "$1" && cd "$1"
  }
+
+ # Docker Functions
+clear_containers() {
+	docker stop $(docker ps -a -q)
+	docker rm $(docker ps -a -q)
+}
+
+clear_images() {
+	docker rmi -f $(docker images -a -q)
+}
