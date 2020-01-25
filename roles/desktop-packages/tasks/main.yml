@@ -1,0 +1,38 @@
+---
+- name: Install desktop packages
+  become: true
+  become_user: root
+  become_method: sudo
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{desktop_packages}}'
+  when: desktop_packages is defined
+
+- name: setup snap packages
+  block:
+    - name: Install snap service and packages
+      become: true
+      become_user: root
+      become_method: sudo
+      package: name=snapd
+        state=present
+    - name: 'enable classic mode for snap'
+      raw: 'ln -sf /var/lib/snapd/snap /snap'
+    - name: just force systemd to reread configs
+      systemd:
+        daemon_reload: yes
+    - name: 'enable snap'
+      systemd:
+        name: snapd
+        state: enabled
+        enabled: yes
+    - name: 'start snap'
+      systemd:
+        name: snapd
+        state: started
+        enabled: yes
+    - name: 'install with snap'
+      command: snap install {{item.name}} {{item.classic}}
+      with_items: '{{snap_packages}}'
+  when: use_snap ==  "yes"

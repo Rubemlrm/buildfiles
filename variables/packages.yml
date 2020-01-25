@@ -41,9 +41,11 @@ base_packages:
   - 'mesa-libGLU-devel'
 
 desktop_packages:
+  - 'akmod-nvidia'
   - 'thunderbird'
   - 'fira-code-fonts'
   - 'google-chrome-stable'
+  - 'gnome-tweak-tool'
   - 'lutris'
   - 'telegram-desktop'
   - 'keepassxc'

@@ -9,6 +9,5 @@
   with_items:
     - 'python3-virtualenvwrapper'
     - 'python3-pip'
-  when: ansible_distribution == "Fedora"
 - name: Install cookicutter python
   raw: pip install --user cookiecutter
