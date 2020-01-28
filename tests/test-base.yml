@@ -5,5 +5,4 @@ configs_dir: '{{playbook_dir}}/roles/user-configs/files'
 
 #other:
 use_snap: no
-user_desktop: no
 enable_docker: no
