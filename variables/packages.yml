@@ -48,7 +48,6 @@ desktop_packages:
   - 'gnome-tweak-tool'
   - 'lutris'
   - 'telegram-desktop'
-  - 'keepassxc'
   - 'numix-gtk-theme'
   - 'papirus-icon-theme'
   - 'terminator'
@@ -59,12 +58,12 @@ desktop_packages:
   - 'tilix-nautilus'
   - 'steam'
   - 'VirtualBox'
+  - 'filezilla'
+  - 'firefox'
 
 development_common_packages:
   - 'docker'
   - 'docker-compose'
-  - 'filezilla'
-  - 'firefox'
 
 php_packages:
   - 'php'
