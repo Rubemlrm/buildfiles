@@ -3,18 +3,6 @@ username: 'rubemlrm'
 home_dir: /home/rubemlrm
 configs_dir: '{{playbook_dir}}/roles/user-configs/files'
 
-#snap packages:
-snap_packages:
-  - name: 'code'
-    classic: '--classic'
-  - name: 'spotify'
-    classic: ''
-  - name: 'phpstorm'
-    classic: '--classic'
-  - name: 'pycharm-professional'
-    classic: '--classic'
-  - name: 'intellij-idea-ultimate'
-    classic: '--classic'
 #other:
 use_snap: yes
 enable_docker: yes

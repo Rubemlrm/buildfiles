@@ -61,9 +61,25 @@ desktop_packages:
   - 'filezilla'
   - 'firefox'
 
+#snap packages:
+snap_packages:
+  - name: 'code'
+    classic: '--classic'
+  - name: 'bitwarden'
+    classic: ''
+  - name: 'spotify'
+    classic: ''
+  - name: 'phpstorm'
+    classic: '--classic'
+  - name: 'pycharm-professional'
+    classic: '--classic'
+  - name: 'rubymine'
+    classic: '--classic'
+
 development_common_packages:
   - 'docker'
   - 'docker-compose'
+
 
 php_packages:
   - 'php'
