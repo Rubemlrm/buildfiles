@@ -2,6 +2,7 @@
 - hosts: localhost
   vars_files:
     - variables/base.yml
+    - variables/gnome.yml
   roles:
     - { role: custom-repos }
     - { role: base-packages }
