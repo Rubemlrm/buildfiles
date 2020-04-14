@@ -150,7 +150,7 @@ nmap gc <Plug>Commentary
 xmap gc <Plug>Commentary
 nmap sp :split
 nmap vs :vsplit
-nnoremap <SNR>146_: :=v:count ? v:count : ''
+nnoremap <SNR>149_: :=v:count ? v:count : ''
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(netrw#GX(),netrw#CheckIfRemote(netrw#GX()))
 snoremap <C-R> "_c
@@ -674,7 +674,6 @@ set hidden
 set history=500
 set hlsearch
 set incsearch
-set isfname=@,48-57,/,.,-,_,+,,,#,$,%,~,=,@-@
 set langnoremap
 set nolangremap
 set laststatus=2
@@ -684,7 +683,6 @@ set modelines=0
 set mouse=a
 set nrformats=bin,hex
 set pastetoggle=<F2>
-set path=.,/usr/include,,,./../templates,./../files,templates,files
 set ruler
 set runtimepath=~/.vim,~/.vim/plugged/unite.vim/,~/.vim/plugged/nerdtree/,~/.vim/plugged/vim-gitgutter/,~/.vim/plugged/vim-airline/,~/.vim/plugged/vim-easymotion/,~/.vim/plugged/supertab/,~/.vim/plugged/ansible-vim/,~/.vim/plugged/emmet-vim/,~/.vim/plugged/vim-commentary/,~/.vim/plugged/vim-fugitive/,~/.vim/plugged/vim-polyglot/,~/.vim/plugged/grep.vim/,~/.vim/plugged/vim-startify/,~/.vim/plugged/vim-ansible-yaml/,~/.vim/plugged/ctrlp.vim/,~/.vim/plugged/lightline.vim/,~/.fzf/,~/.vim/plugged/fzf.vim/,~/.vim/plugged/tagbar/,~/.vim/plugged/nerdcommenter/,~/.vim/plugged/gundo.vim/,~/.vim/plugged/syntastic/,~/.vim/plugged/vim-addon-mw-utils/,~/.vim/plugged/vimproc.vim/,~/.vim/plugged/vim-misc/,~/.vim/plugged/tlib_vim/,~/.vim/plugged/ultisnips/,~/.vim/plugged/vim-snippets/,~/.vim/plugged/seti.vim/,/usr/share/vim/vimfiles,/usr/share/vim/vim82,/usr/share/vim/vimfiles/after,~/.vim/plugged/vim-polyglot/after,~/.vim/plugged/ultisnips/after,~/.vim/after
 set scrolloff=3
@@ -719,7 +717,7 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd .
-edit roles/user-configs/tasks/main.yml
+edit variables/base.yml
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -760,7 +758,7 @@ setlocal cinwords=if,else,while,do,for,switch
 set colorcolumn=120
 setlocal colorcolumn=120
 setlocal comments=:#
-setlocal commentstring=#%s
+setlocal commentstring=#\ %s
 setlocal complete=.,w,b,u,t,i
 setlocal concealcursor=
 setlocal conceallevel=0
@@ -778,8 +776,8 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal expandtab
-if &filetype != 'yaml.ansible'
-setlocal filetype=yaml.ansible
+if &filetype != 'yaml'
+setlocal filetype=yaml
 endif
 setlocal fixendofline
 setlocal foldcolumn=0
@@ -795,7 +793,7 @@ set foldnestmax=10
 setlocal foldnestmax=10
 setlocal foldtext=foldtext()
 setlocal formatexpr=
-setlocal formatoptions=n1roqcl
+setlocal formatoptions=n1croql
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
 setlocal formatprg=
 setlocal grepprg=
@@ -803,10 +801,10 @@ setlocal iminsert=0
 setlocal imsearch=-1
 setlocal include=
 setlocal includeexpr=
-setlocal indentexpr=GetAnsibleIndent(v:lnum)
-setlocal indentkeys=!^F,o,O,0#,0},0],<:>,-,*<Return>
+setlocal indentexpr=GetYAMLIndent(v:lnum)
+setlocal indentkeys=!^F,o,O,0#,0},0],<:>,0-
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,-
+setlocal iskeyword=@,48-57,_,192-255
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
@@ -847,10 +845,10 @@ setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=
 setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'yaml.ansible'
-setlocal syntax=yaml.ansible
+if &syntax != 'yaml'
+setlocal syntax=yaml
 endif
-setlocal tabstop=2
+setlocal tabstop=4
 setlocal tagcase=
 setlocal tagfunc=
 setlocal tags=
@@ -868,22 +866,16 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-30
-normal! zo
-48
-normal! zo
-let s:l = 48 - ((10 * winheight(0) + 10) / 21)
+let s:l = 4 - ((3 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-48
-normal! 05|
-lcd ~/bin/dotfiles/roles/user-configs/tasks
+4
+normal! 0
+lcd ~/bin/dotfiles/variables
 tabnext 1
-badd +7 ~/bin/dotfiles/setup-desktop.yml
-badd +10 ~/bin/dotfiles/variables/base.yml
-badd +5 ~/bin/dotfiles/variables/gnome.yml
-badd +0 ~/bin/dotfiles/roles/user-configs/tasks/main.yml
+badd +91 ~/bin/dotfiles/variables/packages.yml
+badd +0 ~/bin/dotfiles/variables/base.yml
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
