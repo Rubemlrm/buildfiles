@@ -1,0 +1,32 @@
+development_common_packages:
+  - 'docker'
+  - 'docker-compose'
+
+php_packages:
+  - 'php'
+  - 'php-common'
+  - 'php-json'
+  - 'php-mysqlnd'
+  - 'php-gd'
+  - 'php-fpm'
+  - 'php-zip'
+  - 'php-mbstring'
+  - 'php-xml'
+
+composer_packages:
+  - 'phpunit/phpunit'
+  - 'phing/phing'
+  - 'sebastian/phpcpd'
+  - 'phploc/phploc'
+  - 'phpmd/phpmd'
+  - 'squizlabs/php_codesniffer'
+
+nodejs_packages:
+  - standard
+  - jshint
+  - webpack
+  - eslint
+
+python_packages:
+  - 'python3-virtualenvwrapper'
+  - 'python3-pip'

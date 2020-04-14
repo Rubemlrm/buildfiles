@@ -1,21 +1,18 @@
-#gnome settings
-gnome_user: rubemlrm
-
 gnome_extensions:
-  - 1503 #tray icon
-  - 1160 #dash to dock
-  - 1530 #tray-icons
-  - 750 #openweather
-  - 358 #activities
-  - 8 #place status  
-  - 517 #caffeine
-  - 945 # cpu power management
-  - 779 # clipboard
-  - 1036 #extensions
+  - 8 #place status
   - 19 #themes
+  - 358 #activities
+  - 517 #caffeine
   - 708 #panel osd
+  - 750 #openweather
+  - 779 # clipboard
   - 800 #remove dropdowns arrows
+  - 945 # cpu power management
+  - 1036 #extensions
+  - 1160 #dash to dock
   - 1228 #arc menu
+  - 1503 #tray icon
+  - 1530 #tray-icons
 
 gnome_schemas_copy:
   - "dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.xml"

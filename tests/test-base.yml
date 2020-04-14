@@ -4,5 +4,5 @@ home_dir: /home/testuser
 configs_dir: '{{playbook_dir}}/roles/user-configs/files'
 
 #other:
-use_snap: no
-enable_docker: no
+use_snap: false
+enable_docker: false

@@ -17,10 +17,5 @@
     - name: Installing needed composer packages
       become_user: '{{ username }}'
       raw: composer global require {{ item }}
-      with_items:
-        - 'phpunit/phpunit'
-        - 'phing/phing'
-        - 'sebastian/phpcpd'
-        - 'phploc/phploc'
-        - 'phpmd/phpmd'
-        - 'squizlabs/php_codesniffer'
+      with_items: '{{composer_packages}}'
+

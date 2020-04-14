@@ -2,6 +2,8 @@
 - hosts: localhost
   vars_files:
     - variables/base.yml
+    - variables/cli_packages.yml
+    - variables/development_packages.yml
   roles:
     - { role: custom-repos }
     - { role: base-packages }
