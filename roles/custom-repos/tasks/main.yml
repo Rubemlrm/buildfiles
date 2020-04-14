@@ -10,21 +10,17 @@
         state: present
     - name: 'set copr repos'
       command: 'dnf copr enable {{item}} -y'
-      with_items:
-        - 'evana/fira-code-fonts'
-        - 'dirkdavidis/papirus-icon-theme'
+      with_items: '{{copr_repos}}'
+
     - name: 'set workstation repos'
       command: 'dnf config-manager --set-enabled  {{item}} -y'
       with_items:
         - 'google-chrome'
     - name: 'set repos'
       dnf:
-        name:
-          [
-            'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_version }}.noarch.rpm',
-            'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_version }}.noarch.rpm',
-          ]
+        name: '{{item}}'
         state: present
+      with_items: '{{rpm_repos}}'
 - name: Upgrade Fedora
   become: true
   become_user: root

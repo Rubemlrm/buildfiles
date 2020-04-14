@@ -13,8 +13,5 @@
   npm:
     name: '{{ item }}'
     global: yes
-  with_items:
-    - standard
-    - jshint
-    - webpack
-    - eslint
+  with_items: '{{nodejs_packages}}'
+

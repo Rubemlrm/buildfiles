@@ -4,6 +4,13 @@ home_dir: /home/rubemlrm
 configs_dir: '{{playbook_dir}}/roles/user-configs/files'
 
 #other:
-use_snap: yes
-enable_docker: yes
+use_snap: true
+enable_docker: true
 
+copr_repos:
+  - 'evana/fira-code-fonts'
+  - 'dirkdavidis/papirus-icon-theme'
+
+rpm_repos:
+  - 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_version }}.noarch.rpm'
+  - 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_version }}.noarch.rpm'

@@ -2,6 +2,10 @@
 - hosts: localhost
   vars_files:
     - tests/test-base.yml
+    - variables/cli_packages.yml
+    - variables/development_packages.yml
+    - variables/desktop_packages.yml
+    - variables/gnome.yml
   roles:
     - { role: custom-repos }
     - { role: base-packages }

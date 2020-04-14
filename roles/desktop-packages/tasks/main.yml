@@ -12,9 +12,9 @@
 - name: set gnome extensions
   block:
     - name: install gnome extension manager
-      raw: wget -O gnome-shell-extension-installer https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer 
+      raw: wget -O gnome-shell-extension-installer https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer
     - name: install gnome-extension manager permissions
-      raw: chmod +x gnome-shell-extension-installer 
+      raw: chmod +x gnome-shell-extension-installer
     - name: end gnome extension manager process
       raw: mv gnome-shell-extension-installer /usr/bin/
     - name: install gnome extensions
@@ -38,7 +38,7 @@
       become: true
       become_user: '{{username}}'
       with_items: '{{gnome_settings}}'
- 
+
 - name: setup snap packages
   block:
     - name: Install snap service and packages
@@ -65,4 +65,4 @@
     - name: 'install with snap'
       command: snap install {{item.name}} {{item.classic}}
       with_items: '{{snap_packages}}'
-  when: use_snap ==  "yes"
+  when: use_snap

@@ -1,13 +1,11 @@
 ---
-- name: Install development tools for Fedora Based
+- name: Install Python development tools
   become: true
   become_user: root
   become_method: sudo
   package:
     name: '{{ item }}'
     state: present
-  with_items:
-    - 'python3-virtualenvwrapper'
-    - 'python3-pip'
+  with_items: '{{python_packages}}'
 - name: Install cookicutter python
   raw: pip install --user cookiecutter
