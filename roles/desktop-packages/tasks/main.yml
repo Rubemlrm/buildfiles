@@ -55,11 +55,6 @@
     - name: 'enable snap'
       systemd:
         name: snapd
-        state: enabled
-        enabled: yes
-    - name: 'start snap'
-      systemd:
-        name: snapd
         state: started
         enabled: yes
     - name: 'install with snap'
