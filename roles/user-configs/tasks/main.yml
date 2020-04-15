@@ -72,3 +72,4 @@
       become: true
       become_user: '{{username}}'
       with_items: '{{gnome_settings}}'
+  when: restore_desktop_settings
