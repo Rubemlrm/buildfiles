@@ -18,7 +18,7 @@
         - 'google-chrome'
     - name: 'set repos'
       dnf:
-        name: '{{item}}'
+        name: '{{rpm_repos}}'
         state: present
       with_items: '{{rpm_repos}}'
 - name: Upgrade Fedora
