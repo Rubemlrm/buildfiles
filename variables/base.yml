@@ -6,6 +6,7 @@ configs_dir: '{{playbook_dir}}/roles/user-configs/files'
 #other:
 use_snap: true
 enable_docker: true
+restore_desktop_settings: true
 
 copr_repos:
   - 'evana/fira-code-fonts'
