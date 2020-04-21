@@ -38,5 +38,6 @@ base_packages:
   - 'libcurl-devel'
   - 'mesa-libGL-devel'
   - 'mesa-libGLU-devel'
+  - 'dotnet-sdk-3.1'
 
 

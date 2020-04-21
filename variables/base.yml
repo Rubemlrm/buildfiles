@@ -11,6 +11,7 @@ restore_desktop_settings: true
 copr_repos:
   - 'evana/fira-code-fonts'
   - 'dirkdavidis/papirus-icon-theme'
+  - '@dotnet-sig/dotnet'
 
 rpm_repos:
   - 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_version }}.noarch.rpm'
