@@ -10,41 +10,38 @@
   raw: chsh {{ username  }} -s /usr/bin/zsh
   ignore_errors: yes
 
-- name: Clone Needed Repos
-  git: repo={{item.repo}} dest={{item.dest}}
-  with_items:
-    - {
-        repo: 'https://github.com/robbyrussell/oh-my-zsh.git',
-        dest: '/home/{{username}}/.oh-my-zsh',
-      }
+
 
 - name: Created base folders for configs
   file: path={{ home_dir }}/{{item}} state=directory
   with_items:
     - '.config'
-    - '.urxvt'
-    - '.urxvt/ext'
-    - '.dconfBackup'
+    - 'bin'
 
-- name: Restore Configs
-  file: src={{ configs_dir }}/{{ item.origin }}
-    dest={{ home_dir }}/{{ item.dest }}
-    state=link
-    force=true
-    owner={{username}}
-    group={{username}}
+- name: Clone Needed Repos
+  git: repo={{item.repo}} dest={{item.dest}}
   with_items:
-    - { origin: 'zsh/zshrc', dest: '.zshrc' }
-    - { origin: 'zsh/configs', dest: '.config/zsh' }
-    - { origin: 'vim/vimrc', dest: '.vimrc' }
-    - { origin: 'vim/vim', dest: '.vim' }
-    - { origin: 'Xstuff/Xdefaults', dest: '.Xdefaults' }
-    - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
-    - { origin: 'tmux/configs', dest: '.config/tmux' }
-    - { origin: 'dconf', dest: '.dconfBackup' }
+    - {
+        repo: 'https://github.com/Rubemlrm/dotfiles.git',
+        dest: '/home/{{username}}/bin/dotfiles',
+      }
+
+- name: restore dotfiles
+  become: true
+  become_user: '{{username}}'
+  raw: cd /home/{{username}}/bin/dotfiles && bash bootstrap.sh
 
 - name: set gnome extensions
   block:
+    - name: install gnome themes
+      become: true
+      become_user: root
+      become_method: sudo
+      package:
+        name: '{{ item }}'
+        state: present
+      with_items: '{{gnome_themes}}'
+      when: gnome_themes is defined
     - name: install gnome extension manager
       raw: wget -O gnome-shell-extension-installer https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer
     - name: install gnome-extension manager permissions

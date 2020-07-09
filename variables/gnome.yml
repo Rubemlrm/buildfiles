@@ -1,3 +1,10 @@
+---
+
+gnome_themes:
+  - 'flat-remix-gtk2-theme'
+  - 'flat-remix-gtk3-theme'
+  - 'numix-gtk-theme'
+
 gnome_extensions:
   - 8 #place status
   - 19 #themes
@@ -43,6 +50,10 @@ gnome_settings:
   - "org.gnome.shell.window-switcher current-workspace-only true"
   - "org.gnome.shell.window-switcher app-icon-mode 'both'"
   # dash to panel
+  - "org.gnome.shell.extensions.dash-to-panel menu-hotkey 'Super_L'"
+  - "org.gnome.shell.extensions.dash-to-panel mmenu-layout 'Tognee '"
+  - "org.gnome.shell.extensions.dash-to-panel mmenu-layout 'Tognee '"
+  - "org.gnome.shell.extensions.dash-to-panel default-menu-view-tognee 'All_Programs'"
   - "org.gnome.shell.extensions.dash-to-panel group-apps true"
   - "org.gnome.shell.extensions.dash-to-panel trans-use-custom-opacity true"
   - "org.gnome.shell.extensions.dash-to-panel panel-size 32"

@@ -2,6 +2,7 @@ base_packages:
   - '@C Development Tools and Libraries'
   - 'acpi'
   - 'adobe-source-code-pro-fonts'
+  - 'fira-code-fonts'
   - 'aspell'
   - 'aspell-pt'
   - 'automake'
