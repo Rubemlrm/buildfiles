@@ -22,4 +22,4 @@
         name: docker
         state: started
         enabled: yes
-  when: enable_docker ==  "yes"
+  when: enable_docker ==  "true"

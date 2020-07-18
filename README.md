@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/Rubemlrm/dotfiles.svg?branch=master)](https://travis-ci.org/Rubemlrm/dotfiles)
-
 # dotfiles
 
 ## Personal setup and configs for my fedora based machines, setup ready to be used with ansible.
@@ -8,7 +6,7 @@
 
 | Distro | Versions |
 | ------ | :------: |
-| Fedora |    30    |
+| Fedora |    32    |
 
 #### Support for:
 

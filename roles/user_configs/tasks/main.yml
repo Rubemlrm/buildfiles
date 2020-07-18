@@ -26,11 +26,6 @@
         dest: '/home/{{username}}/bin/dotfiles',
       }
 
-- name: restore dotfiles
-  become: true
-  become_user: '{{username}}'
-  raw: cd /home/{{username}}/bin/dotfiles && bash bootstrap.sh
-
 - name: set gnome extensions
   block:
     - name: install gnome themes
@@ -69,4 +64,5 @@
       become: true
       become_user: '{{username}}'
       with_items: '{{gnome_settings}}'
+      ignore_errors: yes
   when: restore_desktop_settings
