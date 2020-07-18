@@ -20,6 +20,7 @@ gnome_extensions:
   - 1228 #arc menu
   - 1503 #tray icon
   - 1530 #tray-icons
+  - 1145 #sensors
 
 gnome_schemas_copy:
   - "dash-to-panel@jderose9.github.com/schemas/org.gnome.shell.extensions.dash-to-panel.gschema.xml"
@@ -31,7 +32,7 @@ gnome_settings:
   - "org.gnome.desktop.interface icon-theme 'Papirus-Light'"
   - "org.gnome.shell.extensions.user-theme name 'Flat-Remix'"
   # set Extensios for gnome
-  - "org.gnome.shell enabled-extensions \"['user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-panel@jderose9.github.com', 'openweather-extension@jenslody.de', 'arc-menu@linxgem33.com', 'drop-down-terminal-x@bigbn.pro', 'switcher@landau.fi', 'tray-icons@zhangkaizhao.com']\""
+  - "org.gnome.shell enabled-extensions \"['user-theme@gnome-shell-extensions.gcampax.github.com', 'dash-to-panel@jderose9.github.com', 'openweather-extension@jenslody.de', 'arc-menu@linxgem33.com', 'drop-down-terminal-x@bigbn.pro', 'switcher@landau.fi', 'tray-icons@zhangkaizhao.com','caffeine@patapon.info','clipboard-indicator@tudmotu.com','panel-osd@berend.de.schouwer.gmail.com']\""
   #Better font Rendering
   - "org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'"
   #Usability Improvements
