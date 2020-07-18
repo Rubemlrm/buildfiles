@@ -1,14 +1,10 @@
-#user info
-username: 'rubemlrm'
-home_dir: /home/rubemlrm
-configs_dir: '{{playbook_dir}}/roles/user-configs/files'
-
 #other:
-use_snap: true
+use_snap: false
 enable_docker: true
 restore_desktop_settings: true
 
 copr_repos:
+  - 'zawertun/hack-fonts'
   - 'evana/fira-code-fonts'
   - 'dirkdavidis/papirus-icon-theme'
   - '@dotnet-sig/dotnet'

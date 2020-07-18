@@ -6,11 +6,8 @@ galaxy_info:
   platforms:
   - name: Fedora
     versions:
-      - 28
-      - 29
-  - name: Debian
-    versions:
-      - 9
+      - 32
+      - 31
   galaxy_tags:
     - workstation
 

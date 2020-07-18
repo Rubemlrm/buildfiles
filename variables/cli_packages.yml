@@ -40,5 +40,9 @@ base_packages:
   - 'mesa-libGL-devel'
   - 'mesa-libGLU-devel'
   - 'dotnet-sdk-3.1'
+  - 'hack-fonts'
+  - 'bashtop'
+  - 'fontawesome-fonts'
+
 
 
