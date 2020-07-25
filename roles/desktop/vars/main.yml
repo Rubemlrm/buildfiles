@@ -86,3 +86,37 @@ gnome_settings:
   - "org.gnome.shell.extensions.openweather show-comment-in-forecast true"
   - "org.gnome.shell.extensions.openweather decimal-places 1"
 
+snap_packages:
+  - name: 'code'
+    classic: '--classic'
+  - name: 'bitwarden'
+    classic: ''
+  - name: 'spotify'
+    classic: ''
+  - name: 'slack'
+    classic: '--classic'
+  - name: 'discord'
+    classic: ''
+
+desktop_packages:
+  - 'mesa-libGL-devel'
+  - 'mesa-libGLU-devel'
+  - 'dbus-x11'
+  - 'akmod-nvidia'
+  - 'thunderbird'
+  - 'google-chrome-stable'
+  - 'gnome-tweak-tool'
+  - 'lutris'
+  - 'telegram-desktop'
+  - 'papirus-icon-theme'
+  - 'terminator'
+  - 'libreoffice'
+  - 'libreoffice-langpack-pt-PT'
+  - 'calibre'
+  - 'steam'
+  - 'filezilla'
+  - 'firefox'
+  - 'paper-icon-theme'
+  - 'numix-icon-theme-circle'
+  - 'flat-remix-icon-theme'
+  -  'libappindicator-gtk3'

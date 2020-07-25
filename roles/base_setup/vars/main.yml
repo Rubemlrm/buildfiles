@@ -1,8 +1,6 @@
 base_packages:
   - '@C Development Tools and Libraries'
   - 'acpi'
-  - 'adobe-source-code-pro-fonts'
-  - 'fira-code-fonts'
   - 'aspell'
   - 'aspell-pt'
   - 'automake'
@@ -28,21 +26,29 @@ base_packages:
   - 'wget'
   - 'exfat-utils'
   - 'lm_sensors'
-  - 'mozilla-fira-*'
   - 'screenfetch'
-  - 'libappindicator-gtk3'
   - 'python3-devel'
   - 'python3-pip'
   - 'python3-inotify'
   - 'python3-gobject'
   - 'python3-oauth2client'
   - 'libcurl-devel'
-  - 'mesa-libGL-devel'
-  - 'mesa-libGLU-devel'
   - 'dotnet-sdk-3.1'
-  - 'hack-fonts'
   - 'bashtop'
+
+font_packages:
+  - 'adobe-source-code-pro-fonts'
+  - 'fira-code-fonts'
+  - 'mozilla-fira-*'
   - 'fontawesome-fonts'
+  - 'hack-fonts'
 
+copr_repos:
+  - 'zawertun/hack-fonts'
+  - 'evana/fira-code-fonts'
+  - 'dirkdavidis/papirus-icon-theme'
+  - '@dotnet-sig/dotnet'
 
-
+rpm_repos:
+  - 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_version }}.noarch.rpm'
+  - 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_version }}.noarch.rpm'

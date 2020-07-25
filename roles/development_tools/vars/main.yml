@@ -1,4 +1,4 @@
-development_common_packages:
+docker_packages:
   - 'docker'
   - 'docker-compose'
 

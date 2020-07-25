@@ -1,6 +1,7 @@
 ---
-- include_tasks: common.yml
-  name: Base development utils
+
+- include_tasks: docker.yml
+  name: docker settings
 - include_tasks: javascript.yml
   name: javascript tools and libs
 - include_tasks: php.yml
