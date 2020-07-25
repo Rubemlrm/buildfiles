@@ -1,14 +1,12 @@
 ---
-- name: Install development tools
-  become: true
-  become_user: root
-  become_method: sudo
-  package:
-    name: '{{ item }}'
-    state: 'present'
-  with_items: '{{development_common_packages}}'
+
 - name: Enable Docker service
   block:
+    - name: 'install docker'
+      package:
+        name: '{{ item }}'
+        state: 'present'
+      with_items: '{{docker_packages}}'
     - name: 'just force systemd to reread configs'
       systemd:
         daemon_reload: yes
@@ -22,4 +20,9 @@
         name: docker
         state: started
         enabled: yes
+    - name: 'add user to docker group'
+      user:
+        name: '{{ username }}'
+        groups: docker
+        append: yes
   when: enable_docker ==  "true"

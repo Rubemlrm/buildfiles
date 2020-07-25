@@ -28,3 +28,26 @@
   dnf:
     name: '*'
     state: latest
+- name: configure name servers
+  template:
+    src: resolv.j2
+    dest: /etc/resolv.conf
+- name: Tweak dnf settings
+  template:
+    src: dnf.j2
+    dest: /etc/dnf/dnf.conf
+- name: Install base packages
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: install cli utils
+      package:
+       name: '{{ item }}'
+       state: present
+      with_items: '{{base_packages}}'
+    - name: install fonts
+      package:
+       name: '{{ item }}'
+       state: present
+      with_items: '{{font_packages}}'

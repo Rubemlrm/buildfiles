@@ -1,0 +1,19 @@
+---
+- hosts: workstation
+  vars_files:
+    - variables/dojo.yml
+    - variables/base.yml
+  roles:
+    - { role: base_setup }
+    - { role: user_configs }
+    - { role: development_tools }
+    - { role: desktop}
+
+- hosts: server
+  vars_files:
+    - variables/dojo.yml
+    - variables/base.yml
+  roles:
+    - { role: base_setup }
+    - { role: user_configs }
+    - { role: development_tools }
