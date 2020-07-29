@@ -14,12 +14,73 @@
   file: path={{ home_dir }}/{{item}} state=directory
   with_items:
     - '.config'
+    - '.config/zsh'
+    - '.urxvt'
+    - '.urxvt/ext'
     - 'bin'
+    - '.local/share/fonts'
+
+- name: Copy git config files
+  become: true
+  become_user: '{{username}}'
+  block:
+    - name: copy git ignore
+      template:
+        src: gitignore.j2
+        dest: /home/{{username}}/.gitignore
+    - name: copy git config
+      template:
+        src: gitconfig.j2
+        dest: /home/{{username}}/.gitconfig
+    - name: copy git attributes
+      template:
+        src: gitattributes.j2
+        dest: /home/{{username}}/.gitattributes
 
 - name: Clone Needed Repos
-  git: repo={{item.repo}} dest={{item.dest}}
+  become: true
+  become_user: '{{username}}'
+  git: 
+    repo: '{{item.repo}}' 
+    dest: '{{item.dest}}'
+    depth: 1
   with_items:
     - {
-        repo: 'https://github.com/Rubemlrm/dotfiles.git',
-        dest: '/home/{{username}}/bin/dotfiles',
+        repo: 'https://github.com/robbyrussell/oh-my-zsh.git',
+        dest: '/home/{{username}}/.oh-my-zsh',
       }
+    - {
+        repo: 'https://github.com/muennich/urxvt-perls.git',
+        dest: '/home/{{username}}/.urxvt/ext'
+      }
+    - {
+        repo: 'https://github.com/zsh-users/zsh-autosuggestions',
+        dest: '/home/{{username}}/.config/zsh/plugins/zsh-autosuggestions'
+      }
+    - {
+        repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git',
+        dest: '/home/{{username}}/.config/zsh/plugins/zsh-syntax-highlighting'
+      }
+    - {
+        repo: 'https://github.com/romkatv/powerlevel10k.git',
+        dest: '/home/{{username}}/.config/zsh/themes/powerlevel10k'
+      }
+
+- name: Restore Configs
+  become: true
+  become_user: '{{username}}'
+  file: 
+    src: '{{ playbook_dir }}/roles/user_configs/files/{{ item.origin }}'
+    dest: '{{ home_dir }}/{{ item.dest }}'
+    state: 'link'
+    force: true
+    owner: '{{username}}'
+    group: '{{username}}'
+  with_items:
+    - { origin: 'zsh/zshrc', dest: '.zshrc' }
+    - { origin: 'zsh/p10.zsh', dest: '.p10k.zsh' }
+    - { origin: 'zsh/configs', dest: '.config/zsh/aliases' }
+    - { origin: 'vim/vimrc', dest: '.vimrc' }
+    - { origin: 'vim/vim', dest: '.vim' }
+    - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
+    - { origin: 'tmux/configs', dest: '.config/tmux' }

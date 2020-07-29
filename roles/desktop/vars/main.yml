@@ -119,4 +119,5 @@ desktop_packages:
   - 'paper-icon-theme'
   - 'numix-icon-theme-circle'
   - 'flat-remix-icon-theme'
-  -  'libappindicator-gtk3'
+  - 'libappindicator-gtk3'
+  - 'code'
