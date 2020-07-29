@@ -16,7 +16,6 @@ php_packages:
 composer_packages:
   - 'phpunit/phpunit'
   - 'phing/phing'
-  - 'sebastian/phpcpd'
   - 'phploc/phploc'
   - 'phpmd/phpmd'
   - 'squizlabs/php_codesniffer'

@@ -1,5 +1,5 @@
 [workstation]
 localhost ansible_connection=local
-
+workstation ansible_connection=local
 [server]
 server ansible_connection=local
