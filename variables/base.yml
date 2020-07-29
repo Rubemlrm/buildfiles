@@ -1,4 +1,4 @@
 #other:
-use_snap: false
+use_snap: true
 enable_docker: true
 restore_desktop_settings: true

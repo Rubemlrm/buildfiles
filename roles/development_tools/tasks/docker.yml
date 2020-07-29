@@ -10,11 +10,6 @@
     - name: 'just force systemd to reread configs'
       systemd:
         daemon_reload: yes
-    - name: 'enable docker'
-      systemd:
-        name: docker
-        state: enabled
-        enabled: yes
     - name: 'start docker'
       systemd:
         name: docker
@@ -25,4 +20,4 @@
         name: '{{ username }}'
         groups: docker
         append: yes
-  when: enable_docker ==  "true"
+  when: enable_docker

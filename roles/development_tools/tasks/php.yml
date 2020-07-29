@@ -16,6 +16,9 @@
       raw: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
     - name: Installing needed composer packages
       become_user: '{{ username }}'
-      raw: composer global require {{ item }}
+      composer:
+       command: require
+       global_command: true
+       arguments: '{{item}}'
       with_items: '{{composer_packages}}'
 
