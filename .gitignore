@@ -4,3 +4,4 @@
 /configs/vim/vim/sessions
 *.retry
 colors/
+sessions/

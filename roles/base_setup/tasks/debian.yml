@@ -36,15 +36,28 @@
       package:
         name: '{{ item }}'
         state: present
-      with_items: '{{base_packages}}'
-    - name: install fonts
-      package:
-        name: '{{ item }}'
-        state: present
       with_items: 
-        - 'git' 
-        - 'tmux' 
-        - 'zsh'  
+        - 'acpi'
+        - 'aspell'
+        - 'aspell-pt'
+        - 'automake'
+        - 'cmake'
+        - 'ctags'
+        - 'gcc'
+        - 'git'
+        - 'htop'
+        - 'powerline'
+        - 'ruby'
+        - 'tmux'
+        - 'vim'
+        - 'nano'
+        - 'zsh'
+        - 'numlockx'
+        - 'wget'
+        - 'exfat-utils'
+        - 'screenfetch'
+        - 'python3-pip'
+        - 'python3-oauth2client' 
         - 'curl' 
         - 'wget' 
         - 'vim' 
@@ -55,4 +68,5 @@
         - 'libssl-dev' 
         - 'libreadline-dev' 
         - 'zlib1g-dev'
+        
 
