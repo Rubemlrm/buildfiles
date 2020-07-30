@@ -18,7 +18,7 @@
     - { role: user_configs }
     - { role: development_tools }
 
-- hosts: rasbperry
+- hosts: raspberry
   vars_files:
     - variables/rpi.yml
     - variables/base.yml
