@@ -66,6 +66,11 @@
         dest: '/home/{{username}}/.config/zsh/themes/powerlevel10k'
       }
 
+- name: Download file and force basic auth
+  get_url:
+    url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf'
+    dest: '/home/{{username}}/.local/share/fonts/Droid Sans Mono for Powerline Nerd Font Complete.otf'
+
 - name: Restore Configs
   become: true
   become_user: '{{username}}'

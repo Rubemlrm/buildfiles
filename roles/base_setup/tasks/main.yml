@@ -1,53 +1,8 @@
 ---
-- name: Add Custom repos for Fedora Based
-  become: true
-  become_user: root
-  become_method: sudo
-  block:
-    - name: 'install copr tools'
-      dnf:
-        name: ['fedora-workstation-repositories', 'dnf-plugins-core']
-        state: present
-    - name: 'set copr repos'
-      command: 'dnf copr enable {{item}} -y'
-      with_items: '{{copr_repos}}'
 
-    - name: 'set workstation repos'
-      command: 'dnf config-manager --set-enabled  {{item}} -y'
-      with_items:
-        - 'google-chrome'
-    - name: 'set repos'
-      dnf:
-        name: '{{rpm_repos}}'
-        state: present
-      with_items: '{{rpm_repos}}'
-- name: Upgrade Fedora
-  become: true
-  become_user: root
-  become_method: sudo
-  dnf:
-    name: '*'
-    state: latest
-- name: configure name servers
-  template:
-    src: resolv.j2
-    dest: /etc/resolv.conf
-- name: Tweak dnf settings
-  template:
-    src: dnf.j2
-    dest: /etc/dnf/dnf.conf
-- name: Install base packages
-  become: true
-  become_user: root
-  become_method: sudo
-  block:
-    - name: install cli utils
-      package:
-       name: '{{ item }}'
-       state: present
-      with_items: '{{base_packages}}'
-    - name: install fonts
-      package:
-       name: '{{ item }}'
-       state: present
-      with_items: '{{font_packages}}'
+- include: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include: fedora.yml
+  when: ansible_distribution == 'Fedora'
+
