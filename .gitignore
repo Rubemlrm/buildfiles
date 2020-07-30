@@ -3,3 +3,4 @@
 /configs/zsh/configs/development.zsh
 /configs/vim/vim/sessions
 *.retry
+colors/

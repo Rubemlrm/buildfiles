@@ -17,3 +17,11 @@
     - { role: base_setup }
     - { role: user_configs }
     - { role: development_tools }
+
+- hosts: rasbperry
+  vars_files:
+    - variables/rpi.yml
+    - variables/base.yml
+  roles:
+    - { role: base_setup }
+    - { role: user_configs }
