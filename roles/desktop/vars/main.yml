@@ -1,6 +1,6 @@
 ---
 
-gnome_themes:
+gtk_themes:
   - 'flat-remix-gtk2-theme'
   - 'flat-remix-gtk3-theme'
   - 'numix-gtk-theme'
@@ -87,16 +87,12 @@ gnome_settings:
   - "org.gnome.shell.extensions.openweather decimal-places 1"
 
 snap_packages:
-  - name: 'code'
-    classic: '--classic'
   - name: 'bitwarden'
     classic: ''
   - name: 'spotify'
     classic: ''
   - name: 'slack'
     classic: '--classic'
-  - name: 'discord'
-    classic: ''
 
 desktop_packages:
   - 'mesa-libGL-devel'
@@ -121,3 +117,4 @@ desktop_packages:
   - 'flat-remix-icon-theme'
   - 'libappindicator-gtk3'
   - 'code'
+  - 'discord'

@@ -12,6 +12,8 @@
 
 - name: Created base folders for configs
   file: path={{ home_dir }}/{{item}} state=directory
+  become: true
+  become_user: '{{username}}'
   with_items:
     - '.config'
     - '.config/zsh'
@@ -65,8 +67,12 @@
         repo: 'https://github.com/romkatv/powerlevel10k.git',
         dest: '/home/{{username}}/.config/zsh/themes/powerlevel10k'
       }
+    - {
+        repo: 'https://github.com/rbenv/rbenv.git',
+        dest: '/home/{{username}}/.rbenv'
+      }
 
-- name: Download file and force basic auth
+- name: Download custom fonts
   get_url:
     url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf'
     dest: '/home/{{username}}/.local/share/fonts/Droid Sans Mono for Powerline Nerd Font Complete.otf'

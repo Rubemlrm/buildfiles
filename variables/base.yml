@@ -1,4 +1,6 @@
 #other:
 use_snap: true
 enable_docker: true
-restore_desktop_settings: true
+use_gnome: false
+enable_wayland: false
+restore_desktop_settings: false

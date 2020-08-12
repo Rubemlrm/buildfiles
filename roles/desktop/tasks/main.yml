@@ -1,94 +1,14 @@
 ---
-- name: Enable wayland
-  become: true
-  become_user: root
-  become_method: sudo
-  template:
-    src: '{{item.file}}'
-    dest: '{{item.dest}}'
-    owner: root
-    group: root
-    mode: '0644'
-  with_items:
-    - {
-        file: 'gdm_custom.j2',
-        dest: '/etc/gdm/custom.conf',
-      }
-    - {
-        file: 'gdm_rules.j2',
-        dest: '/usr/lib/udev/rules.d/61-gdm.rules',
-      }
 
-- name: Install desktop packages
-  become: true
-  become_user: root
-  become_method: sudo
-  package:
-    name: '{{ item }}'
-    state: present
-  with_items: '{{desktop_packages}}'
-  when: desktop_packages is defined
-
-- name: setup snap packages
-  block:
-    - name: Install snap service and packages
-      become: true
-      become_user: root
-      become_method: sudo
-      package: name=snapd
-        state=present
-    - name: 'enable classic mode for snap'
-      raw: 'ln -sf /var/lib/snapd/snap /snap'
-    - name: just force systemd to reread configs
-      systemd:
-        daemon_reload: yes
-    - name: 'enable snap'
-      systemd:
-        name: snapd
-        state: started
-        enabled: yes
-    - name: 'install with snap'
-      command: snap install {{item.name}} {{item.classic}}
-      with_items: '{{snap_packages}}'
+- include_tasks: snaps.yml
+  name: snaps
   when: use_snap
+- include_tasks: gnome.yml
+  name: gnome setup
+  when: use_gnome
+- include_tasks: wayland.yml
+  name: wayland setup
+  when: enable_wayland
+- include_tasks: utils.yml
+  name: desktop utils install
 
-- name: set gnome extensions
-  block:
-    - name: install gnome themes
-      become: true
-      become_user: root
-      become_method: sudo
-      package:
-        name: '{{ item }}'
-        state: present
-      with_items: '{{gnome_themes}}'
-      when: gnome_themes is defined
-    - name: install gnome extension manager
-      raw: wget -O gnome-shell-extension-installer https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer
-    - name: install gnome-extension manager permissions
-      raw: chmod +x gnome-shell-extension-installer
-    - name: end gnome extension manager process
-      raw: mv gnome-shell-extension-installer /usr/bin/
-    - name: install gnome extensions
-      raw: gnome-shell-extension-installer {{item}}
-      become: true
-      become_user: '{{username}}'
-      with_items: '{{gnome_extensions}}'
-    - name: copy missing schemas
-      raw: cp /home/{{username}}/.local/share/gnome-shell/extensions/{{item}} /usr/share/glib-2.0/schemas
-      become: true
-      become_method: sudo
-      become_user: root
-      with_items: '{{gnome_schemas_copy}}'
-    - name: rebuild gnome schemas cache
-      raw: glib-compile-schemas /usr/share/glib-2.0/schemas/
-      become: true
-      become_method: sudo
-      become_user: root
-    - name: restore gnome settings
-      shell: dbus-launch gsettings set {{item}}
-      become: true
-      become_user: '{{username}}'
-      with_items: '{{gnome_settings}}'
-      ignore_errors: yes
-  when: restore_desktop_settings
