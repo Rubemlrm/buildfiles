@@ -1,0 +1,31 @@
+- name: set gnome extensions
+  block:
+    - name: install gnome extension manager
+      raw: wget -O gnome-shell-extension-installer https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer
+    - name: install gnome-extension manager permissions
+      raw: chmod +x gnome-shell-extension-installer
+    - name: end gnome extension manager process
+      raw: mv gnome-shell-extension-installer /usr/bin/
+    - name: install gnome extensions
+      raw: gnome-shell-extension-installer {{item}}
+      become: true
+      become_user: '{{username}}'
+      with_items: '{{gnome_extensions}}'
+    - name: copy missing schemas
+      raw: cp /home/{{username}}/.local/share/gnome-shell/extensions/{{item}} /usr/share/glib-2.0/schemas
+      become: true
+      become_method: sudo
+      become_user: root
+      with_items: '{{gnome_schemas_copy}}'
+    - name: rebuild gnome schemas cache
+      raw: glib-compile-schemas /usr/share/glib-2.0/schemas/
+      become: true
+      become_method: sudo
+      become_user: root
+    - name: restore gnome settings
+      shell: dbus-launch gsettings set {{item}}
+      become: true
+      become_user: '{{username}}'
+      with_items: '{{gnome_settings}}'
+      ignore_errors: yes
+  when: restore_desktop_settings

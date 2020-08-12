@@ -11,7 +11,8 @@
 
 - name: Install nodejs modules
   become: true
-  become_user: '{{username}}'
+  become_user: root
+  become_method: sudo
   npm:
     name: '{{ item }}'
     global: yes

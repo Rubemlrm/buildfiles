@@ -1,0 +1,21 @@
+---
+
+- name: Enable wayland
+  become: true
+  become_user: root
+  become_method: sudo
+  template:
+    src: '{{item.file}}'
+    dest: '{{item.dest}}'
+    owner: root
+    group: root
+    mode: '0644'
+  with_items:
+    - {
+        file: 'gdm_custom.j2',
+        dest: '/etc/gdm/custom.conf',
+      }
+    - {
+        file: 'gdm_rules.j2',
+        dest: '/usr/lib/udev/rules.d/61-gdm.rules',
+      }

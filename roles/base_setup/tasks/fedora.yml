@@ -11,7 +11,6 @@
     - name: 'set copr repos'
       command: 'dnf copr enable {{item}} -y'
       with_items: '{{copr_repos}}'
-
     - name: 'set workstation repos'
       command: 'dnf config-manager --set-enabled  {{item}} -y'
       with_items:
@@ -21,6 +20,15 @@
         name: '{{rpm_repos}}'
         state: present
       with_items: '{{rpm_repos}}'
+    - name: 'setup vscode'
+      yum_repository:
+        name: vscode
+        description: vscode repo
+        file: vscode
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgcheck: yes
+        enabled: yes
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
 - name: Upgrade Fedora
   become: true
   become_user: root
