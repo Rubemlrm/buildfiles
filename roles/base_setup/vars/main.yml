@@ -1,4 +1,5 @@
 base_packages:
+  - '@virtualization'
   - '@C Development Tools and Libraries'
   - 'acpi'
   - 'aspell'
