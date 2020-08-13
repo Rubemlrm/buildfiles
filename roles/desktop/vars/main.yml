@@ -118,3 +118,23 @@ desktop_packages:
   - 'libappindicator-gtk3'
   - 'code'
   - 'discord'
+  - 'gimp'
+  - 'timeshift'
+
+kde_packages:
+  - 'kio-gdrive'
+  - 'kaccounts-providers'
+
+packages_to_purge:
+  - 'calligra-core'
+  - 'calligra-sheets'
+  - 'kmail'
+  - 'kaddressbook'
+  - 'ktorrent'
+  - 'grantlee-editor'
+  - 'krdc'
+  - 'kget'
+  - 'konversation'
+  - 'falkon'
+  - 'krfb'
+  - 'pim-sieve-editor'
