@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: YAML linting
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -27,4 +27,4 @@ jobs:
       env:
            VALIDATE_ALL_CODEBASE: true
            VALIDATE_YAML: true
-           YAML_CONFIG_FILE: '.yamllint' 
+           YAML_CONFIG_FILE: '.yamllint'
