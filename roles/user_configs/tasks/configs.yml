@@ -1,0 +1,33 @@
+---
+
+- name: Created base folders for configs
+  file: path={{ home_dir }}/{{item}} state=directory
+  become: true
+  become_user: '{{username}}'
+  with_items:
+    - tools
+    - '.config'
+    - '.config/zsh'
+    - '.urxvt'
+    - '.urxvt/ext'
+    - 'bin'
+    - '.local/share/fonts'
+
+- name: Restore Configs
+  become: true
+  become_user: '{{username}}'
+  file:
+    src: '{{ playbook_dir }}/roles/user_configs/files/{{ item.origin }}'
+    dest: '{{ home_dir }}/{{ item.dest }}'
+    state: 'link'
+    force: true
+    owner: '{{username}}'
+    group: '{{username}}'
+  with_items:
+    - { origin: 'zsh/zshrc', dest: '.zshrc' }
+    - { origin: 'zsh/p10.zsh', dest: '.p10k.zsh' }
+    - { origin: 'zsh/configs', dest: '.config/zsh/aliases' }
+    - { origin: 'vim/vimrc', dest: '.vimrc' }
+    - { origin: 'vim/vim', dest: '.vim' }
+    - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
+    - { origin: 'tmux/configs', dest: '.config/tmux' }

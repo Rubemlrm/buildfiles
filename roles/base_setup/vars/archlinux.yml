@@ -1,0 +1,31 @@
+base_packages:
+ - vim
+ - git
+ - tmux
+ - base-devel
+ - binutils
+ - make
+ - gcc
+ - fakeroot
+ - powerline
+ - powerline-vim
+ - powerline-fonts
+ - screenfetch
+ - scrot
+ - rxvt-unicode
+ - bashtop
+ - nano
+ - wget
+ - curl
+ - rsync
+ - shellcheck
+ - intel-ucode
+ - ufw
+ - linux-headers
+
+font_packages:
+  - adobe-source-code-pro-fonts
+  - ttf-fira-code
+  - ttf-hack
+  - ttf-fira-sans
+  - ttf-font-awesome

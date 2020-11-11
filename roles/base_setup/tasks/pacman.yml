@@ -1,0 +1,19 @@
+- name: Setup Pacman
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: update cache
+      pacman:
+        update_cache: yes
+    - name: install pacman tools
+      package:
+        name: '{{item}}'
+        state: present
+      with_items:
+        - pacman-contrib
+        - base-devel
+    - name: upgrade system
+      pacman:
+        upgrade: true
+        update_cache: true

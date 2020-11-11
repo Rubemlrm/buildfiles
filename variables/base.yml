@@ -1,7 +1,5 @@
 #other:
 use_snap: true
 enable_docker: true
-use_gnome: false
 use_kde: true
-enable_wayland: false
-restore_desktop_settings: false
+ssh_port: 44

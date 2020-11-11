@@ -1,0 +1,29 @@
+---
+- name: copy ssh custom configs
+  template:
+    src: '{{item.origin_name}}'
+    dest: /etc/ssh/{{item.file_name}}
+  with_items:
+    - origin_name: ssh_config.j2
+      file_name: ssh_config
+    - origin_name: sshd_config.j2
+      file_name: sshd_config
+  become: true
+  become_user: root
+  become_method: sudo
+  notify:
+    - enable openssh server
+    - restart openssh server
+
+- name: setup selinux for custom ssh port
+  seport:
+    ports: "{{ssh_port}}"
+    proto: "tcp"
+    setype: "ssh_port_t"
+    state: "present"
+  when: ansible_distribution == 'Fedora'
+  become: true
+  become_user: root
+  become_method: sudo
+  notify:
+   - restart openssh server

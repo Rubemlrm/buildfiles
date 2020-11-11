@@ -38,3 +38,8 @@
 - **Steam**
 - **Spotify**
 - **etc**
+
+To run this:
+
+`sudo ansible-galaxy install -r requirements.yml `
+`sudo ansible-playbook setup.yml -i inventory --ask-vault-pass --limit "host"`

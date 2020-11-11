@@ -4,24 +4,25 @@
     - variables/dojo.yml
     - variables/base.yml
   roles:
-    - { role: base_setup }
-    - { role: user_configs }
-    - { role: development_tools }
-    - { role: desktop}
+    - base_setup
+    - user_configs
+    - development_tools
+    - kewlfft.aur
+    - desktop
 
 - hosts: server
   vars_files:
     - variables/dojo.yml
     - variables/base.yml
   roles:
-    - { role: base_setup }
-    - { role: user_configs }
-    - { role: development_tools }
+    - base_setup
+    - user_configs
+    - development_tools
 
 - hosts: raspberry
   vars_files:
     - variables/rpi.yml
     - variables/base.yml
   roles:
-    - { role: base_setup }
-    - { role: user_configs }
+    - base_setup
+    - user_configs

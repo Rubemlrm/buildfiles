@@ -1,0 +1,38 @@
+---
+- name: Clone Needed Repos
+  become: true
+  become_user: '{{username}}'
+  git:
+    repo: '{{item.repo}}'
+    dest: '{{item.dest}}'
+    depth: 1
+  with_items:
+    - {
+        repo: 'https://github.com/robbyrussell/oh-my-zsh.git',
+        dest: '/home/{{username}}/.oh-my-zsh',
+      }
+    - {
+        repo: 'https://github.com/muennich/urxvt-perls.git',
+        dest: '/home/{{username}}/.urxvt/ext'
+      }
+    - {
+        repo: 'https://github.com/zsh-users/zsh-autosuggestions',
+        dest: '/home/{{username}}/.config/zsh/plugins/zsh-autosuggestions'
+      }
+    - {
+        repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git',
+        dest: '/home/{{username}}/.config/zsh/plugins/zsh-syntax-highlighting'
+      }
+    - {
+        repo: 'https://github.com/romkatv/powerlevel10k.git',
+        dest: '/home/{{username}}/.config/zsh/themes/powerlevel10k'
+      }
+    - {
+        repo: 'https://github.com/rbenv/rbenv.git',
+        dest: '/home/{{username}}/.rbenv'
+      }
+
+- name: Download custom fonts
+  get_url:
+    url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf'
+    dest: '/home/{{username}}/.local/share/fonts/Droid Sans Mono for Powerline Nerd Font Complete.otf'
