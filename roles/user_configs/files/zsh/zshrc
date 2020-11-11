@@ -40,7 +40,7 @@ source ~/.config/zsh/aliases/*
 source $ZSH/oh-my-zsh.sh
 # fix to load snap apps
 emulate sh -c '. /etc/profile'
-stty -ixon
+[[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/rubemlrm/.config/composer/vendor/bin:/home/rubemlrm/.local/bin:/home/rubemlrm/.rbenv/bin"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

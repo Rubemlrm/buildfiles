@@ -1,8 +1,18 @@
 ---
+- name: Load Distro Variables
+  include_vars:
+    file: '{{ansible_os_family | lower}}.yml'
 
-- include: debian.yml
+- include: apt.yml
   when: ansible_os_family == 'Debian'
 
-- include: fedora.yml
+- include: dnf.yml
   when: ansible_distribution == 'Fedora'
 
+- include: pacman.yml
+  when: ansible_distribution == 'Archlinux'
+
+- include: openssh.yml
+- include: resolv.yml
+- include: packages.yml
+- include: ufw.yml

@@ -1,0 +1,15 @@
+---
+- name: Setup UFW
+  become: true
+  become_user: root
+  become_method: sudo
+  block:
+    - name: enable ufw
+      ufw:
+        state: enabled
+        policy: allow
+        logging: on
+    - name: Open OpenSSH port
+      ufw:
+        rule: allow
+        port: '{{ssh_port}}'

@@ -8,6 +8,7 @@
     state: present
   with_items:
     - 'nodejs'
+    - 'npm'
 
 - name: Install nodejs modules
   become: true
@@ -17,4 +18,3 @@
     name: '{{ item }}'
     global: yes
   with_items: '{{nodejs_packages}}'
-

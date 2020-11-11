@@ -2,22 +2,24 @@
 
 - name: setup snap packages
   block:
+    - aur: name=snapd
+      become: true
+      become_user: '{{username}}'
     - name: Install snap service and packages
       become: true
       become_user: root
       become_method: sudo
       package: name=snapd
         state=present
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Fedora'
     - name: 'enable classic mode for snap'
       raw: 'ln -sf /var/lib/snapd/snap /snap'
     - name: just force systemd to reread configs
       systemd:
         daemon_reload: yes
-    - name: 'enable snap'
-      systemd:
-        name: snapd
-        state: started
-        enabled: yes
+      notify:
+        - start snapd
+        - enable snapd
     - name: 'install with snap'
       command: snap install {{item.name}} {{item.classic}}
       with_items: '{{snap_packages}}'

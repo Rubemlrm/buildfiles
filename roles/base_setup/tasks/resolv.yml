@@ -1,0 +1,7 @@
+- name: configure name servers
+  template:
+    src: resolv.j2
+    dest: /etc/resolv.conf
+  become: true
+  become_user: root
+  become_method: sudo

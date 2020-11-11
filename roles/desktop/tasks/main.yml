@@ -3,14 +3,8 @@
 - include_tasks: snaps.yml
   name: snaps
   when: use_snap
-- include_tasks: gnome.yml
-  name: gnome setup
-  when: use_gnome
 - include_tasks: kde.yml
   name: kde setup
   when: use_kde
-- include_tasks: wayland.yml
-  name: wayland setup
-  when: enable_wayland
 - include_tasks: utils.yml
   name: desktop utils install

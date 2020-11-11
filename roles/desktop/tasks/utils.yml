@@ -19,3 +19,9 @@
     state: present
   with_items: '{{gtk_themes}}'
   when: gtk_themes is defined
+
+- aur: name={{item}}
+  become: true
+  become_user: '{{username}}'
+  with_items: aur_packages
+  when: aur_packages is defined

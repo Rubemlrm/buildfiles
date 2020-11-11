@@ -1,0 +1,41 @@
+gtk_themes:
+  - flat-remix-gtk2-theme
+  - flat-remix-gtk3-theme
+  - numix-gtk-theme
+
+kde_packages:
+  - plasma
+  - spectacle
+  - dolphin
+  - dolphin-plugins
+  - ark
+  - kio-extras
+  - kio-gdrive
+  - okular
+  - kaccounts-providers
+  - sddm
+  - sdd-kcm
+
+desktop_packages:
+  - chromium
+  - thunderbird
+  - google-chrome-stable
+  - lutris
+  - telegram-desktop
+  - papirus-icon-theme
+  - terminator
+  - libreoffice-still
+  - libreoffice-still-pt
+  - calibre
+  - filezilla
+  - firefox
+  - firefox-developer-edition
+  - code
+  - discord
+  - gimp
+  - timeshift
+
+aur_packages:
+  - bitwarden
+  - visual-studio-code-insiders
+  - rpi-imager
