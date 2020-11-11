@@ -13,7 +13,7 @@
       copy:
         dest: '/home/{{username}}/.ssh/{{item.name}}_rsa'
         content: '{{item.private }}'
-        mode: '0644'
+        mode: '0600'
       with_items: "{{ ssh_hosts }}"
     - name: restore ssh keys
       copy:
