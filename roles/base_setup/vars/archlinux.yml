@@ -26,6 +26,10 @@ base_packages:
  - wpa_supplicant
  - dotnet-runtime
  - dotnet-sdk
+ - reflector
+ - netctl
+ - openvpn
+ - wpa_supplicant
 
 font_packages:
   - adobe-source-code-pro-fonts
