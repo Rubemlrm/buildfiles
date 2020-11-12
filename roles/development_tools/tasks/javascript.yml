@@ -1,19 +1,27 @@
 ---
-- name: Install nodejs
+- name: Install nvm
   become: true
-  become_user: root
-  become_method: sudo
-  package:
-    name: '{{ item }}'
-    state: present
-  with_items:
-    - 'nodejs'
-    - 'npm'
+  become_user: '{{username}}'
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+  args:
+    creates: "/home/{{ username }}/.nvm/nvm.sh"
+
+- name: "install node"
+  become: true
+  become_user: '{{username}}'
+  shell: >
+    . "/home/{{ username }}/.nvm/nvm.sh" && nvm install {{ item }}
+  args:
+    executable: /bin/bash
+    chdir: "/home/{{ username }}"
+    creates: "/home/{{ username }}/.nvm/versions/{{ item }}"
+  loop:
+    - node
 
 - name: Install nodejs modules
   become: true
-  become_user: root
-  become_method: sudo
+  become_user: '{{username}}'
   npm:
     name: '{{ item }}'
     global: yes

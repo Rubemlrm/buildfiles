@@ -1,12 +1,13 @@
 ---
 
 - name: Add system user
+  become: true
+  become_user: root
+  become_method: sudo
   user:
     name: '{{ username }}'
     password: "{{ password | password_hash('sha512') }}"
     generate_ssh_key: yes
     ssh_key_bits: 2048
     ssh_key_file: .ssh/id_rsa
-- name: Change user shell to znc
-  raw: chsh {{ username  }} -s /usr/bin/zsh
-  ignore_errors: yes
+    shell: '/usr/bin/zsh'

@@ -22,6 +22,10 @@ base_packages:
  - intel-ucode
  - ufw
  - linux-headers
+ - netctl
+ - wpa_supplicant
+ - dotnet-runtime
+ - dotnet-sdk
 
 font_packages:
   - adobe-source-code-pro-fonts

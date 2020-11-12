@@ -1,24 +1,32 @@
 ---
-- name: Install php development tools
-  become: true
-  become_user: root
-  package:
-    name: '{{ item }}'
-    state: present
-  with_items: '{{php_packages}}'
 
 - name: setup php composer and needed tools
   block:
+    - name: Install php development tools
+      become: true
+      become_user: root
+      package:
+        name: '{{ item }}'
+        state: present
+      with_items: '{{php_packages}}'
+    - name: install extra php packages
+      become: true
+      become_user: root
+      package:
+        name: '{{ item }}'
+        state: present
+      with_items: '{{php_extra_packages}}'
+      when: php_extra_packages is defined
     - name: Installing composer
       become: true
       become_user: root
       become_method: sudo
       raw: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
     - name: Installing needed composer packages
+      become: true
       become_user: '{{ username }}'
       composer:
        command: require
        global_command: true
        arguments: '{{item}}'
       with_items: '{{composer_packages}}'
-

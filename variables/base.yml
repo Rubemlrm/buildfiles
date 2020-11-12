@@ -1,5 +1,4 @@
 #other:
-use_snap: true
+use_snap: false
 enable_docker: true
 use_kde: true
-ssh_port: 44
