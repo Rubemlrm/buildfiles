@@ -15,11 +15,11 @@
 
 - name: Restore Configs
   become: true
-  become_user: '{{username}}'
-  file:
+  become_user: root
+  become_method: sudo
+  copy:
     src: '{{ playbook_dir }}/roles/user_configs/files/{{ item.origin }}'
     dest: '{{ home_dir }}/{{ item.dest }}'
-    state: 'link'
     force: true
     owner: '{{username}}'
     group: '{{username}}'
