@@ -8,3 +8,8 @@
     name: sshd
     state: started
   become: true
+- name: enable cronie server
+  systemd:
+    name: cronie
+    state: started
+  become: true

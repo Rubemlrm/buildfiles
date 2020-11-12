@@ -1,7 +1,4 @@
 gtk_themes:
-  - flat-remix-gtk2-theme
-  - flat-remix-gtk3-theme
-  - numix-gtk-theme
 
 kde_packages:
   - plasma
@@ -14,12 +11,11 @@ kde_packages:
   - okular
   - kaccounts-providers
   - sddm
-  - sdd-kcm
+  - sddm-kcm
 
 desktop_packages:
   - chromium
   - thunderbird
-  - google-chrome-stable
   - lutris
   - telegram-desktop
   - papirus-icon-theme
@@ -34,6 +30,8 @@ desktop_packages:
   - discord
   - gimp
   - timeshift
+  - steam
+  - partitionmanager
 
 aur_packages:
   - bitwarden

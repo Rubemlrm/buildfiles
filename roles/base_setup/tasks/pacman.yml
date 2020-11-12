@@ -13,6 +13,8 @@
       with_items:
         - pacman-contrib
         - base-devel
+        - cronie
+      notify: enable cronie server
     - name: upgrade system
       pacman:
         upgrade: true

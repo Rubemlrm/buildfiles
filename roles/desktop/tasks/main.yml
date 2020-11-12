@@ -1,5 +1,7 @@
 ---
-
+- name: Load Distro Variables
+  include_vars:
+    file: '{{ansible_os_family | lower}}.yml'
 - include_tasks: snaps.yml
   name: snaps
   when: use_snap
