@@ -8,7 +8,7 @@
       ufw:
         state: enabled
         policy: allow
-        logging: on
+        logging: true
     - name: Open OpenSSH port
       ufw:
         rule: allow

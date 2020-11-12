@@ -6,5 +6,5 @@
 - name: enable openssh server
   systemd:
     name: sshd
-    state: enable
+    state: started
   become: true

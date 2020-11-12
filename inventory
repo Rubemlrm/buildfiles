@@ -3,7 +3,7 @@ localhost ansible_connection=local
 workstation ansible_connection=local
 
 [raspberry]
-raspberry ansible_connection=local
+DojoPi ansible_connection=ssh ansible_user=rubemlrm ansible_port=44
 
 [server]
 server ansible_connection=local

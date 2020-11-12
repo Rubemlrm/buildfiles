@@ -26,3 +26,4 @@
   roles:
     - base_setup
     - user_configs
+    - development_tools

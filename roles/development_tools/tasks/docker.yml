@@ -1,6 +1,9 @@
 ---
 
 - name: Enable Docker service
+  become: true
+  become_user: root
+  become_method: sudo
   block:
     - name: 'install docker'
       package:

@@ -19,7 +19,3 @@ nodejs_packages:
   - jshint
   - webpack
   - eslint
-
-python_packages:
-  - 'python-virtualenvwrapper'
-  - 'python-pip'
