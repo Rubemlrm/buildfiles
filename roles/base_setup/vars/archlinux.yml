@@ -30,6 +30,7 @@ base_packages:
  - netctl
  - openvpn
  - wpa_supplicant
+ - cronie
 
 font_packages:
   - adobe-source-code-pro-fonts
