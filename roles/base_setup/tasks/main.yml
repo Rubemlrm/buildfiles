@@ -1,7 +1,7 @@
 ---
 - name: Load Distro Variables
   include_vars:
-    file: '{{ansible_os_family | lower}}.yml'
+    file: '{{ansible_distribution | lower}}.yml'
 
 - include: apt.yml
   when: ansible_os_family == 'Debian'
