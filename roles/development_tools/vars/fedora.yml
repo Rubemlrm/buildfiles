@@ -6,3 +6,6 @@ php_extra_packages:
   - 'php-zip'
   - 'php-mbstring'
   - 'php-xml'
+
+python_packages:
+  - python-pip

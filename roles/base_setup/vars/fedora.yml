@@ -36,6 +36,8 @@ base_packages:
   - libcurl-devel
   - dotnet-sdk-3.1
   - bashtop
+  - ufw
+  - npm
 
 font_packages:
   - adobe-source-code-pro-fonts
@@ -51,5 +53,5 @@ copr_repos:
   - '@dotnet-sig/dotnet'
 
 rpm_repos:
-  - 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_version }}.noarch.rpm'
-  - 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_version }}.noarch.rpm'
+  - 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version }}.noarch.rpm'
+  - 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version }}.noarch.rpm'
