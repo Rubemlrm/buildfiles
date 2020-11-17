@@ -1,7 +1,7 @@
 - name: enable sddm
   systemd:
     name: sddm
-    state: enable
+    state: started
   become: true
 
 - name: start snapd
@@ -13,5 +13,5 @@
 - name: enable snapd
   systemd:
     name: snapd
-    state: enable
+    state: started
   become: true
