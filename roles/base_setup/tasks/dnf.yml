@@ -19,6 +19,7 @@
       dnf:
         name: '{{rpm_repos}}'
         state: present
+        disable_gpg_check: true
       with_items: '{{rpm_repos}}'
     - name: 'setup vscode'
       yum_repository:
