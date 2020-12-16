@@ -1,5 +1,5 @@
 ---
-- name: Clone Needed Repos
+- name: Clone Needed ZSH Repos
   become: true
   become_user: '{{username}}'
   git:
@@ -10,10 +10,6 @@
     - {
         repo: 'https://github.com/robbyrussell/oh-my-zsh.git',
         dest: '/home/{{username}}/.oh-my-zsh',
-      }
-    - {
-        repo: 'https://github.com/muennich/urxvt-perls.git',
-        dest: '/home/{{username}}/.urxvt/ext'
       }
     - {
         repo: 'https://github.com/zsh-users/zsh-autosuggestions',
@@ -32,6 +28,28 @@
         dest: '/home/{{username}}/.rbenv'
       }
 
+- name: Created base folders for zsh configs
+  file: path={{ home_dir }}/{{item}} state=directory
+  become: true
+  become_user: '{{username}}'
+  with_items:
+    - '.config'
+    - '.config/zsh'
+
+- name: Restore zsh Configs
+  become: true
+  become_user: root
+  become_method: sudo
+  copy:
+    src: '{{ playbook_dir }}/roles/user_configs/files/{{ item.origin }}'
+    dest: '{{ home_dir }}/{{ item.dest }}'
+    force: true
+    owner: '{{username}}'
+    group: '{{username}}'
+  with_items:
+    - { origin: 'zsh/zshrc', dest: '.zshrc' }
+    - { origin: 'zsh/p10.zsh', dest: '.p10k.zsh' }
+    - { origin: 'zsh/configs', dest: '.config/zsh/aliases' }
 - name: Download custom fonts
   become: true
   become_user: '{{username}}'

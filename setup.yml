@@ -1,8 +1,8 @@
 ---
 - hosts: workstation
   vars_files:
-    - variables/dojo.yml
     - variables/base.yml
+    - variables/workstation.yml
   roles:
     - base_setup
     - user_configs
@@ -12,8 +12,8 @@
 
 - hosts: server
   vars_files:
-    - variables/dojo.yml
     - variables/base.yml
+    - variables/workstation.yml
   roles:
     - base_setup
     - user_configs
@@ -21,8 +21,16 @@
 
 - hosts: raspberry
   vars_files:
-    - variables/rpi.yml
     - variables/base.yml
+    - variables/raspberry.yml
+  roles:
+    - base_setup
+    - user_configs
+    - development_tools
+
+- hosts: wsl
+  vars_files:
+    - variables/wsl.yml
   roles:
     - base_setup
     - user_configs

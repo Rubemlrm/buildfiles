@@ -2,8 +2,8 @@
 
 - include: adduser.yml
 - include: git.yml
-- include: configs.yml
-- include: clone_repos.yml
-
+- include: tmux.yml
+- include: zsh.yml
+- include: vim.yml
 - include: yay.yml
   when: ansible_distribution == 'Archlinux'

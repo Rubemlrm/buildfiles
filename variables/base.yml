@@ -1,4 +1,9 @@
+
+#systems to enable
+use_openssh: false
+use_firewall: false
+use_docker: false
+
 #other:
 use_snap: false
-enable_docker: true
-use_kde: true
+use_kde: false

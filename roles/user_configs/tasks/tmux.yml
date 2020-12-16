@@ -1,19 +1,15 @@
+
 ---
 
-- name: Created base folders for configs
+- name: Created base folders for tmux configs
   file: path={{ home_dir }}/{{item}} state=directory
   become: true
   become_user: '{{username}}'
   with_items:
-    - tools
-    - '.config'
-    - '.config/zsh'
-    - '.urxvt'
-    - '.urxvt/ext'
-    - 'bin'
-    - '.local/share/fonts'
+    - '.config/tmux'
+    - '.config/tmux/configs'
 
-- name: Restore Configs
+- name: Restore tmux Configs
   become: true
   become_user: root
   become_method: sudo
@@ -24,10 +20,5 @@
     owner: '{{username}}'
     group: '{{username}}'
   with_items:
-    - { origin: 'zsh/zshrc', dest: '.zshrc' }
-    - { origin: 'zsh/p10.zsh', dest: '.p10k.zsh' }
-    - { origin: 'zsh/configs', dest: '.config/zsh/aliases' }
-    - { origin: 'vim/vimrc', dest: '.vimrc' }
-    - { origin: 'vim/vim', dest: '.vim' }
     - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
     - { origin: 'tmux/configs', dest: '.config/tmux' }
