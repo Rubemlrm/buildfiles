@@ -23,4 +23,4 @@
         name: '{{ username }}'
         groups: docker
         append: yes
-  when: enable_docker
+  when: use_docker

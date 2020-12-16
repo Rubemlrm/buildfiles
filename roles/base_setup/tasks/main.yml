@@ -13,6 +13,8 @@
   when: ansible_distribution == 'Archlinux'
 
 - include: openssh.yml
+  when: use_openssh == true
 - include: resolv.yml
 - include: packages.yml
 - include: ufw.yml
+  when: use_firewall == true
