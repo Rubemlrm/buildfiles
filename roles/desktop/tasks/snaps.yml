@@ -2,9 +2,6 @@
 
 - name: setup snap packages
   block:
-    - aur: name=snapd
-      become: true
-      become_user: '{{username}}'
     - name: Install snap service and packages
       become: true
       become_user: root
