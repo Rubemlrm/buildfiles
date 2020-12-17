@@ -9,6 +9,5 @@ galaxy_info:
       - 32
       - 31
   - name: Debian
-  - name: Archlinux
   galaxy_tags:
     - workstation

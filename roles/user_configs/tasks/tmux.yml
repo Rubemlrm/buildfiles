@@ -1,24 +1,23 @@
-
 ---
-
-- name: Created base folders for tmux configs
-  file: path={{ home_dir }}/{{item}} state=directory
+- name: Setup Tmux
   become: true
   become_user: '{{username}}'
-  with_items:
-    - '.config/tmux'
-    - '.config/tmux/configs'
-
-- name: Restore tmux Configs
-  become: true
-  become_user: root
-  become_method: sudo
-  copy:
-    src: '{{ playbook_dir }}/roles/user_configs/files/{{ item.origin }}'
-    dest: '{{ home_dir }}/{{ item.dest }}'
-    force: true
-    owner: '{{username}}'
-    group: '{{username}}'
-  with_items:
-    - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
-    - { origin: 'tmux/configs', dest: '.config/tmux' }
+  block:
+    - name: Created base folders for tmux configs
+      file: path={{ home_dir }}/{{item}} state=directory
+      with_items:
+        - '.config/tmux'
+        - '.config/tmux/configs'
+    - name: Restore tmux Configs
+      become: true
+      become_user: root
+      become_method: sudo
+      copy:
+        src: '{{ playbook_dir }}/roles/user_configs/files/{{ item.origin }}'
+        dest: '{{ home_dir }}/{{ item.dest }}'
+        force: true
+        owner: '{{username}}'
+        group: '{{username}}'
+      with_items:
+        - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
+        - { origin: 'tmux/configs', dest: '.config/tmux' }

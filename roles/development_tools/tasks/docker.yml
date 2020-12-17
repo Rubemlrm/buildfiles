@@ -1,6 +1,5 @@
 ---
-
-- name: Enable Docker service
+- name: Setup Docker service
   become: true
   become_user: root
   become_method: sudo

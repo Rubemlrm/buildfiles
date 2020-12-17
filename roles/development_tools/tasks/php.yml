@@ -1,5 +1,4 @@
 ---
-
 - name: setup php composer and needed tools
   block:
     - name: Install php development tools

@@ -5,13 +5,8 @@
 
 - include: apt.yml
   when: ansible_os_family == 'Debian'
-
 - include: dnf.yml
   when: ansible_distribution == 'Fedora'
-
-- include: pacman.yml
-  when: ansible_distribution == 'Archlinux'
-
 - include: openssh.yml
   when: use_openssh == true
 - include: resolv.yml

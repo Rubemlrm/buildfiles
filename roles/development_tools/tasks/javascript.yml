@@ -1,30 +1,27 @@
 ---
-- name: Install nvm
+- name: Setup Javascript environment
   become: true
   become_user: '{{username}}'
-  shell: >
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
-  args:
-    creates: "/home/{{ username }}/.nvm/nvm.sh"
+  block:
+    - name: Install nvm
+      shell: >
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+      args:
+        creates: "/home/{{ username }}/.nvm/nvm.sh"
 
-- name: "install node"
-  become: true
-  become_user: '{{username}}'
-  shell: >
-    . "/home/{{ username }}/.nvm/nvm.sh" && nvm install {{ item }}
-  args:
-    executable: /bin/zsh
-    chdir: "/home/{{ username }}"
-    creates: "/home/{{ username }}/.nvm/versions/{{ item }}"
-  loop:
-    - node
-
-- name: Install nodejs modules
-  become: true
-  become_user: '{{username}}'
-  shell: >
-    . "/home/{{ username }}/.nvm/nvm.sh" && $(command -v npm) install {{item}}
-  args:
-    executable: /bin/zsh
-    chdir: "/home/{{ username }}"
-  loop: '{{nodejs_packages}}'
+    - name: "install node"
+      shell: >
+        . "/home/{{ username }}/.nvm/nvm.sh" && nvm install {{ item }}
+      args:
+        executable: /bin/zsh
+        chdir: "/home/{{ username }}"
+        creates: "/home/{{ username }}/.nvm/versions/{{ item }}"
+      loop:
+        - node
+    - name: Install nodejs modules
+      shell: >
+        . "/home/{{ username }}/.nvm/nvm.sh" && $(command -v npm) install {{item}}
+      args:
+        executable: /bin/zsh
+        chdir: "/home/{{ username }}"
+      loop: '{{nodejs_packages}}'

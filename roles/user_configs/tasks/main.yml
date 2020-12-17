@@ -5,5 +5,3 @@
 - include: tmux.yml
 - include: zsh.yml
 - include: vim.yml
-- include: yay.yml
-  when: ansible_distribution == 'Archlinux'

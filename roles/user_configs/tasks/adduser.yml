@@ -1,22 +1,23 @@
 ---
+- name: Setup User
+  block:
+    - name: Add system user
+      become: true
+      become_user: root
+      become_method: sudo
+      user:
+        name: '{{ username }}'
+        password: "{{ password | password_hash('sha512') }}"
+        generate_ssh_key: yes
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/id_rsa
+        shell: '/usr/bin/zsh'
 
-- name: Add system user
-  become: true
-  become_user: root
-  become_method: sudo
-  user:
-    name: '{{ username }}'
-    password: "{{ password | password_hash('sha512') }}"
-    generate_ssh_key: yes
-    ssh_key_bits: 2048
-    ssh_key_file: .ssh/id_rsa
-    shell: '/usr/bin/zsh'
-
-- name: Created base folders for configs
-  file: path={{ home_dir }}/{{item}} state=directory
-  become: true
-  become_user: '{{username}}'
-  with_items:
-    - 'tools'
-    - 'bin'
-    - '.local/share/fonts'
+    - name: Created base folders for configs
+      file: path={{ home_dir }}/{{item}} state=directory
+      become: true
+      become_user: '{{username}}'
+      with_items:
+        - 'tools'
+        - 'bin'
+        - '.local/share/fonts'
