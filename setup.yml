@@ -1,5 +1,5 @@
 ---
-- hosts: workstation
+- hosts: workstations
   vars_files:
     - variables/base.yml
     - variables/workstation.yml
@@ -7,7 +7,6 @@
     - base_setup
     - user_configs
     - development_tools
-    - kewlfft.aur
     - desktop
 - hosts: raspberry
   vars_files:

@@ -5,6 +5,9 @@
 - include_tasks: snaps.yml
   name: snaps
   when: use_snap
+- include_tasks: flatpak.yml
+  name: flatpak
+  when: use_flatpak
 - include_tasks: kde.yml
   name: kde setup
   when: use_kde
