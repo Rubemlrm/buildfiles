@@ -7,3 +7,7 @@ snap_packages:
     classic: ''
   - name: 'slack'
     classic: '--classic'
+
+flatpak_packages:
+  - com.bitwarden.desktop
+  - io.dbeaver.DBeaverCommunity

@@ -1,7 +1,9 @@
 workstations:
   hosts:
     DojoDesktop:
+      ansible_connection: local
     DojoLaptop:
+      ansible_connection: local
 
 raspberry:
   hosts:

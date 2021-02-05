@@ -1,0 +1,14 @@
+username: 'test'
+password: 'testing'
+home_dir: '/home/test/'
+git_name: 'Testing'
+git_email: 'testing@xpto.com'
+ssh_hosts:
+  - name: github
+    host: github.com
+    private: ''
+    public : ''
+
+use_openssh: false
+use_firewall: false
+use_docker: false
