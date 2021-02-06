@@ -26,6 +26,11 @@ jobs:
       env:
            VALIDATE_ALL_CODEBASE: true
            VALIDATE_YAML: true
+
+    - name: install ansible
+      run: apt install ansible
+    - name: Install dependencies (collections)
+      run: ansible-galaxy collection install community.general -p collections
     - name: Lint Ansible Playbook
       # replace "master" with any valid ref
       uses: ansible/ansible-lint-action@master
