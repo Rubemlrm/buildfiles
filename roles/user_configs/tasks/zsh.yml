@@ -1,38 +1,42 @@
 ---
 - name: Setup ZSH
   become: true
-  become_user: '{{username}}'
+  become_user: '{{ username }}'
   block:
     - name: Clone Needed ZSH Repos
       git:
-        repo: '{{item.repo}}'
-        dest: '{{item.dest}}'
+        repo: '{{ item.repo }}'
+        dest: '{{ item.dest }}'
         depth: 1
+      tags:
+        - skip_ansible_lint
       with_items:
         - {
             repo: 'https://github.com/robbyrussell/oh-my-zsh.git',
-            dest: '/home/{{username}}/.oh-my-zsh',
+            dest: '/home/{{ username }}/.oh-my-zsh',
           }
         - {
             repo: 'https://github.com/zsh-users/zsh-autosuggestions',
-            dest: '/home/{{username}}/.config/zsh/plugins/zsh-autosuggestions'
+            dest: '/home/{{ username }}/.config/zsh/plugins/zsh-autosuggestions'
           }
         - {
             repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git',
-            dest: '/home/{{username}}/.config/zsh/plugins/zsh-syntax-highlighting'
+            dest: '/home/{{ username }}/.config/zsh/plugins/zsh-syntax-highlighting'
           }
         - {
             repo: 'https://github.com/romkatv/powerlevel10k.git',
-            dest: '/home/{{username}}/.config/zsh/themes/powerlevel10k'
+            dest: '/home/{{ username }}/.config/zsh/themes/powerlevel10k'
           }
         - {
             repo: 'https://github.com/rbenv/rbenv.git',
-            dest: '/home/{{username}}/.rbenv'
+            dest: '/home/{{ username }}/.rbenv'
           }
     - name: Created base folders for zsh configs
-      file: path={{ home_dir }}/{{item}} state=directory
+      file:
+        path: '{{ home_dir }}/{{ item }}'
+        state: 'directory'
+        mode: '0755'
       with_items:
-        - '.config'
         - '.config/zsh'
     - name: Restore zsh Configs
       become: true
@@ -42,8 +46,9 @@
         src: '{{ playbook_dir }}/roles/user_configs/files/{{ item.origin }}'
         dest: '{{ home_dir }}/{{ item.dest }}'
         force: true
-        owner: '{{username}}'
-        group: '{{username}}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: '0644'
       with_items:
         - { origin: 'zsh/zshrc', dest: '.zshrc' }
         - { origin: 'zsh/p10.zsh', dest: '.p10k.zsh' }
@@ -51,4 +56,4 @@
     - name: Download custom fonts
       get_url:
         url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf'
-        dest: '/home/{{username}}/.local/share/fonts/Droid Sans Mono for Powerline Nerd Font Complete.otf'
+        dest: '/home/{{ username }}/.local/share/fonts/Droid Sans Mono for Powerline Nerd Font Complete.otf'

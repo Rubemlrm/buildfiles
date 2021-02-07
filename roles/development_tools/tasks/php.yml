@@ -7,14 +7,14 @@
       package:
         name: '{{ item }}'
         state: present
-      with_items: '{{php_packages}}'
+      with_items: '{{ php_packages }}'
     - name: install extra php packages
       become: true
       become_user: root
       package:
         name: '{{ item }}'
         state: present
-      with_items: '{{php_extra_packages}}'
+      with_items: '{{ php_extra_packages }}'
       when: php_extra_packages is defined
     - name: Installing composer
       become: true
@@ -27,5 +27,5 @@
       composer:
        command: require
        global_command: true
-       arguments: '{{item}}'
-      with_items: '{{composer_packages}}'
+       arguments: '{{ item }}'
+      with_items: '{{ composer_packages }}'

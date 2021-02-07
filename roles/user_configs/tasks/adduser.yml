@@ -14,9 +14,9 @@
         shell: '/usr/bin/zsh'
 
     - name: Created base folders for configs
-      file: path={{ home_dir }}/{{item}} state=directory
+      file: path={{ home_dir }}/{{ item }} state=directory mode=0755
       become: true
-      become_user: '{{username}}'
+      become_user: '{{ username }}'
       with_items:
         - 'tools'
         - 'bin'

@@ -1,7 +1,7 @@
 ---
 - name: Setup Javascript environment
   become: true
-  become_user: '{{username}}'
+  become_user: '{{ username }}'
   block:
     - name: Install nvm
       shell: >
@@ -20,8 +20,8 @@
         - node
     - name: Install nodejs modules
       shell: >
-        . "/home/{{ username }}/.nvm/nvm.sh" && $(command -v npm) install {{item}}
+        . "/home/{{ username }}/.nvm/nvm.sh" && $(command -v npm) install {{ item }}
       args:
         executable: /bin/zsh
         chdir: "/home/{{ username }}"
-      loop: '{{nodejs_packages}}'
+      loop: '{{ nodejs_packages }}'

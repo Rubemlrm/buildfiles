@@ -7,7 +7,7 @@
   package:
     name: '{{ item }}'
     state: present
-  with_items: '{{kde_packages}}'
+  with_items: '{{ kde_packages }}'
   when: kde_packages is defined
   notify:
     - enable sddm
@@ -19,5 +19,5 @@
   package:
     name: '{{ item }}'
     state: absent
-  with_items: '{{packages_to_purge}}'
+  with_items: '{{ packages_to_purge }}'
   when: packages_to_purge is defined

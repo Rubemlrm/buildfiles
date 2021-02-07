@@ -11,7 +11,6 @@ desktop_packages:
   - 'akmod-nvidia'
   - 'thunderbird'
   - 'google-chrome-stable'
-  - 'gnome-tweak-tool'
   - 'lutris'
   - 'telegram-desktop'
   - 'papirus-icon-theme'
@@ -30,6 +29,7 @@ desktop_packages:
   - 'discord'
   - 'gimp'
   - 'timeshift'
+  - 'neochat'
 
 kde_packages:
   - 'kio-gdrive'
@@ -48,3 +48,4 @@ packages_to_purge:
   - 'falkon'
   - 'krfb'
   - 'pim-sieve-editor'
+  - 'korganizer'
