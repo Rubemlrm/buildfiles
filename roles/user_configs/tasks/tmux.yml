@@ -1,13 +1,17 @@
 ---
 - name: Setup Tmux
   become: true
-  become_user: '{{username}}'
+  become_user: '{{ username }}'
   block:
     - name: Created base folders for tmux configs
-      file: path={{ home_dir }}/{{item}} state=directory
+      file:
+        path: '{{ home_dir }}/{{ item }}'
+        state: 'directory'
+        mode: '0755'
       with_items:
         - '.config/tmux'
         - '.config/tmux/configs'
+        - '.config/tmux/plugins'
     - name: Restore tmux Configs
       become: true
       become_user: root
@@ -16,8 +20,19 @@
         src: '{{ playbook_dir }}/roles/user_configs/files/{{ item.origin }}'
         dest: '{{ home_dir }}/{{ item.dest }}'
         force: true
-        owner: '{{username}}'
-        group: '{{username}}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: '0644'
       with_items:
         - { origin: 'tmux/tmux.conf', dest: '.tmux.conf' }
         - { origin: 'tmux/configs', dest: '.config/tmux' }
+    - name: Download tmux plugins
+      get_url:
+        url: '{{ item.url }}'
+        dest: '{{ item.dest }}'
+        mode: 0644
+      with_items:
+        - {
+            url: 'https://github.com/tmux-plugins/tpm.git',
+            dest: '/home/{{ username }}/.config/tmux/plugins/tpm'
+          }

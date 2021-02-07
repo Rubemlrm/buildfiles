@@ -5,7 +5,6 @@
     - name: update repos to install ca-certificates and https-transport
       apt:
         name: '*'
-        state: latest
         update_cache: yes
         force_apt_get: yes
     - name: install ca-certificates and https-transport
@@ -18,7 +17,8 @@
     - name: get arch
       shell: dpkg --print-architecture
       register: get_arch
-    - set_fact: arch="{{get_arch.stdout}}"
+    - name: set arch
+      set_fact: arch="{{ get_arch.stdout }}"
     - name: Add gpg keys
       apt_key:
         url: '{{ item }}'

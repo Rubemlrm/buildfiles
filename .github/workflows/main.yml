@@ -15,24 +15,25 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-20.04
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - name: Super-Linter
-      uses: github/super-linter@v3.6.0
-      env:
-           VALIDATE_ALL_CODEBASE: true
-           VALIDATE_YAML: true
-
     - name: install ansible
-      run: apt install ansible
+      run: apt update && apt install -y ansible
     - name: Install dependencies (collections)
       run: ansible-galaxy collection install community.general -p collections
-    - name: Lint Ansible Playbook
-      # replace "master" with any valid ref
-      uses: ansible/ansible-lint-action@master
-      with:
-        targets: setup-testing.yml
+    - name: Lint YAML
+      uses: github/super-linter@v3.6.0
+      env:
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_YAML: true
+          FILTER_REGEX_EXCLUDE: "collections/"
+    - name: Lint Ansible
+      uses: github/super-linter@v3.6.0
+      env:
+          ANSIBLE_DIRECTORY: '.'
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_ANSIBLE: true
+          FILTER_REGEX_EXCLUDE: "collections/"

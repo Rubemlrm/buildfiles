@@ -5,9 +5,6 @@ galaxy_info:
   min_ansible_version: 2.4
   platforms:
   - name: Fedora
-    versions:
-      - 32
-      - 31
   - name: Debian
   galaxy_tags:
     - workstation

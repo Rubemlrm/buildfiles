@@ -1,7 +1,7 @@
 ---
 - name: Load Distro Variables
   include_vars:
-    file: '{{ansible_distribution | lower}}.yml'
+    file: '{{ ansible_distribution | lower }}.yml'
 - include_tasks: snaps.yml
   name: snaps
   when: use_snap
@@ -10,6 +10,5 @@
   when: use_flatpak
 - include_tasks: kde.yml
   name: kde setup
-  when: use_kde
 - include_tasks: utils.yml
   name: desktop utils install

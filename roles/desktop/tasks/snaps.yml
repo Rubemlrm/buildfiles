@@ -10,7 +10,10 @@
         state=present
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Fedora'
     - name: 'enable classic mode for snap'
-      raw: 'ln -sf /var/lib/snapd/snap /snap'
+      file:
+        src: "/var/lib/snapd/snap"
+        dest: "/snap"
+        state: link
     - name: just force systemd to reread configs
       systemd:
         daemon_reload: yes
@@ -18,5 +21,5 @@
         - start snapd
         - enable snapd
     - name: 'install with snap'
-      command: snap install {{item.name}} {{item.classic}}
-      with_items: '{{snap_packages}}'
+      command: snap install {{ item.name }} {{ item.classic }}
+      with_items: '{{ snap_packages }}'

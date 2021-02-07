@@ -10,4 +10,5 @@ snap_packages:
 
 flatpak_packages:
   - com.bitwarden.desktop
-  - io.dbeaver.DBeaverCommunity
+  - net.cozic.joplin_desktop
+  - com.spotify.Client
