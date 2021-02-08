@@ -20,18 +20,14 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - name: install ansible
-      run: apt update && apt install -y ansible
-    - name: Install dependencies (collections)
-      run: ansible-galaxy collection install community.general -p collections
     - name: Lint YAML
-      uses: github/super-linter@v3.6.0
+      uses: github/super-linter@v3.14.5
       env:
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_YAML: true
           FILTER_REGEX_EXCLUDE: "collections/"
     - name: Lint Ansible
-      uses: github/super-linter@v3.6.0
+      uses: github/super-linter@v3.14.5
       env:
           ANSIBLE_DIRECTORY: '.'
           VALIDATE_ALL_CODEBASE: true
