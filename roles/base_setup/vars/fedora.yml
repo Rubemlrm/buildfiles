@@ -38,7 +38,6 @@ base_packages:
   - bashtop
   - ufw
   - npm
-  - github-cli
 
 font_packages:
   - adobe-source-code-pro-fonts
@@ -52,7 +51,6 @@ copr_repos:
   - evana/fira-code-fonts
   - dirkdavidis/papirus-icon-theme
   - '@dotnet-sig/dotnet'
-  - 'jdoss/github-cli'
 
 rpm_repos:
   - 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version }}.noarch.rpm'

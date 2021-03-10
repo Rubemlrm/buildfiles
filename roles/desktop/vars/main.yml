@@ -11,7 +11,4 @@ snap_packages:
 flatpak_packages:
   - com.bitwarden.desktop
   - net.cozic.joplin_desktop
-  - com.gigitux.youp
-  - im.riot.Riot
-  - com.jetbrains.PhpStorm
   - com.spotify.Client
