@@ -9,4 +9,4 @@ php_extra_packages:
 
 python_packages:
   - 'virtualenvwrapper'
-  - 'python3-pip'
+  - 'python-pip'
