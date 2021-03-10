@@ -6,6 +6,7 @@ desktop_packages:
   - 'papirus-icon-theme'
   - 'terminator'
   - 'libreoffice'
+  - 'libreoffice-langpack-pt-PT'
   - 'calibre'
   - 'steam'
   - 'filezilla'
@@ -13,9 +14,11 @@ desktop_packages:
   - 'paper-icon-theme'
   - 'numix-icon-theme-circle'
   - 'flat-remix-icon-theme'
+  - 'libappindicator-gtk3'
+  - 'code'
+  - 'discord'
   - 'gimp'
   - 'timeshift'
-  - 'chromium-browser'
 
 kde_packages:
   - 'kio-gdrive'

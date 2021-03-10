@@ -6,8 +6,8 @@
 
 | Distro | Versions |
 | ------ | :------: |
-| Fedora |    33    |
-| Ubuntu |    20.04    |
+| Fedora |    32    |
+
 #### Support for:
 
 - **docker**

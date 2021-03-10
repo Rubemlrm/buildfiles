@@ -9,7 +9,9 @@
         name: ['fedora-workstation-repositories', 'dnf-plugins-core']
         state: present
     - name: 'set copr repos'
-      command: 'dnf copr enable {{item}} -y'
+      community.general.copr:
+        state: enabled
+        name: '{{ item }}'
       with_items: '{{ copr_repos }}'
     - name: 'set workstation repos'
       command: 'dnf config-manager --set-enabled  {{ item }} -y'

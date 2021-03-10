@@ -3,7 +3,7 @@ base_packages:
   - aspell-pt
   - automake
   - cmake
-  - exuberant-ctags
+  - ctags
   - gcc
   - git
   - htop
@@ -30,6 +30,5 @@ base_packages:
   - libreadline-dev
   - zlib1g-dev
   - ufw
-  - fonts-firacode
 
 font_packages:

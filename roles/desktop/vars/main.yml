@@ -5,9 +5,13 @@ snap_packages:
     classic: ''
   - name: 'spotify'
     classic: ''
-  - name: 'joplin-desktop'
-    classic: ''
-  - name: 'beekeeper-studio'
-    classic: ''
-  - name: 'code'
+  - name: 'slack'
     classic: '--classic'
+
+flatpak_packages:
+  - com.bitwarden.desktop
+  - net.cozic.joplin_desktop
+  - com.gigitux.youp
+  - im.riot.Riot
+  - com.jetbrains.PhpStorm
+  - com.spotify.Client
