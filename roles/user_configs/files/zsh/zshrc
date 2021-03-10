@@ -41,6 +41,7 @@ source ~/.config/zsh/aliases/*
 source $ZSH/oh-my-zsh.sh
 # fix to load snap apps
 emulate sh -c '. /etc/profile'
+emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
 [[ -r ${TTY:-} && -w ${TTY:-} && $+commands[stty] == 1 ]] && stty -ixon <$TTY >$TTY
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

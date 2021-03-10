@@ -1,7 +1,12 @@
 ---
-- name: Load Distro Variables
+- name: Load Debian based Distro Variables
   include_vars:
-    file: '{{ ansible_distribution | lower }}.yml'
+    file: 'debian.yml'
+  when: ansible_os_family == 'Debian'
+- name: Load Fedora based Distro Variables
+  include_vars:
+    file: 'fedora.yml'
+  when: ansible_distribution == 'Fedora'
 - include_tasks: docker.yml
   name: docker settings
 - include_tasks: javascript.yml
