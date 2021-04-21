@@ -1,0 +1,3 @@
+kde_packages:
+  - 'kio-gdrive'
+  - 'kaccounts-providers'

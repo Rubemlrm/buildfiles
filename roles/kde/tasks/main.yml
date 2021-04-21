@@ -1,0 +1,22 @@
+---
+- name: Install kde packages
+  become: true
+  become_user: root
+  become_method: sudo
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ kde_packages }}'
+  when: kde_packages is defined
+  notify:
+    - enable sddm
+
+- name: Purge packages
+  become: true
+  become_user: root
+  become_method: sudo
+  package:
+    name: '{{ item }}'
+    state: absent
+  with_items: '{{ packages_to_purge }}'
+  when: packages_to_purge is defined

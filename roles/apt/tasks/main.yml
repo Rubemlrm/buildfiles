@@ -1,0 +1,24 @@
+- name: Add Custom repos for Debian Based
+  become: true
+  become_method: sudo
+  block:
+    - name: update repos to install ca-certificates and https-transport
+      apt:
+        name: '*'
+        update_cache: yes
+        force_apt_get: yes
+    - name: install ca-certificates and https-transport
+      package:
+        name: '{{ item }}'
+        state: present
+      with_items: '{{packages}}'
+    - name: get arch
+      shell: dpkg --print-architecture
+      register: get_arch
+    - name: set arch
+      set_fact: arch="{{ get_arch.stdout }}"
+    - name: Add gpg keys
+      apt_key:
+        url: '{{ item }}'
+        state: 'present'
+      with_items: '{{repo_gpgs}}'

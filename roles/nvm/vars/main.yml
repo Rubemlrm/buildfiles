@@ -1,0 +1,6 @@
+---
+nodejs_packages:
+  - standard
+  - jshint
+  - webpack
+  - eslint

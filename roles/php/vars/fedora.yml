@@ -1,0 +1,8 @@
+---
+php_extra_packages:
+  - 'php-common'
+  - 'php-json'
+  - 'php-mysqlnd'
+  - 'php-zip'
+  - 'php-mbstring'
+  - 'php-xml'
