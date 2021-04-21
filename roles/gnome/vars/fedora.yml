@@ -1,0 +1,4 @@
+gtk_themes:
+  - 'flat-remix-gtk2-theme'
+  - 'flat-remix-gtk3-theme'
+  - 'numix-gtk-theme'

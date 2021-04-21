@@ -1,7 +1,0 @@
----
-
-- include: adduser.yml
-- include: git.yml
-- include: tmux.yml
-- include: zsh.yml
-- include: vim.yml
