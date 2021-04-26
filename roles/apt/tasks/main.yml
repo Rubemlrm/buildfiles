@@ -1,3 +1,4 @@
+---
 - name: Add Custom repos for Debian Based
   become: true
   become_method: sudo
@@ -11,7 +12,7 @@
       package:
         name: '{{ item }}'
         state: present
-      with_items: '{{packages}}'
+      with_items: '{{ packages }}'
     - name: get arch
       shell: dpkg --print-architecture
       register: get_arch
@@ -21,4 +22,4 @@
       apt_key:
         url: '{{ item }}'
         state: 'present'
-      with_items: '{{repo_gpgs}}'
+      with_items: '{{ repo_gpgs }}'
