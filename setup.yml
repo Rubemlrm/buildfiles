@@ -4,23 +4,40 @@
     - variables/base.yml
     - variables/workstation.yml
   roles:
-    - base_setup
-    - user_configs
-    - development_tools
-    - desktop
+    - apt
+    - dnf
+    - common_cli
+    - common_desktop
+    - docker
+    - flatpak
+    - gnome
+    - kde
+    - nvm
+    - php
+    - python
+    - openssh
+    - resolvconf
+    - ufw
+
 - hosts: raspberry
   vars_files:
     - variables/base.yml
     - variables/raspberry.yml
   roles:
-    - base_setup
-    - user_configs
-    - development_tools
+    - apt
+    - common_cli
+    - docker
+    - openssh
+    - resolvconf
+    - ufw
 
 - hosts: wsl
   vars_files:
     - variables/wsl.yml
   roles:
-    - base_setup
-    - user_configs
-    - development_tools
+    - apt
+    - common_cli
+    - docker
+    - nvm
+    - php
+    - python

@@ -1,5 +1,12 @@
 ---
-
+- name: Load Fedora Distro Variables
+  include_vars:
+    file: 'fedora.yml'
+  when: ansible_distribution == 'Fedora'
+- name: Load Debian Distro Variables
+  include_vars:
+    file: 'debian.yml'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Install desktop packages
   become: true
   become_user: root

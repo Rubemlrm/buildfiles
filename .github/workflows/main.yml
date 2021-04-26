@@ -13,13 +13,19 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  lint:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - name: Set up Python 3.
+      run: apt-get update && apt install -y python3 python3-pip
+    - name: Install test dependencies.
+      run: sudo pip3 install ansible
+    - name: Install dependencies (collections)
+      run: ansible-galaxy collection install -r requirements.yml -p collections
     - name: Lint YAML
       uses: github/super-linter@v3.14.5
       env:
@@ -33,3 +39,14 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_ANSIBLE: true
           FILTER_REGEX_EXCLUDE: "collections/"
+  fedora_integration:
+    runs-on: ubuntu-latest
+    steps:
+    # Important: This sets up your GITHUB_WORKSPACE environment variable
+    - uses: actions/checkout@v2
+    - name: ansible check with fedora:33
+      # replace "master" with any valid ref
+      uses: roles-ansible/check-ansible-fedora-33-action@master
+      with:
+        targets: "setup-testing.yml"
+        requirements: 'requirements.yml'

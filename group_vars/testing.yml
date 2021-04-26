@@ -8,7 +8,3 @@ ssh_hosts:
     host: github.com
     private: ''
     public : ''
-
-use_openssh: false
-use_firewall: false
-use_docker: false

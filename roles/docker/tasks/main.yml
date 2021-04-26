@@ -22,4 +22,3 @@
         name: '{{ username }}'
         groups: docker
         append: yes
-  when: use_docker

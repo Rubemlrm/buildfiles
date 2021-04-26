@@ -1,9 +1,6 @@
 ---
-- hosts: all
+- hosts: testing
   remote_user: root
-  vars_files:
-    - variables/base.yml
-    - variables/testing.yml
   roles:
     - base_setup
     - user_configs
