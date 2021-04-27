@@ -7,5 +7,4 @@ composer_packages:
   - 'phpunit/phpunit'
   - 'phing/phing'
   - 'phploc/phploc'
-  - 'phpmd/phpmd'
   - 'squizlabs/php_codesniffer'

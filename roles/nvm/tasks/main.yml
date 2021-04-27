@@ -8,6 +8,8 @@
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
       args:
         creates: "/home/{{ username }}/.nvm/nvm.sh"
+      tags:
+        - skip_ansible_lint
 
     - name: "install node"
       shell: >
@@ -25,3 +27,5 @@
         executable: /bin/zsh
         chdir: "/home/{{ username }}"
       loop: '{{ nodejs_packages }}'
+    - name: set user permissions for nvm
+      file: dest=/home/{{ username }}/.nvm owner={{ username }} group={{ username }} mode=u=rwX,g=rX,o=rX recurse=yes

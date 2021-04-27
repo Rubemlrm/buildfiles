@@ -3,8 +3,6 @@
   block:
     - name: Install snap service and packages
       become: true
-      become_user: root
-      become_method: sudo
       package: name=snapd
         state=present
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Fedora'

@@ -4,5 +4,3 @@
     dest: /etc/resolv.conf
     mode: 0644
   become: true
-  become_user: root
-  become_method: sudo

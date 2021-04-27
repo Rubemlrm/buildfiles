@@ -1,8 +1,5 @@
 ---
 - name: Add Custom repos for Fedora Based
-  become: true
-  become_user: root
-  become_method: sudo
   block:
     - name: 'install copr tools'
       dnf:
@@ -39,8 +36,6 @@
     mode: 0644
 - name: Upgrade Fedora
   become: true
-  become_user: root
-  become_method: sudo
   dnf:
     name: '*'
     state: latest

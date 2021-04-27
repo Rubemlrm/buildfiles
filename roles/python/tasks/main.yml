@@ -1,13 +1,20 @@
 ---
+- name: Load Fedora Distro Variables
+  include_vars:
+    file: 'fedora.yml'
+  when: ansible_distribution == 'Fedora'
+- name: Load Debian Distro Variables
+  include_vars:
+    file: 'debian.yml'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Setup Javascript environment
   block:
     - name: Install Python development tools
       become: true
-      become_user: root
-      become_method: sudo
+      become_user: '{{ username }}'
       package:
         name: '{{ item }}'
         state: present
       with_items: '{{ python_packages }}'
     - name: Install cookicutter python
-      raw: pip install --user cookiecutter
+      raw: pip3 install --user cookiecutter yamllint virtualenvwrapper molecule[docker] molecule[ansible]

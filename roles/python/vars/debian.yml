@@ -1,4 +1,4 @@
 ---
 python_packages:
   - 'virtualenvwrapper'
-  - 'python-pip'
+  - 'python3-pip'
