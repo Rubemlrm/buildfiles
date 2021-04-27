@@ -10,8 +10,6 @@
     - origin_name: sshd_config.j2
       file_name: sshd_config
   become: true
-  become_user: root
-  become_method: sudo
   notify:
     - enable openssh server
     - restart openssh server
@@ -24,7 +22,5 @@
     state: "present"
   when: ansible_distribution == 'Fedora'
   become: true
-  become_user: root
-  become_method: sudo
   notify:
    - restart openssh server

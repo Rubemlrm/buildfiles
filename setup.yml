@@ -1,12 +1,10 @@
 ---
 - hosts: workstations
-  vars_files:
-    - variables/base.yml
-    - variables/workstation.yml
   roles:
     - apt
     - dnf
     - common_cli
+    - users
     - common_desktop
     - docker
     - flatpak
@@ -20,24 +18,20 @@
     - ufw
 
 - hosts: raspberry
-  vars_files:
-    - variables/base.yml
-    - variables/raspberry.yml
   roles:
     - apt
     - common_cli
+    - users
     - docker
     - openssh
     - resolvconf
     - ufw
 
 - hosts: wsl
-  vars_files:
-    - variables/wsl.yml
   roles:
     - apt
     - common_cli
-    - docker
+    - users
     - nvm
     - php
     - python

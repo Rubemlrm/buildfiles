@@ -1,8 +1,6 @@
 ---
 - name: Setup UFW
   become: true
-  become_user: root
-  become_method: sudo
   block:
     - name: enable ufw
       ufw:

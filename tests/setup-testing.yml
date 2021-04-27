@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  vars_files:
+    - testing.yml
+  roles:
+    - apt
+    - dnf
+    - common_cli
+    - users
+    - nvm
+    - php
+    - python

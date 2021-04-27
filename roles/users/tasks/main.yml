@@ -1,10 +1,8 @@
 ---
 - name: Setup User
+  become: true
   block:
     - name: Add system user
-      become: true
-      become_user: root
-      become_method: sudo
       user:
         name: '{{ username }}'
         password: "{{ password | password_hash('sha512') }}"
@@ -12,21 +10,16 @@
         ssh_key_bits: 4096
         ssh_key_file: .ssh/id_rsa
         shell: '/usr/bin/zsh'
-
     - name: Created base folders for configs
-      file: path={{ home_dir }}/{{ item }} state=directory mode=0755
-      become: true
-      become_user: '{{ username }}'
+      file: path={{ home_dir }}/{{ item }} state=directory mode=0755 owner={{ username }} group={{ username }}
       with_items:
         - 'tools'
         - 'bin'
         - '.local/share/fonts'
-- name: Remove Users
-  become: true
-  become_user: root
-  become_method: sudo
-  user:
-    name: '{{ item }}'
-    state: absent
-  with_items: '{{ disable_users }}'
-  when: disable_users is defined
+    - name: Remove Users
+      become: true
+      user:
+        name: '{{ item }}'
+        state: absent
+      with_items: '{{ disable_users }}'
+      when: disable_users is defined

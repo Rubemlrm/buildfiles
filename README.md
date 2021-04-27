@@ -41,6 +41,6 @@
 
 To run this:
 
-`sudo ansible-galaxy install -r requirements.yml `
+`sudo ansible-galaxy collection install -r requirements.yml `
 
-`sudo ansible-playbook setup.yml -i inventory.yml --ask-vault-pass --limit "host"`
+`sudo ansible-playbook setup.yml -i inventory.yml --ask-vault-pass --limit "host" --extra-vars "password=foobar"`

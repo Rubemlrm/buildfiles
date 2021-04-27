@@ -1,8 +1,0 @@
----
-- hosts: testing
-  remote_user: root
-  roles:
-    - base_setup
-    - user_configs
-    - development_tools
-    - desktop

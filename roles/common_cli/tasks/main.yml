@@ -9,8 +9,6 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Install base packages
   become: true
-  become_user: root
-  become_method: sudo
   block:
     - name: install cli utils
       package:

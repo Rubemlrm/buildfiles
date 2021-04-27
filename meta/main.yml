@@ -1,8 +1,10 @@
 galaxy_info:
+  role_name: 'dojo_setup'
+  namespace: 'rubemlrm'
   author: Rubem Mota
   description: Custom Playbook to setup a dev env
   license: MIT
-  min_ansible_version: 2.4
+  min_ansible_version: 2.10
   platforms:
   - name: Fedora
   - name: Debian
