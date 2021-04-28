@@ -36,7 +36,6 @@ base_packages:
   - python3-oauth2client
   - libcurl-devel
   - dotnet-sdk-3.1
-  - bashtop
   - ufw
   - npm
 

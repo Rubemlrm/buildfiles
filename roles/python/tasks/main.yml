@@ -10,11 +10,11 @@
 - name: Setup Javascript environment
   block:
     - name: Install Python development tools
-      become: true
-      become_user: '{{ username }}'
       package:
         name: '{{ item }}'
         state: present
       with_items: '{{ python_packages }}'
     - name: Install cookicutter python
-      raw: pip3 install --user cookiecutter yamllint virtualenvwrapper molecule[docker] molecule[ansible]
+      become: true
+      become_user: '{{ username }}'
+      raw: pip3 install --user cookiecutter yamllint virtualenvwrapper
