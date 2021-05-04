@@ -1,3 +1,5 @@
 kde_packages:
   - 'kio-gdrive'
   - 'kaccounts-providers'
+
+packages_to_purge:

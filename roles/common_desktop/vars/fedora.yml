@@ -1,9 +1,5 @@
 ---
 desktop_packages:
-  - 'mesa-libGL-devel'
-  - 'mesa-libGLU-devel'
-  - 'dbus-x11'
-  - 'akmod-nvidia'
   - 'thunderbird'
   - 'google-chrome-stable'
   - 'lutris'
@@ -25,3 +21,4 @@ desktop_packages:
   - 'gimp'
   - 'timeshift'
   - 'neochat'
+  - 'arduino'
