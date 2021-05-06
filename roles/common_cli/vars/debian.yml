@@ -4,7 +4,7 @@ base_packages:
   - aspell-pt
   - automake
   - cmake
-  - ctags
+  - exuberant-ctags
   - gcc
   - git
   - htop

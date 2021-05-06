@@ -29,15 +29,16 @@
         gpgcheck: yes
         enabled: yes
         gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-- name: Tweak dnf settings
-  template:
-    src: dnf.j2
-    dest: /etc/dnf/dnf.conf
-    mode: 0644
-- name: Upgrade Fedora
-  become: true
-  dnf:
-    name: '*'
-    state: latest
-  tags:
-    - skip_ansible_lint
+    - name: Tweak dnf settings
+      template:
+        src: dnf.j2
+        dest: /etc/dnf/dnf.conf
+        mode: 0644
+    - name: Upgrade Fedora
+      become: true
+      dnf:
+        name: '*'
+        state: latest
+      tags:
+        - skip_ansible_lint
+  when: ansible_distribution == 'Fedora'

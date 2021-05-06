@@ -2,6 +2,22 @@
 - name: Add Custom repos for Debian Based
   become: true
   block:
+    - name: Add gpg keys
+      apt_key:
+        url: '{{ item }}'
+        state: 'present'
+      with_items: '{{ repo_gpgs }}'
+    - name: Add deb repos
+      apt_repository:
+        repo: '{{item.url}}'
+        filename: '{{item.filename}}'
+        state: present
+      with_items: '{{deb_repos}}'
+    - name: Add ppa repos
+      apt_repository:
+        repo: '{{item}}'
+        state: present
+      with_items: '{{ppa_repos}}'
     - name: update repos to install ca-certificates and https-transport
       become: yes
       apt:
@@ -13,9 +29,4 @@
         name: '{{ item }}'
         state: present
       with_items: '{{ packages }}'
-    - name: Add gpg keys
-      apt_key:
-        url: '{{ item }}'
-        state: 'present'
-      with_items: '{{ repo_gpgs }}'
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+

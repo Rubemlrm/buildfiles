@@ -1,0 +1,38 @@
+desktop_packages:
+  - 'arduino'
+  - 'calibre'
+  - 'code'
+  - 'filezilla'
+  - 'firefox'
+  - 'flatpak'
+  - 'gimp'
+  - 'google-chrome-stable'
+  - 'libreoffice'
+  - 'lutris'
+  - 'paper-icon-theme'
+  - 'papirus-icon-theme'
+  - 'steam'
+  - 'telegram-desktop'
+  - 'terminator'
+  - 'thunderbird'
+  - 'timeshift'
+
+
+flatpak_packages:
+  - com.bitwarden.desktop
+  - net.cozic.joplin_desktop
+  - com.spotify.Client
+
+snap_packages:
+  - name: 'bitwarden'
+    classic: ''
+  - name: 'spotify'
+    classic: ''
+  - name: 'slack'
+    classic: '--classic'
+  - name: 'discord'
+    classic: ''
+  - name: 'phpstorm'
+    classic: '--classic'
+  - name: 'whatsdesk'
+    classic: ''

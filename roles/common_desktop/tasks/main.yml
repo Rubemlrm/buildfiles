@@ -14,7 +14,13 @@
     state: present
   with_items: '{{ desktop_packages }}'
   when: desktop_packages is defined
-
+- name: Install distro extra packages
+  become: true
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items: '{{ distro_extra_packages }}'
+  when: distro_extra_packages is defined
 - name: install gnome themes
   become: true
   package:
@@ -22,3 +28,27 @@
     state: present
   with_items: '{{ gtk_themes }}'
   when: gtk_themes is defined
+
+- name: 'install with snap'
+  become: true
+  command: snap install {{ item.name }} {{ item.classic }}
+  with_items: '{{ snap_packages }}'
+  when: snap_packages is defined
+
+- name: run flatpak
+  become: true
+  become_user: '{{ username }}'
+  block:
+  - name: Add the flathub flatpak repository remote to the user installation
+    community.general.flatpak_remote:
+      name: flathub
+      state: present
+      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      method: user
+  - name: Install flatpak packages
+    community.general.flatpak:
+      name: '{{ item }}'
+      state: present
+      method: user
+    with_items: '{{ flatpak_packages }}'
+    when: flatpak_packages is defined

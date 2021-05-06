@@ -7,7 +7,6 @@
     - users
     - common_desktop
     - docker
-    - flatpak
     - gnome
     - kde
     - nvm
