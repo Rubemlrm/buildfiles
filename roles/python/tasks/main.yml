@@ -17,4 +17,4 @@
     - name: Install cookicutter python
       become: true
       become_user: '{{ username }}'
-      raw: pip3 install --user cookiecutter yamllint virtualenvwrapper
+      raw: pip3 install --user cookiecutter yamllint virtualenvwrapper ansible-lint

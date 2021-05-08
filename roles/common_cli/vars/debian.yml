@@ -33,3 +33,7 @@ base_packages:
   - ufw
 
 font_packages:
+  - fonts-firacode
+  - fonts-font-awesome
+  - fonts-hack-ttf
+  - fonts-cascadia-code

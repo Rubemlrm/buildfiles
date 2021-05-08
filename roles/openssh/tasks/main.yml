@@ -1,4 +1,9 @@
 ---
+- name: install openssh
+  become: true
+  package:
+    name: 'openssh-server'
+    state: present
 - name: copy ssh custom configs
   template:
     src: '{{ item.origin_name }}'

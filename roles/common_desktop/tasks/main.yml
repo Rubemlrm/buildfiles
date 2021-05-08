@@ -35,6 +35,19 @@
   with_items: '{{ snap_packages }}'
   when: snap_packages is defined
 
+- name: 'check if zsh is loading snaps'
+  shell: grep -c "source /etc/profile" /etc/zsh/zprofile || true
+  register: zsh_fix_test
+  changed_when: false
+
+- name: 'fix zsh snaps loading'
+  become: true
+  lineinfile:
+    path: /etc/zsh/zprofile
+    line: 'emulate sh -c "source /etc/profile"'
+  when: zsh_fix_test.stdout == "0"
+
+
 - name: run flatpak
   become: true
   become_user: '{{ username }}'
