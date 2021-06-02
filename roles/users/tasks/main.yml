@@ -16,6 +16,28 @@
         - 'tools'
         - 'bin'
         - '.local/share/fonts'
+    - name: generate ssh config settings
+      template:
+        src: ssh_hosts.j2
+        dest: '/home/{{username}}/.ssh/config'
+        owner: '{{username}}'
+        group: '{{username}}'
+    - name: restore ssh keys
+      copy:
+        dest: '/home/{{username}}/.ssh/{{item.name}}_rsa'
+        content: '{{item.private }}'
+        owner: '{{username}}'
+        group: '{{username}}'
+        mode: '0600'
+      with_items: "{{ ssh_hosts }}"
+    - name: restore ssh keys
+      copy:
+        dest: '/home/{{username}}/.ssh/{{item.name}}_rsa.pub'
+        content: '{{item.public}}'
+        owner: '{{username}}'
+        group: '{{username}}'
+        mode: '0644'
+      with_items: "{{ ssh_hosts }}"
     - name: Remove Users
       become: true
       user:

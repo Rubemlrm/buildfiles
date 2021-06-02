@@ -8,7 +8,6 @@ desktop_packages:
   - 'gimp'
   - 'google-chrome-stable'
   - 'libreoffice'
-  - 'lutris'
   - 'paper-icon-theme'
   - 'papirus-icon-theme'
   - 'steam'
@@ -20,17 +19,9 @@ desktop_packages:
 
 flatpak_packages:
   - net.cozic.joplin_desktop
+  - com.bitwarden.desktop
+  - com.spotify.Client
 
 snap_packages:
-  - name: 'bitwarden'
-    classic: ''
-  - name: 'spotify'
-    classic: ''
-  - name: 'slack'
-    classic: '--classic'
-  - name: 'discord'
-    classic: ''
-  - name: 'phpstorm'
-    classic: '--classic'
   - name: 'whatsdesk'
     classic: ''
