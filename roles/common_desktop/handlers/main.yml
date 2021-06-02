@@ -1,0 +1,6 @@
+---
+- name: restart snapd
+  systemd:
+    name: snapd
+    state: restarted
+  become: true

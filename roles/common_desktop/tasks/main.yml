@@ -7,61 +7,9 @@
   include_vars:
     file: 'debian.yml'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-- name: Install desktop packages
-  become: true
-  package:
-    name: '{{ item }}'
-    state: present
-  with_items: '{{ desktop_packages }}'
-  when: desktop_packages is defined
-- name: Install distro extra packages
-  become: true
-  package:
-    name: '{{ item }}'
-    state: present
-  with_items: '{{ distro_extra_packages }}'
-  when: distro_extra_packages is defined
-- name: install gnome themes
-  become: true
-  package:
-    name: '{{ item }}'
-    state: present
-  with_items: '{{ gtk_themes }}'
-  when: gtk_themes is defined
-
-- name: 'install with snap'
-  become: true
-  command: snap install {{ item.name }} {{ item.classic }}
-  with_items: '{{ snap_packages }}'
-  when: snap_packages is defined
-
-- name: 'check if zsh is loading snaps'
-  shell: grep -c "source /etc/profile" /etc/zsh/zprofile || true
-  register: zsh_fix_test
-  changed_when: false
-
-- name: 'fix zsh snaps loading'
-  become: true
-  lineinfile:
-    path: /etc/zsh/zprofile
-    line: 'emulate sh -c "source /etc/profile"'
-  when: zsh_fix_test.stdout == "0"
-
-
-- name: run flatpak
-  become: true
-  become_user: '{{ username }}'
-  block:
-  - name: Add the flathub flatpak repository remote to the user installation
-    community.general.flatpak_remote:
-      name: flathub
-      state: present
-      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      method: user
-  - name: Install flatpak packages
-    community.general.flatpak:
-      name: '{{ item }}'
-      state: present
-      method: user
-    with_items: '{{ flatpak_packages }}'
-    when: flatpak_packages is defined
+- name: import native installer
+  import_tasks: native.yml
+- name: import flatpak installer
+  import_tasks: flatpak.yml
+- name: import snap installer
+  import_tasks: snap.yml

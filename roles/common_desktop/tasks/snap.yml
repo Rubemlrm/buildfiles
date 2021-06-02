@@ -1,0 +1,18 @@
+---
+- name: install snap
+  become: true
+  package:
+    name: snapd
+    state: present
+
+- name: 'fix snap symlink in fedora'
+  become: true
+  shell: ln -s /var/lib/snapd/snap /snap
+  notify:
+   - restart snapd
+
+- name: 'install with snap'
+  become: true
+  command: snap install {{ item.name }} {{ item.classic }}
+  with_items: '{{ snap_packages }}'
+  when: snap_packages is defined
