@@ -9,7 +9,6 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: install gnome themes
-  become: true
   package:
     name: '{{ item }}'
     state: present

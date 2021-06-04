@@ -1,0 +1,16 @@
+---
+- name: restore gpg public keys
+  become: true
+  become_user: '{{ username }}'
+  raw:  echo -e "{{ gpg_public_keys }}" | gpg --import
+  when: gpg_public_keys is defined
+- name: restore gpg private keys
+  become: true
+  become_user: '{{ username }}'
+  raw:  echo -e "{{ gpg_private_keys }}" | gpg --batch --import
+  when: gpg_private_keys is defined
+- name: restore trust
+  become: true
+  become_user: '{{ username }}'
+  raw:  echo -e "5\ny\n" |  gpg --command-fd 0 --expert --edit-key "{{ gpg_trust }}" trust
+  when: gpg_trust is defined

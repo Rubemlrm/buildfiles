@@ -35,7 +35,6 @@
         dest: /etc/dnf/dnf.conf
         mode: 0644
     - name: Upgrade Fedora
-      become: true
       dnf:
         name: '*'
         state: latest

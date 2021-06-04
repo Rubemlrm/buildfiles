@@ -1,6 +1,6 @@
 {% for ssh_host in ssh_hosts %}
-Host {{ssh_host.host}}
-	HostName {{ssh_host.host}}
-	User git
-	IdentityFile ~/.ssh/{{ssh_host.name}}_rsa
+Host {{ ssh_host.host }}
+	HostName {{ ssh_host.host }}
+	User {{ ssh_host.user }}
+	IdentityFile ~/.ssh/{{ ssh_host.fileName }}
 {% endfor %}

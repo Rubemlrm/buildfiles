@@ -1,46 +1,27 @@
-# dotfiles
+# BuildFiles
+## Build status
+[![linting](https://github.com/Rubemlrm/buildfiles/actions/workflows/main.yml/badge.svg)](https://github.com/Rubemlrm/buildfiles/actions/workflows/main.yml)
 
-## Personal setup and configs for my fedora based machines, setup ready to be used with ansible.
+## Powered by:
+![](https://img.shields.io/badge/Ansible-gray?color=grey&logo=ansible&style=for-the-badge)
+![](https://img.shields.io/badge/GithubActions-gray?color=grey&logo=github-actions&style=for-the-badge)
+![](https://img.shields.io/badge/Git-gray?color=grey&logo=Git&style=for-the-badge)
 
-#### Works on
+## Works on
 
 | Distro | Versions |
 | ------ | :------: |
-| Fedora |    32    |
+| ![](https://img.shields.io/badge/Fedora-gray?color=blue&logo=Fedora&style=for-the-badge) |    34    |
+| ![](https://img.shields.io/badge/Debian-gray?color=red&logo=Debian&style=for-the-badge) |    10    |
+| ![](https://img.shields.io/badge/Ubuntu-gray?color=grey&logo=Ubuntu&style=for-the-badge) | 21.04 |
+| ![](https://img.shields.io/badge/Ubuntu_WSL-gray?color=grey&logo=Ubuntu&style=for-the-badge) | 21.04|
 
-#### Support for:
+## Instructions
 
-- **docker**
-- **snapd**
-- **Copr based repos**
-
-#### Tools for development:
-
-- **php**
-- **python**
-- **javascript**
-
-#### Personal Configs for:
-
-- **vim**
-- **tmux**
-- **zsh**
-- **openbox**
-
-#### GTK themes and icon packs
-
-- **papirus**
-- **paper**
-
-#### General Utils
-
-- **Lutris**
-- **Steam**
-- **Spotify**
-- **etc**
-
-To run this:
+### Before Run the setup
 
 `sudo ansible-galaxy collection install -r requirements.yml `
+
+### Run the Playbook
 
 `sudo ansible-playbook setup.yml -i inventory.yml --ask-vault-pass --limit "host" --extra-vars "password=foobar"`

@@ -1,6 +1,5 @@
 ---
 - name: install openssh
-  become: true
   package:
     name: 'openssh-server'
     state: present
@@ -14,7 +13,6 @@
       file_name: ssh_config
     - origin_name: sshd_config.j2
       file_name: sshd_config
-  become: true
   notify:
     - enable openssh server
     - restart openssh server
@@ -26,6 +24,5 @@
     setype: "ssh_port_t"
     state: "present"
   when: ansible_distribution == 'Fedora'
-  become: true
   notify:
    - restart openssh server

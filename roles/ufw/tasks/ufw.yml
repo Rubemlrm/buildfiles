@@ -1,6 +1,5 @@
 ---
 - name: Setup UFW
-  become: true
   block:
     - name: enable ufw
       ufw:

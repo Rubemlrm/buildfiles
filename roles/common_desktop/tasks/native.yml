@@ -1,20 +1,17 @@
 ---
 - name: Install desktop packages
-  become: true
   package:
     name: '{{ item }}'
     state: present
   with_items: '{{ desktop_packages }}'
   when: desktop_packages is defined
 - name: Install distro extra packages
-  become: true
   package:
     name: '{{ item }}'
     state: present
   with_items: '{{ distro_extra_packages }}'
   when: distro_extra_packages is defined
 - name: install gnome themes
-  become: true
   package:
     name: '{{ item }}'
     state: present

@@ -1,7 +1,5 @@
 ---
 distro_extra_packages:
-  - 'flat-remix'
   - 'latte-dock'
   - 'libreoffice-l10n-pt'
   - 'numix-icon-theme-circle'
-  

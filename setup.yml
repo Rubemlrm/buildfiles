@@ -1,10 +1,11 @@
 ---
 - hosts: workstations
+  become: true
   roles:
     - apt
     - dnf
-    - common_cli
     - users
+    - common_cli
     - common_desktop
     - docker
     - gnome
@@ -17,20 +18,20 @@
     - ufw
 
 - hosts: raspberry
+  become: true
   roles:
     - apt
-    - common_cli
     - users
-    - docker
+    - common_cli
     - openssh
-    - resolvconf
     - ufw
 
 - hosts: wsl
+  become: true
   roles:
     - apt
-    - common_cli
     - users
+    - common_cli
     - nvm
     - php
     - python

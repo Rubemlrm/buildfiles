@@ -1,6 +1,5 @@
 ---
 - name: Setup Docker service
-  become: true
   block:
     - name: 'install docker'
       package:

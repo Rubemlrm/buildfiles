@@ -8,7 +8,6 @@
     file: 'debian.yml'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: setup php composer and needed tools
-  become: true
   block:
     - name: Install php development tools
       package:

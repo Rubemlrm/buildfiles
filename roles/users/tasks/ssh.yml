@@ -1,0 +1,32 @@
+---
+- name: generate ssh config settings
+  template:
+    src: ssh_hosts.j2
+    dest: '/home/{{ username }}/.ssh/config'
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    mode: '0600'
+- name: restore ssh keys
+  copy:
+    dest: '/home/{{ username }}/.ssh/{{ item.fileName }}'
+    content: '{{ item.private }}'
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    mode: '0600'
+  with_items: "{{ ssh_hosts }}"
+- name: restore ssh keys
+  copy:
+    dest: '/home/{{ username }}/.ssh/{{ item.fileName }}.pub'
+    content: '{{ item.public }}'
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    mode: '0644'
+  with_items: "{{ ssh_hosts }}"
+- name: restore authorized_keys
+  template:
+    src: authorized_keys.j2
+    dest: '/home/{{ username }}/.ssh/authorized_keys'
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    mode: '0600'
+  when: authorized_keys is defined

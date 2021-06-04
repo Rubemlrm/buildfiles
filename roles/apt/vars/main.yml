@@ -9,9 +9,6 @@ deb_repos:
   - url: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     filename: vscode
 
-ppa_repos:
-  - ppa:daniruiz/flat-remix
-
 repo_gpgs:
   - https://download.docker.com/linux/debian/gpg
   - https://packages.sury.org/php/apt.gpg
