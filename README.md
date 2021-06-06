@@ -18,6 +18,8 @@
 
 ## Instructions
 
+`sudo pip3 install ansible`
+
 ### Before Run the setup
 
 `sudo ansible-galaxy collection install -r requirements.yml `
