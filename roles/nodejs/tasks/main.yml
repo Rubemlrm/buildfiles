@@ -7,12 +7,14 @@
         state: 'present'
     - name: Add Nodejs Repo
       apt_repository:
-        repo: 'deb https://deb.nodesource.com/{{ ansible_distribution_release }} {{ ansible_distribution }} main'
+        repo: 'deb https://deb.nodesource.com/node_16.x {{ ansible_distribution_release }} main'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 - name: Install nodejs
   package:
-    name: nodejs
+    name: "{{ item }}"
     state: present
+  with_items:
+    - nodejs
 - name: Setup Javascript environment
   become: true
   become_user: '{{ username }}'

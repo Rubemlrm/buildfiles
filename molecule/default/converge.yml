@@ -1,0 +1,5 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+- import_playbook: ../../tests/setup-testing.yml

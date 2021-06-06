@@ -1,6 +1,13 @@
 ---
 - name: Add Custom repos for Debian Based
   block:
+    - name: update apt cache
+      apt:
+        update_cache: yes
+    - name: install gpg
+      package:
+        name: gnupg
+        state: present
     - name: Add gpg keys
       apt_key:
         url: '{{ item }}'

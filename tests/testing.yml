@@ -6,5 +6,7 @@ git_email: 'testing@xpto.com'
 ssh_hosts:
   - name: github
     host: github.com
+    user: git
+    fileName: github_rsa
     private: ''
     public: ''
