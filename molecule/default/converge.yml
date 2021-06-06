@@ -13,4 +13,6 @@
         name: '*'
         state: latest
       when: ansible_distribution == 'Fedora'
+      tags:
+        - skip_ansible_lint
 - import_playbook: ../../tests/setup-testing.yml
