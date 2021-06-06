@@ -1,11 +1,11 @@
 ---
 - name: Setup snap
   block:
-  - name: install snap
+  - name: Install snap
     package:
       name: 'snapd'
       state: present
-  - name: 'fix snap symlink in fedora'
+  - name: 'Fix snap symlink in fedora'
     file:
       src: "/var/lib/snapd/snap"
       dest: "/snap"
@@ -13,7 +13,9 @@
     when: ansible_distribution == 'Fedora'
     notify:
     - restart snapd
-  - name: 'install with snap'
-    command: snap install {{ item.name }} {{ item.classic }}
+  - name: 'Install with snap'
+    community.general.snap:
+      name: "{{ item.name }}"
+      classic: "{{ item.classic }}"
     with_items: '{{ snap_packages }}'
     when: snap_packages is defined

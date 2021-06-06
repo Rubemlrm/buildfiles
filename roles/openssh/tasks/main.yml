@@ -1,9 +1,9 @@
 ---
-- name: install openssh
+- name: Install openssh
   package:
     name: 'openssh-server'
     state: present
-- name: copy ssh custom configs
+- name: Copy ssh custom configs
   template:
     src: '{{ item.origin_name }}'
     dest: /etc/ssh/{{ item.file_name }}
@@ -14,10 +14,10 @@
     - origin_name: sshd_config.j2
       file_name: sshd_config
   notify:
-    - enable openssh server
-    - restart openssh server
+    - Enable openssh server
+    - Restart openssh server
 
-- name: setup selinux for custom ssh port
+- name: Setup selinux for custom ssh port
   seport:
     ports: "{{ ssh_port }}"
     proto: "tcp"
@@ -25,4 +25,4 @@
     state: "present"
   when: ansible_distribution == 'Fedora'
   notify:
-   - restart openssh server
+   - Restart openssh server

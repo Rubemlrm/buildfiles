@@ -2,36 +2,40 @@
 - hosts: workstations
   become: true
   roles:
+    - resolvconf
     - apt
     - dnf
-    - users
     - common_cli
-    - common_desktop
-    - docker
-    - gnome
-    - kde
-    - nvm
+    - openssh
+    - ufw
+    - users
+    - nodejs
     - php
     - python
-    - openssh
-    - resolvconf
-    - ufw
+    - docker
+    
+    - common_desktop
+    - gnome
+    - kde
 
 - hosts: raspberry
   become: true
   roles:
+    - resolvconf
     - apt
-    - users
+    - dnf
     - common_cli
     - openssh
     - ufw
+    - users
 
 - hosts: wsl
   become: true
   roles:
     - apt
-    - users
+    - dnf
     - common_cli
-    - nvm
+    - users
+    - nodejs
     - php
     - python

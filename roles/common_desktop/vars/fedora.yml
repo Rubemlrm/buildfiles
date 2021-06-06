@@ -7,3 +7,4 @@ distro_extra_packages:
   - 'neochat'
   - 'numix-icon-theme-circle'
   - 'paper-icon-theme'
+  - 'chromium'

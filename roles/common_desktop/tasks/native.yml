@@ -1,4 +1,16 @@
 ---
+- name: Set Fedora Distro Desktop Extra repositories
+  block:
+    - name: 'setup vscode'
+      yum_repository:
+        name: vscode
+        description: vscode repo
+        file: vscode
+        baseurl: https://packages.microsoft.com/yumrepos/vscode
+        gpgcheck: yes
+        enabled: yes
+        gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+  when: ansible_distribution == 'Fedora'
 - name: Install desktop packages
   package:
     name: '{{ item }}'
@@ -11,7 +23,7 @@
     state: present
   with_items: '{{ distro_extra_packages }}'
   when: distro_extra_packages is defined
-- name: install gnome themes
+- name: Install gnome themes
   package:
     name: '{{ item }}'
     state: present

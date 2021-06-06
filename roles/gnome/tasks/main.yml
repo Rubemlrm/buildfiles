@@ -8,7 +8,7 @@
     file: 'debian.yml'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: install gnome themes
+- name: Install gnome themes
   package:
     name: '{{ item }}'
     state: present

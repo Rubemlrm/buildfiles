@@ -1,16 +1,20 @@
 ---
-- name: restore gpg public keys
+- name: Restore gpg keys settings
   become: true
   become_user: '{{ username }}'
-  raw:  echo -e "{{ gpg_public_keys }}" | gpg --import
-  when: gpg_public_keys is defined
-- name: restore gpg private keys
-  become: true
-  become_user: '{{ username }}'
-  raw:  echo -e "{{ gpg_private_keys }}" | gpg --batch --import
-  when: gpg_private_keys is defined
-- name: restore trust
-  become: true
-  become_user: '{{ username }}'
-  raw:  echo -e "5\ny\n" |  gpg --command-fd 0 --expert --edit-key "{{ gpg_trust }}" trust
-  when: gpg_trust is defined
+  when: gpg_trust is defined and gpg_public_keys is defined and gpg_private_keys is defined
+  block:
+    - name: Check if gpg is already imported
+      shell: 'gpg --list-secret-keys | grep {{ gpg_trust }}'
+      changed_when: false
+      register: gpg_trust_exists  
+    - name: Restore gpg public keys
+      raw:  echo -e "{{ gpg_public_keys }}" | gpg --import
+      when: gpg_trust_exists.stdout is not defined
+    - name: Restore gpg private keys
+      raw:  echo -e "{{ gpg_private_keys }}" | gpg --batch --import
+      when: gpg_trust_exists.stdout is not defined
+    - name: Restore trust
+      raw:  echo -e "5\ny\n" |  gpg --command-fd 0 --expert --edit-key "{{ gpg_trust }}" trust
+      when: gpg_trust_exists.stdout is not defined
+      no_log: true

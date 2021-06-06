@@ -1,4 +1,4 @@
-- name: configure name servers
+- name: Configure name servers
   template:
     src: resolv.j2
     dest: /etc/resolv.conf

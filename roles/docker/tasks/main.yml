@@ -1,20 +1,20 @@
 ---
 - name: Setup Docker service
   block:
-    - name: 'install docker'
+    - name: 'Install docker'
       package:
         name: '{{ item }}'
         state: 'present'
       with_items: '{{ docker_packages }}'
-    - name: 'just force systemd to reread configs'
+    - name: 'Just force systemd to reread configs'
       systemd:
         daemon_reload: yes
-    - name: 'start docker'
+    - name: 'Start docker'
       systemd:
         name: docker
         state: started
         enabled: yes
-    - name: 'add user to docker group'
+    - name: 'Add user to docker group'
       user:
         name: '{{ username }}'
         groups: docker

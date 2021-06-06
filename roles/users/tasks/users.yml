@@ -5,10 +5,8 @@
       user:
         name: '{{ username }}'
         password: "{{ password | password_hash('sha512') }}"
-        generate_ssh_key: yes
-        ssh_key_bits: 4096
-        ssh_key_file: .ssh/id_rsa
         shell: '/usr/bin/zsh'
+        update_password: 'on_create'
       no_log: true
     - name: Created base folders for configs
       file: path={{ home_dir }}/{{ item }} state=directory mode=0755 owner={{ username }} group={{ username }}

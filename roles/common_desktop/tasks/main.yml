@@ -7,9 +7,9 @@
   include_vars:
     file: 'debian.yml'
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-- name: import native installer
+- name: Import native installer
   import_tasks: native.yml
-- name: import flatpak installer
+- name: Import flatpak installer
   import_tasks: flatpak.yml
-- name: import snap installer
+- name: Import snap installer
   import_tasks: snap.yml

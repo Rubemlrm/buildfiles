@@ -7,6 +7,6 @@
     - dnf
     - common_cli
     - users
-    - nvm
+    - nodejs
     - php
     - python

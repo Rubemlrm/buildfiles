@@ -1,12 +1,12 @@
 ---
-- name: generate ssh config settings
+- name: Generate ssh config settings
   template:
     src: ssh_hosts.j2
     dest: '/home/{{ username }}/.ssh/config'
     owner: '{{ username }}'
     group: '{{ username }}'
     mode: '0600'
-- name: restore ssh keys
+- name: Restore ssh keys
   copy:
     dest: '/home/{{ username }}/.ssh/{{ item.fileName }}'
     content: '{{ item.private }}'
@@ -14,7 +14,8 @@
     group: '{{ username }}'
     mode: '0600'
   with_items: "{{ ssh_hosts }}"
-- name: restore ssh keys
+  no_log: true
+- name: Restore ssh keys
   copy:
     dest: '/home/{{ username }}/.ssh/{{ item.fileName }}.pub'
     content: '{{ item.public }}'
@@ -22,7 +23,8 @@
     group: '{{ username }}'
     mode: '0644'
   with_items: "{{ ssh_hosts }}"
-- name: restore authorized_keys
+  no_log: true
+- name: Restore authorized_keys
   template:
     src: authorized_keys.j2
     dest: '/home/{{ username }}/.ssh/authorized_keys'
@@ -30,3 +32,4 @@
     group: '{{ username }}'
     mode: '0600'
   when: authorized_keys is defined
+  no_log: true

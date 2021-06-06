@@ -12,13 +12,13 @@
         filename: '{{ item.filename }}'
         state: present
       with_items: '{{ deb_repos }}'
-    - name: update repos to install ca-certificates and https-transport
+    - name: Update repos to install ca-certificates and https-transport
       become: yes
       apt:
         name: '*'
         update_cache: yes
         force_apt_get: yes
-    - name: install ca-certificates and https-transport
+    - name: Install ca-certificates and https-transport
       package:
         name: '{{ item }}'
         state: present

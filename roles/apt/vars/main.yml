@@ -3,14 +3,7 @@ packages:
   - apt-transport-https
   - ca-certificates
 
-deb_repos:
-  - url: deb http://dl.google.com/linux/chrome/deb/ stable main
-    filename: chromedeb
-  - url: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-    filename: vscode
-
+deb_repos: {}
 repo_gpgs:
   - https://download.docker.com/linux/debian/gpg
   - https://packages.sury.org/php/apt.gpg
-  - https://dl-ssl.google.com/linux/linux_signing_key.pub
-  - https://packages.microsoft.com/keys/microsoft.asc

@@ -3,8 +3,41 @@ copr_repos:
   - zawertun/hack-fonts
   - evana/fira-code-fonts
   - '@dotnet-sig/dotnet'
-  - 'jdoss/github-cli'
+  - jdoss/github-cli
 
 rpm_repos:
   - 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version }}.noarch.rpm'
   - 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version }}.noarch.rpm'
+  
+packages_to_purge:
+  - 'abrt-gui'
+  - 'akregator'
+  - 'calligra-core'
+  - 'calligra-sheets'
+  - 'dragonplayer'
+  - 'falkon'
+  - 'grantlee-editor'
+  - 'juk'
+  - 'kaddressbook'
+  - 'kcolorchooser'
+  - 'kget'
+  - 'kget'
+  - 'kmag'
+  - 'kmahjongg'
+  - 'kmail'
+  - 'kmines'
+  - 'kmousetool'
+  - 'kmouth'
+  - 'kolourpaint'
+  - 'kontact'
+  - 'konversation'
+  - 'korganizer'
+  - 'kpat'
+  - 'krdc'
+  - 'krfb'
+  - 'kruler'
+  - 'ktnef'
+  - 'ktorrent'
+  - 'kwrite'
+  - 'mediawriter'
+  - 'pim-sieve-editor'

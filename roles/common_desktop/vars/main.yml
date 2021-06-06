@@ -24,4 +24,4 @@ flatpak_packages:
 
 snap_packages:
   - name: 'whatsdesk'
-    classic: ''
+    classic: false

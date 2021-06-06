@@ -1,0 +1,23 @@
+---
+- name: Install nodejs in debian based distros
+  block:
+    - name: Add nodejs repo key
+      apt_key:
+        url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
+        state: 'present'
+    - name: Add Nodejs Repo
+      apt_repository:
+        repo: 'deb https://deb.nodesource.com/{{ ansible_distribution_release }} {{ ansible_distribution }} main'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- name: Install nodejs
+  package:
+    name: nodejs
+    state: present
+- name: Setup Javascript environment
+  become: true
+  become_user: '{{ username }}'
+  npm:
+    name: "{{ item }}"
+    state: present
+    global: true
+  with_items: "{{ nodejs_packages }}"

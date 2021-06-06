@@ -4,13 +4,15 @@ workstations:
       ansible_connection: local
     DojoLaptop:
       ansible_connection: local
+    DojoLegacyLaptop:
+      ansible_connection: local
 
 raspberry:
   hosts:
     DojoPi:
+      ansible_host: 192.168.2.2
       ansible_connection: ssh
       ansible_user: rubemlrm
-      ansible_port: 44
 
 wsl:
   hosts:

@@ -1,7 +1,7 @@
 ---
-- name: import users setup
+- name: Import users setup
   import_tasks: users.yml
-- name: import ssh setup
+- name: Import ssh setup
   import_tasks: ssh.yml
-- name: import gpg setup
+- name: Import gpg setup
   import_tasks: gpg.yml

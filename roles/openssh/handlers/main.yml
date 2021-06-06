@@ -1,10 +1,10 @@
 ---
-- name: restart openssh server
+- name: Restart openssh server
   systemd:
     name: sshd
     state: restarted
   become: true
-- name: enable openssh server
+- name: Enable openssh server
   systemd:
     name: sshd
     state: started
