@@ -16,10 +16,8 @@
   with_items:
     - nodejs
 - name: Setup Javascript environment
-  become: true
-  become_user: '{{ username }}'
   npm:
     name: "{{ item }}"
     state: present
-    path: "/home/{{ username }}/bin/node_modules"
+    global: true
   with_items: "{{ nodejs_packages }}"
