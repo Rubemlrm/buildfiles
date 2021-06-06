@@ -2,4 +2,15 @@
 - name: Converge
   hosts: all
   become: true
+  tasks:
+    - name: Update apt cache (on Debian).
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == 'Debian'
+    - name: update dnf cache 
+      dnf:
+        name: '*'
+        state: latest
+      when: ansible_distribution == 'Fedora'
 - import_playbook: ../../tests/setup-testing.yml
