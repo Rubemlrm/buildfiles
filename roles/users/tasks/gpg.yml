@@ -7,7 +7,7 @@
     - name: Check if gpg is already imported
       shell: 'gpg --list-secret-keys | grep {{ gpg_trust }}'
       changed_when: false
-      register: gpg_trust_exists  
+      register: gpg_trust_exists
     - name: Restore gpg public keys
       raw:  echo -e "{{ gpg_public_keys }}" | gpg --import
       when: gpg_trust_exists.stdout is not defined
