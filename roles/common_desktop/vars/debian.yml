@@ -13,3 +13,9 @@ deb_repos:
 repo_gpgs:
   - https://dl-ssl.google.com/linux/linux_signing_key.pub
   - https://packages.microsoft.com/keys/microsoft.asc
+
+gtk_themes: {}
+
+kde_packages:
+  - 'kio-gdrive'
+  - 'kaccounts-providers'

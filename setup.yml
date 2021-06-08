@@ -14,8 +14,6 @@
     - python
     - docker
     - common_desktop
-    - gnome
-    - kde
 
 - hosts: raspberry
   become: true

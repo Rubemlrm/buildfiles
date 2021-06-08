@@ -6,7 +6,6 @@ desktop_packages:
   - 'firefox'
   - 'flatpak'
   - 'gimp'
-  - 'google-chrome-stable'
   - 'libreoffice'
   - 'paper-icon-theme'
   - 'papirus-icon-theme'

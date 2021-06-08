@@ -8,3 +8,15 @@ distro_extra_packages:
   - 'numix-icon-theme-circle'
   - 'paper-icon-theme'
   - 'chromium'
+
+gtk_themes:
+  - 'flat-remix-gtk2-theme'
+  - 'flat-remix-gtk3-theme'
+  - 'numix-gtk-theme'
+
+kde_packages:
+  - 'kio-gdrive'
+  - 'kaccounts-providers'
+  - 'arc-kde'
+  - 'kvantum'
+  - 'latte-dock'
