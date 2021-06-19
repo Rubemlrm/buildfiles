@@ -14,9 +14,13 @@
       shell: 'dnf repolist enabled | grep google-chrome | wc -l'
       changed_when: false
       register: chrome_repo_is_enabled
+      tags:
+        - skip_ansible_lint
     - name: 'enable google chrome repo'
       shell: 'dnf config-manager --set-enabled google-chrome -y'
       when: chrome_repo_is_enabled.stdout == "0"
+      tags:
+        - skip_ansible_lint
   when: ansible_distribution == 'Fedora'
 - name: Install desktop packages
   package:

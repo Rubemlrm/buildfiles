@@ -1,7 +1,7 @@
 desktop_packages:
   - 'arduino'
   - 'calibre'
-  - 'code'
+  - 'code-insiders'
   - 'filezilla'
   - 'firefox'
   - 'flatpak'
