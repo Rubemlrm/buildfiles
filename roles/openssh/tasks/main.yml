@@ -33,9 +33,11 @@
         permanent: yes
         immediate: yes
         state: disabled
+      when: ansible_facts['services']['firewalld.service']['state'] == 'running'
     - name: Enable firewall rule
       firewalld:
         port: '{{ ssh_port }}/tcp'
         permanent: yes
         immediate: yes
         state: enabled
+      when: ansible_facts['services']['firewalld.service']['state'] == 'running'
