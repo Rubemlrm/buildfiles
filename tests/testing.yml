@@ -9,5 +9,6 @@ ssh_hosts:
     host: github.com
     user: git
     fileName: github_rsa
+    port: 22
     private: ''
     public: ''
