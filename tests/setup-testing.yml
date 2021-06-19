@@ -8,7 +8,6 @@
     - dnf
     - common_cli
     - openssh
-    - ufw
     - users
     - nodejs
     - php
