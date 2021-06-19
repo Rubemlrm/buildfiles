@@ -30,7 +30,7 @@ base_packages:
   - libssl-dev
   - libreadline-dev
   - zlib1g-dev
-  - ufw
+  - firewalld
 
 font_packages:
   - fonts-firacode

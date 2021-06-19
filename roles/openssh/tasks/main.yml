@@ -25,7 +25,7 @@
   when: ansible_selinux is defined and ansible_selinux is not false and ansible_selinux.status == 'enabled'
   notify:
     - Restart openssh server
-- name: Tweak SSH rules on firewall on Fedora
+- name: Tweak SSH rules on firewall
   block:
     - name: Remove old firewall rule
       firewalld:
@@ -39,11 +39,3 @@
         permanent: yes
         immediate: yes
         state: enabled
-  when: ansible_distribution == 'Fedora'
-- name: Tweak SSH rules on firewall on Debian based
-  block:
-    - name: Enable firewall rule
-      ufw:
-        rule: allow
-        port: '{{ ssh_port }}'
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
