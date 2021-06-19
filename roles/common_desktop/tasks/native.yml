@@ -10,6 +10,13 @@
         gpgcheck: yes
         enabled: yes
         gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    - name: 'check google chrome repo'
+      shell: 'dnf repolist enabled | grep google-chrome | wc -l'
+      changed_when: false
+      register: chrome_repo_is_enabled
+    - name: 'enable google chrome repo'
+      shell: 'dnf config-manager --set-enabled google-chrome -y'
+      when: chrome_repo_is_enabled.stdout == "0"
   when: ansible_distribution == 'Fedora'
 - name: Install desktop packages
   package:

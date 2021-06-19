@@ -8,6 +8,9 @@ distro_extra_packages:
   - 'numix-icon-theme-circle'
   - 'paper-icon-theme'
   - 'chromium'
+  - 'akmod-nvidia'
+  - 'xorg-x11-drv-nvidia-cuda'
+  - 'xorg-x11-drv-nvidia-cuda-libs'
 
 gtk_themes:
   - 'flat-remix-gtk2-theme'

@@ -21,3 +21,13 @@
         state: absent
       with_items: '{{ disable_users }}'
       when: disable_users is defined
+    - name: Allow non-root user access to libvirt via polkit
+      template:
+        src: non_root_user_libvirt_polkit.j2
+        dest: /etc/polkit-1/rules.d/50-org.libvirt.unix.manage.rules
+      when: ansible_distribution == 'Fedora'
+    - name: Allow non-root user access to NetworkManager
+      template:
+        src: network_manager_polkit.j2
+        dest: /etc/polkit-1/rules.d/10-network-manager.pkla
+      when: ansible_distribution == 'Fedora'

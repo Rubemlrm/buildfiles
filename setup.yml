@@ -7,7 +7,6 @@
     - dnf
     - common_cli
     - openssh
-    - ufw
     - users
     - nodejs
     - php
@@ -23,7 +22,6 @@
     - dnf
     - common_cli
     - openssh
-    - ufw
     - users
 
 - hosts: wsl

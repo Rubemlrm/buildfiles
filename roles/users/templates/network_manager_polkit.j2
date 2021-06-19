@@ -1,0 +1,7 @@
+
+[Let {{ username }} modify system settings for network]
+Identity=unix-user:{{ username }}
+Action=org.freedesktop.NetworkManager.*
+ResultAny=yes
+ResultInactive=yes
+ResultActive=yes
