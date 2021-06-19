@@ -37,6 +37,7 @@ base_packages:
   - libcurl-devel
   - dotnet-sdk-3.1
   - npm
+  - python-firewall
 
 font_packages:
   - adobe-source-code-pro-fonts

@@ -2,5 +2,6 @@
 Host {{ ssh_host.host }}
 	HostName {{ ssh_host.host }}
 	User {{ ssh_host.user }}
+	Port {{ ssh_host.port }}
 	IdentityFile ~/.ssh/{{ ssh_host.fileName }}
 {% endfor %}
