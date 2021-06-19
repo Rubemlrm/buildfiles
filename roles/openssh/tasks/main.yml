@@ -42,15 +42,6 @@
   when: ansible_distribution == 'Fedora'
 - name: Tweak SSH rules on firewall on Debian based
   block:
-    - name: Workaround for ipv6
-      shell: update-alternatives --set ip6tables /usr/sbin/ip6tables-nft
-      tags:
-        - skip_ansible_lint
-    - name: Enable ufw
-      ufw:
-        state: enabled
-        policy: allow
-        logging: true
     - name: Enable firewall rule
       ufw:
         rule: allow
