@@ -23,6 +23,8 @@
   shell: 'service firewalld status | grep loaded | wc -l'
   changed_when: false
   register: firewall_running
+  tags:
+    - skip_ansible_lint
 - name: start firewall
   systemd:
     name: firewalld
