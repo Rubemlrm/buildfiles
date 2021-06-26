@@ -16,12 +16,14 @@ desktop_packages:
   - 'timeshift'
   - 'google-chrome'
 
-
 flatpak_packages:
   - net.cozic.joplin_desktop
   - com.bitwarden.desktop
   - com.spotify.Client
+  - com.jetbrains.PhpStorm
+  - com.slack.Slack
+  - im.riot.Riot
 
 snap_packages:
-  - name: 'whatsdesk'
+  - name: 'insomnia'
     classic: false

@@ -20,7 +20,7 @@
         state: present
       with_items: '{{ font_packages }}'
 - name: check firewall status
-  shell: 'service firewalld status | grep loaded | wc -l'
+  shell: 'service firewalld status | grep active | wc -l'
   changed_when: false
   register: firewall_running
   tags:
