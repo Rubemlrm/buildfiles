@@ -27,3 +27,8 @@
         - ansible
         - ansible-lint
         - Django
+        - bpytop
+        - flake8
+        - tox
+        - pep8
+        - poetry

@@ -6,7 +6,6 @@ distro_extra_packages:
   - 'libreoffice-langpack-pt-PT'
   - 'neochat'
   - 'numix-icon-theme-circle'
-  - 'paper-icon-theme'
   - 'chromium'
   - 'akmod-nvidia'
   - 'xorg-x11-drv-nvidia-cuda'

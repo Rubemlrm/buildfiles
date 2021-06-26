@@ -29,7 +29,7 @@
   systemd:
     name: firewalld
     enabled: yes
-  when: firewall_running.stdout = 0
+  when: firewall_running.stdout == 0
 - name: set running firewall
   systemd:
     name: firewalld
