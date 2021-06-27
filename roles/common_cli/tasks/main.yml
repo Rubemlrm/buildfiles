@@ -19,18 +19,21 @@
         name: '{{ item }}'
         state: present
       with_items: '{{ font_packages }}'
-- name: check firewall status
-  shell: 'service firewalld status | grep active | wc -l'
-  changed_when: false
-  register: firewall_running
-  tags:
-    - skip_ansible_lint
-- name: start firewall
-  systemd:
-    name: firewalld
-    enabled: yes
-  when: firewall_running.stdout == 0
-- name: set running firewall
-  systemd:
-    name: firewalld
-    state: started
+- name: Enable Firewall
+  block:
+    - name: check firewall status
+      shell: 'service firewalld status | grep active | wc -l'
+      changed_when: false
+      register: firewall_running
+      tags:
+        - skip_ansible_lint
+    - name: start firewall
+      systemd:
+        name: firewalld
+        enabled: yes
+      when: firewall_running.stdout == 0
+    - name: set running firewall
+      systemd:
+        name: firewalld
+        state: started
+  when: use_firewall is true

@@ -3,6 +3,7 @@ password: 'testing'
 home_dir: '/home/test/'
 git_name: 'Testing'
 git_email: 'testing@xpto.com'
+use_firewall: false
 ssh_port: 22
 ssh_hosts:
   - name: github
