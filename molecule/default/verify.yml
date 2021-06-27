@@ -8,7 +8,7 @@
     - name: 'common_cli - check package status'
       package:
         name: 'tmux'
-        state: 'installed'
+        state: 'present'
       check_mode: yes
       register: pkg_status
     - name: 'common_cli - package is installed'
