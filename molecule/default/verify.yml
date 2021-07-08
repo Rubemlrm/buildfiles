@@ -3,7 +3,6 @@
 
 - name: Verify
   hosts: all
-  gather_facts: false
   tasks:
     - name: 'common_cli - check package status'
       package:

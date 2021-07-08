@@ -10,30 +10,30 @@
 - name: Install base packages
   block:
     - name: Install cli utils
-      package:
+      ansible.builtin.package:
         name: '{{ item }}'
         state: present
       with_items: '{{ base_packages }}'
     - name: Install fonts
-      package:
+      ansible.builtin.package:
         name: '{{ item }}'
         state: present
       with_items: '{{ font_packages }}'
 - name: Enable Firewall
   block:
     - name: check firewall status
-      shell: 'service firewalld status | grep active | wc -l'
+      ansible.builtin.shell: 'service firewalld status | grep active | wc -l'
       changed_when: false
       register: firewall_running
       tags:
         - skip_ansible_lint
     - name: start firewall
-      systemd:
+      ansible.builtin.systemd:
         name: firewalld
         enabled: yes
       when: firewall_running.stdout == 0
     - name: set running firewall
-      systemd:
+      ansible.builtin.systemd:
         name: firewalld
         state: started
-  when: use_firewall is true
+  when: use_firewall == true

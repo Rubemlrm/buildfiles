@@ -10,14 +10,14 @@
 - name: Setup Javascript environment
   block:
     - name: Install Python development tools
-      package:
+      ansible.builtin.package:
         name: '{{ item }}'
         state: present
       with_items: '{{ python_packages }}'
     - name: Install cookicutter python
       become: true
       become_user: '{{ username }}'
-      pip:
+      ansible.builtin.pip:
         name: '{{ item }}'
         extra_args: '--user'
       with_items:
@@ -32,3 +32,4 @@
         - tox
         - pep8
         - poetry
+        - "molecule[ansible,docker,lint]"

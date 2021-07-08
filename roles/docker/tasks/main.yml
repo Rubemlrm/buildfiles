@@ -2,20 +2,20 @@
 - name: Setup Docker service
   block:
     - name: 'Install docker'
-      package:
+      ansible.builtin.package:
         name: '{{ item }}'
         state: 'present'
       with_items: '{{ docker_packages }}'
     - name: 'Just force systemd to reread configs'
-      systemd:
+      ansible.builtin.systemd:
         daemon_reload: yes
     - name: 'Start docker'
-      systemd:
+      ansible.builtin.systemd:
         name: docker
         state: started
         enabled: yes
     - name: 'Add user to docker group'
-      user:
+      ansible.builtin.user:
         name: '{{ username }}'
         groups: docker
         append: yes

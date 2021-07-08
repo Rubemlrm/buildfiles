@@ -21,4 +21,3 @@ kde_packages:
   - 'kaccounts-providers'
   - 'arc-kde'
   - 'kvantum'
-  - 'latte-dock'

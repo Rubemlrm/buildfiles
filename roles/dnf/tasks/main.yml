@@ -2,7 +2,7 @@
 - name: Add Custom repos for Fedora Based
   block:
     - name: 'Install copr tools'
-      dnf:
+      ansible.builtin.dnf:
         name: ['fedora-workstation-repositories', 'dnf-plugins-core']
         state: present
     - name: 'Set copr repos'
@@ -11,24 +11,24 @@
         name: '{{ item }}'
       with_items: '{{ copr_repos }}'
     - name: 'Set repos'
-      dnf:
+      ansible.builtin.dnf:
         name: '{{ rpm_repos }}'
         state: present
         disable_gpg_check: true
       with_items: '{{ rpm_repos }}'
     - name: Tweak dnf settings
-      template:
+      ansible.builtin.template:
         src: dnf.j2
         dest: /etc/dnf/dnf.conf
         mode: 0644
     - name: Purge packages
-      package:
+      ansible.builtin.package:
         name: '{{ item }}'
         state: absent
       with_items: '{{ packages_to_purge }}'
       when: packages_to_purge is defined
     - name: Upgrade Fedora
-      dnf:
+      ansible.builtin.dnf:
         name: '*'
         state: latest
       tags:

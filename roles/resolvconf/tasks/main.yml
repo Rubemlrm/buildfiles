@@ -1,5 +1,5 @@
 - name: Configure name servers
-  template:
+  ansible.builtin.template:
     src: resolv.j2
     dest: /etc/resolv.conf
     mode: 0644

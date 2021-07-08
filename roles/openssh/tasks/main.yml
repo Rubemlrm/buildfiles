@@ -1,10 +1,10 @@
 ---
 - name: Install openssh
-  package:
+  ansible.builtin.package:
     name: 'openssh-server'
     state: present
 - name: Copy ssh custom configs
-  template:
+  ansible.builtin.template:
     src: '{{ item.origin_name }}'
     dest: /etc/ssh/{{ item.file_name }}
     mode: 0644
@@ -17,7 +17,7 @@
     - Enable openssh server
     - Restart openssh server
 - name: Setup selinux for custom ssh port
-  seport:
+  community.general.seport:
     ports: '{{ ssh_port }}'
     proto: 'tcp'
     setype: 'ssh_port_t'
@@ -28,12 +28,12 @@
 - name: Tweak SSH rules on firewall
   block:
     - name: Remove old firewall rule
-      firewalld:
+      ansible.posix.firewalld:
         service: ssh
         permanent: yes
         state: disabled
     - name: Enable firewall rule
-      firewalld:
+      ansible.posix.firewalld:
         port: '{{ ssh_port }}/tcp'
         permanent: yes
         state: enabled

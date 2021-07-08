@@ -1,13 +1,13 @@
 ---
 - name: Generate ssh config settings
-  template:
+  ansible.builtin.template:
     src: ssh_hosts.j2
     dest: '/home/{{ username }}/.ssh/config'
     owner: '{{ username }}'
     group: '{{ username }}'
     mode: '0600'
 - name: Restore ssh keys
-  copy:
+  ansible.builtin.copy:
     dest: '/home/{{ username }}/.ssh/{{ item.fileName }}'
     content: '{{ item.private }}'
     owner: '{{ username }}'
@@ -16,7 +16,7 @@
   with_items: "{{ ssh_hosts }}"
   no_log: true
 - name: Restore ssh keys
-  copy:
+  ansible.builtin.copy:
     dest: '/home/{{ username }}/.ssh/{{ item.fileName }}.pub'
     content: '{{ item.public }}'
     owner: '{{ username }}'
@@ -25,7 +25,7 @@
   with_items: "{{ ssh_hosts }}"
   no_log: true
 - name: Restore authorized_keys
-  template:
+  ansible.builtin.template:
     src: authorized_keys.j2
     dest: '/home/{{ username }}/.ssh/authorized_keys'
     owner: '{{ username }}'

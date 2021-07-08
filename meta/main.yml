@@ -8,5 +8,6 @@ galaxy_info:
   platforms:
   - name: Fedora
   - name: Debian
+  - name: Ubuntu
   galaxy_tags:
     - workstation

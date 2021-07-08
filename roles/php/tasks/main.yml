@@ -10,28 +10,28 @@
 - name: Setup php composer and needed tools
   block:
     - name: Install php development tools
-      package:
+      ansible.builtin.package:
         name: '{{ item }}'
         state: present
       with_items: '{{ php_packages }}'
     - name: Install extra php packages
-      package:
+      ansible.builtin.package:
         name: '{{ item }}'
         state: present
       with_items: '{{ php_extra_packages }}'
       when: php_extra_packages is defined
     - name: check if composer is installed
-      stat:
+      ansible.builtin.stat:
         path: /usr/local/bin/composer
       register: composer_installed
       changed_when: false
     - name: Installing composer
-      raw: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      ansible.builtin.raw: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
       when: not composer_installed.stat.exists
     - name: Setup composer packages for user
       become: true
       become_user: '{{ username }}'
-      composer:
+      community.general.composer:
         command: require
         arguments: "{{ item }} @stable"
         global_command: true

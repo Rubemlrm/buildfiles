@@ -2,7 +2,7 @@
 - name: Set Fedora Distro Desktop Extra repositories
   block:
     - name: 'setup vscode'
-      yum_repository:
+      ansible.builtin.yum_repository:
         name: vscode
         description: vscode repo
         file: vscode
@@ -11,37 +11,37 @@
         enabled: yes
         gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     - name: 'check google chrome repo'
-      shell: 'dnf repolist enabled | grep google-chrome | wc -l'
+      ansible.builtin.shell: 'dnf repolist enabled | grep google-chrome | wc -l'
       changed_when: false
       register: chrome_repo_is_enabled
       tags:
         - skip_ansible_lint
     - name: 'enable google chrome repo'
-      shell: 'dnf config-manager --set-enabled google-chrome -y'
+      ansible.builtin.shell: 'dnf config-manager --set-enabled google-chrome -y'
       when: chrome_repo_is_enabled.stdout == "0"
       tags:
         - skip_ansible_lint
   when: ansible_distribution == 'Fedora'
 - name: Install desktop packages
-  package:
+  ansible.builtin.package:
     name: '{{ item }}'
     state: present
   with_items: '{{ desktop_packages }}'
   when: desktop_packages is defined
 - name: Install distro extra packages
-  package:
+  ansible.builtin.package:
     name: '{{ item }}'
     state: present
   with_items: '{{ distro_extra_packages }}'
   when: distro_extra_packages is defined
 - name: Install gnome themes
-  package:
+  ansible.builtin.package:
     name: '{{ item }}'
     state: present
   with_items: '{{ gtk_themes }}'
   when: gtk_themes is defined
 - name: Install kde packages
-  package:
+  ansible.builtin.package:
     name: '{{ item }}'
     state: present
   with_items: '{{ kde_packages }}'

@@ -5,16 +5,16 @@
   when: gpg_trust is defined and gpg_public_keys is defined and gpg_private_keys is defined
   block:
     - name: Check if gpg is already imported
-      shell: 'gpg --list-secret-keys | grep {{ gpg_trust }} | wc -l'
+      ansible.builtin.shell: 'gpg --list-secret-keys | grep {{ gpg_trust }} | wc -l'
       changed_when: false
       register: gpg_trust_exists
     - name: Restore gpg public keys
-      raw:  echo -e "{{ gpg_public_keys }}" | gpg --import
+      ansible.builtin.raw:  echo -e "{{ gpg_public_keys }}" | gpg --import
       when: gpg_trust_exists.stdout == "0"
     - name: Restore gpg private keys
-      raw:  echo -e "{{ gpg_private_keys }}" | gpg --batch --import
+      ansible.builtin.raw:  echo -e "{{ gpg_private_keys }}" | gpg --batch --import
       when: gpg_trust_exists.stdout == "0"
     - name: Restore trust
-      raw:  echo -e "5\ny\n" |  gpg --command-fd 0 --expert --edit-key "{{ gpg_trust }}" trust
+      ansible.builtin.raw:  echo -e "5\ny\n" |  gpg --command-fd 0 --expert --edit-key "{{ gpg_trust }}" trust
       when: gpg_trust_exists.stdout == "0"
       no_log: true

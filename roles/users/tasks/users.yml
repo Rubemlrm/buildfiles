@@ -2,33 +2,33 @@
 - name: Setup User
   block:
     - name: Add system user
-      user:
+      ansible.builtin.user:
         name: '{{ username }}'
         password: "{{ password | password_hash('sha512') }}"
         shell: '/usr/bin/zsh'
         update_password: 'on_create'
       no_log: true
     - name: Created base folders for configs
-      file: path={{ home_dir }}/{{ item }} state=directory mode=0755 owner={{ username }} group={{ username }}
+      ansible.builtin.file: path={{ home_dir }}/{{ item }} state=directory mode=0755 owner={{ username }} group={{ username }}
       with_items:
         - 'tools'
         - 'bin'
         - '.local/share/fonts'
         - '.ssh'
     - name: Remove Users
-      user:
+      ansible.builtin.user:
         name: '{{ item }}'
         state: absent
       with_items: '{{ disable_users }}'
       when: disable_users is defined
     - name: Allow non-root user access to libvirt via polkit
-      template:
+      ansible.builtin.template:
         src: non_root_user_libvirt_polkit.j2
         dest: /etc/polkit-1/rules.d/50-org.libvirt.unix.manage.rules
         mode: 0644
       when: ansible_distribution == 'Fedora'
     - name: Allow non-root user access to NetworkManager
-      template:
+      ansible.builtin.template:
         src: network_manager_polkit.j2
         dest: /etc/polkit-1/rules.d/10-network-manager.pkla
         mode: 0644

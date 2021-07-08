@@ -2,11 +2,11 @@
 - name: Setup snap
   block:
   - name: Install snap
-    package:
+    ansible.builtin.package:
       name: 'snapd'
       state: present
   - name: 'Fix snap symlink in fedora'
-    file:
+    ansible.builtin.file:
       src: "/var/lib/snapd/snap"
       dest: "/snap"
       state: link
