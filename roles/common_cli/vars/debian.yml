@@ -31,6 +31,7 @@ base_packages:
   - libreadline-dev
   - zlib1g-dev
   - firewalld
+  - stow
 
 font_packages:
   - fonts-firacode
