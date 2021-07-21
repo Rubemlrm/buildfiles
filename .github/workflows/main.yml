@@ -37,7 +37,6 @@ jobs:
         distro:
           - debian10
           - ubuntu2004
-          - fedora33
           - fedora34
     steps:
       - name: Check out the codebase.
